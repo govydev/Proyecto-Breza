@@ -11,7 +11,7 @@ class Index{
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-        <link rel="stylesheet" href="../style/ss/style.css">
+        <link rel="stylesheet" href="./style/css/style.css">
     </head>
     <body class="autenticar">
         <div class="container">
@@ -68,7 +68,7 @@ class Index{
                     </div>
                     <button class="btn btn-second">ingresar</button>       
                     <?if($msg != null){?>
-                        <label style="color: red; text-align: center"><?$msg?></label>
+                        <label style="color: red; text-align: center"><? echo $msg?></label>
                     <?}?>
                     
                 </form>
@@ -78,14 +78,14 @@ class Index{
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="style/js/jquery-1.11.2.min.js"><\/script>')</script>
-        <script src="style/js/bootstrap.min.js"></script>
-        <script src="style/js/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="style/js/main.js"></script>
+        <script>window.jQuery || document.write('<script src="./style/js/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="./style/js/bootstrap.min.js"></script>
+        <script src="./style/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="./style/js/main.js"></script>
     </body>
     </html>
     <?php
     }
-
+    
 }
 ?>
