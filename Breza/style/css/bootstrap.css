@@ -3883,7 +3883,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group-btn:last-child > .btn,
 .input-group-btn:last-child > .btn-group {
   z-index: 2;
-  margin-left: -1px;
+  margin-left: 1px;
 }
 .nav {
   padding-left: 0;
@@ -3934,6 +3934,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   max-width: none;
 }
 .nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
   border-bottom: 1px solid #ddd;
 }
 .nav-tabs > li {
