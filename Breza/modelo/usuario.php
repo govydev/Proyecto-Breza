@@ -4,19 +4,44 @@ include_once("conexion.php");
 class Usuario{
 
     public function autenticacion($txtUser, $txtPass){
-        $con =  Conexion::getConexion();
-        $user = $con->query("SELECT * FROM usuarios WHERE usuario = '$txtUser' and estado = 1");
-        if(count($user) > 0 && $user['estado'] == 1){
-            if($txtPass == $user['password']){
-                return $user;
-            }
-            else{
-                return "El contraseña ingresada no es valida.";
-            }
+        $user = Conexion::select("SELECT * FROM usuarios WHERE usuario = '$txtUser' and estado = 1");
+        if($user[0][6] == 1){
+            return $txtPass == $user[0][5] ? $user[0] : "El contraseña ingresada no es valida.";
         }
         else{
             return "El usuario no se encuentra habilidato o no esta registrado.";
         }
+    }
+
+    public function usuarioId($id){
+        $user = Conexion::select("SELECT * FROM usuarios WHERE idUsuario = $id");
+        return $user[0];
+    }
+
+    public function usuarios(){
+        $user = Conexion::select("SELECT * FROM usuarios");
+        return $user;
+    }
+
+    public function modificar($id, $nombre, $apPaterno, $apMaterno, $password, $estado){
+        $user = Conexion::query("UPDATE usuarios SET nombre = '$nombre', apPaterno = '$apPaterno', apMaterno = '$apMaterno', `password` = '$password', estado = $estado WHERE idUsuario = $id");
+        return $user;
+    }
+
+    public function cambioEstado($id, $estado){
+        $user = Conexion::query("UPDATE usuarios SET estado = $estado WHERE idUsuario = $id");
+        return $user;
+    }
+
+    public function eliminar($id){
+        $user = Conexion::query("DELETE FROM usuarios WHERE idUsuario = $id");
+        return $user;
+    }
+
+    public function agregar($nombre, $apPaterno, $apMaterno, $user, $password, $estado){
+        $user = Conexion::query("INSERT INTO usuarios(nombre, apPaterno, apMaterno, usuario, `password`, estado) 
+                                VALUES ('$nombre', '$apPaterno', '$apMaterno', '$user', '$password', $estado)");
+        return $user;
     }
 
 }

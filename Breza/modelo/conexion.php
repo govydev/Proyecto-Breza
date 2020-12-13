@@ -1,30 +1,31 @@
 <?php
+define("HOST","localhost");
+define("USER","root");
+define("PASSWORD","12345678");
+define("BD","breza");
+
 class Conexion{
 	public static $conexion = null;
 
-	private function conexion()
-	{
-		self::$conexion= new mysqli("localhost","root","12345678", "breza") or die(mysql_error());
-		self::$conexion->set_charset('utf8');
-	}
-	
-	public function getConexion()
-	{
+	private function __construct(){}
+
+	public static function select($consulta){
 		if(self::$conexion == null){
-			return new conexion;
-		}else{
-			return self::$conexion;
+			self::$conexion= new mysqli(HOST, USER,PASSWORD, BD) or die(mysql_error());
+			self::$conexion->set_charset('utf8');
 		}
+		$list = mysqli_query(self::$conexion, $consulta)->fetch_all();
+		return $list;
 	}
 
-	public function query($consulta){
-		return $result = self::$conexion->query($consulta);
-    }
+	public static function query($consulta){
+		if(self::$conexion == null){
+			self::$conexion= new mysqli(HOST, USER,PASSWORD, BD) or die(mysql_error());
+			self::$conexion->set_charset('utf8');
+		}
+		$res = mysqli_query(self::$conexion, $consulta).mysqli_error(self::$conexion);
+		return $res;
+	}
     
-    public function prepare($consulta){
-        $result = self::$conexion->prepare($consulta);
-        $result->execute();
-	}
-
 }
 ?>

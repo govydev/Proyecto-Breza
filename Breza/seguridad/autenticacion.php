@@ -51,7 +51,7 @@ class Index{
                         
                 </div><!-- social media -->
                 
-                <form class="form" method="POST" action="seguridad/controlIndex.php">
+                <form class="form" method="POST" action="./seguridad/controlIndex.php">
                     
                     <div class="grupo inner-addon left-addon">
                         <label class="labe" for="">Usuario</label>  
@@ -77,11 +77,11 @@ class Index{
             </div><!-- second-content -->
         </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="./style/js/jquery-1.11.2.min.js"><\/script>')</script>
         <script src="./style/js/bootstrap.min.js"></script>
         <script src="./style/js/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="./style/js/main.js"></script>
+        <script src="./style/js/main.js"></script>-->
     </body>
     </html>
     <?php
