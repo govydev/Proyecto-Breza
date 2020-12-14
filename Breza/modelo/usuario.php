@@ -4,12 +4,12 @@ include_once("conexion.php");
 class Usuario{
 
     public function autenticacion($txtUser, $txtPass){
-        $user = Conexion::select("SELECT * FROM usuarios WHERE usuario = '$txtUser' and estado = 1");
+        $user = Conexion::select("SELECT * FROM usuarios WHERE login = '$txtUser' and estado = 1");
         if($user[0][6] == 1){
-            return $txtPass == $user[0][5] ? $user[0] : "La contraseña ingresada no es valida.";
+            return $txtPass == $user[0][5] ? $user[0] : 1;
         }
         else{
-            return "El usuario no se encuentra habilitado o no esta registrado.";
+            return 0;
         }
     }
 
