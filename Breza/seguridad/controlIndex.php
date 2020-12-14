@@ -8,7 +8,7 @@ $usuario =  new Usuario;
 $respuesta = $usuario->autenticacion(trim($user), trim($password));
 
 if($respuesta[0] > 0){
-    echo "Pagina prinvcipal";
+    echo "Pagina principal";
     echo "<br>"; 
     print_r($usuario->usuarioId(1));
     echo "<br>"; 
