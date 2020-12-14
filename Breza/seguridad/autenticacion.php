@@ -14,6 +14,9 @@ class Index{
         <link rel="stylesheet" href="./style/css/style.css">
     </head>
     <body class="autenticar">
+    <div class="splash">
+        <img style="display: flex; position: absolute;" src="./style/assets/img/breza.png" alt="">
+    </div>
         <div class="container">
             <div class="first-column">
             </div>    
