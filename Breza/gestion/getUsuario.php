@@ -6,7 +6,7 @@ session_start();
 if ($_SESSION["acceso"]) {
     switch ($_POST['accion']) {
         case 'Nuevo':
-            # code...
+            
             break;
         
         default:
@@ -16,7 +16,7 @@ if ($_SESSION["acceso"]) {
             break;
     }
 }else{
-
+    header("Location: ../index.php");   
 }
 
 

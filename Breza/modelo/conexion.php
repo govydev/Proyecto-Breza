@@ -11,7 +11,7 @@ class Conexion{
 
 	public static function select($consulta){
 		if(self::$conexion == null){
-			self::$conexion= new mysqli(HOST, USER,PASSWORD, BD) or die(mysql_error());
+			self::$conexion = new mysqli(HOST, USER,PASSWORD, BD) or die(mysql_error());
 			self::$conexion->set_charset('utf8');
 		}
 		$list = mysqli_query(self::$conexion, $consulta)->fetch_all();
@@ -28,4 +28,6 @@ class Conexion{
 	}
     
 }
+
 ?>
+

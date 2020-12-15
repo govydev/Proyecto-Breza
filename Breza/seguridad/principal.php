@@ -2,10 +2,14 @@
 class Principal{
     public function formPrincipal($path){
         foreach ($path as $value) {?>
-            <a href="<?=$value[1]?>"><?=$value[0]?></a>
-            
+            <a href="<?php echo $value[1];?>">
+            <?php  
+                echo $value[0]; 
+            ?>
+            </a>
             <br>
-        <?}
+        <?php
+        }
     }
 }
 
