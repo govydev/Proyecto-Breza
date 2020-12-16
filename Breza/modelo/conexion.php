@@ -18,13 +18,13 @@ class Conexion{
 		return $list;
 	}
 
-	public static function query($consulta){
+	public static function query($consulta, $id = null){
 		if(self::$conexion == null){
 			self::$conexion= new mysqli(HOST, USER,PASSWORD, BD) or die(mysql_error());
 			self::$conexion->set_charset('utf8');
 		}
 		$res = mysqli_query(self::$conexion, $consulta).mysqli_error(self::$conexion);
-		return $res;
+		return $id == null? $res: self::$conexion->insert_id;
 	}
     
 }

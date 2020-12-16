@@ -38,9 +38,9 @@ class Usuario{
         return $user;
     }
 
-    public function agregar($nombre, $apPaterno, $apMaterno, $user, $password, $estado){
+    public function agregar($datos){
         $user = Conexion::query("INSERT INTO usuarios(nombre, apPaterno, apMaterno, usuario, `password`, estado) 
-                                VALUES ('$nombre', '$apPaterno', '$apMaterno', '$user', '$password', $estado)");
+                                VALUES ('$datos[0]', '$datos[1]', '$datos[2]', '$datos[3]', '$datos[4]', 1)", 1);
         return $user;
     }
 

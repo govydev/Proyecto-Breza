@@ -1,6 +1,6 @@
 <?php
 
-class gestionUsuario{
+class principalUsuario{
 
     public function formGestionUsuario($privilegios, $lista){?>
     <!DOCTYPE html>
@@ -111,7 +111,7 @@ class gestionUsuario{
 								</div>
 								<div class="col-6 col-md-4">
 									<div class="der">
-                                        <form action="" method="get">
+                                        <form action="getUsuario.php" method="POST">
 										    <input type="submit" class="btn btn-second" value="Nuevo" name="accion">
                                         </form>    
 									</div>
