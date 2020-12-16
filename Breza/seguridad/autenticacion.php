@@ -1,7 +1,7 @@
 <?php
 class Index{
 
-    public function formIndex($msg = null){?>
+    public function formIndex(){?>
     <!DOCTYPE html>
     <html lang="es">
     <head>
@@ -54,7 +54,7 @@ class Index{
                         
                 </div><!-- social media -->
                 
-                <form class="form" method="POST" action="./seguridad/controlIndex.php">
+                <form class="form" method="POST" action="./seguridad/getIndex.php">
                     
                     <div class="grupo inner-addon left-addon">
                         <label class="labe" for="">Usuario</label>  
@@ -69,9 +69,14 @@ class Index{
                             <input type="password" name="txtPassword" placeholder="Ingrese su contraseña" required ><span class="barra"></span>
                         
                     </div>
+                    <input type="hidden" value="Ingresar" name="login"> 
                     <button class="btn btn-second">ingresar</button>       
-                    <?if($msg != null){?>
-                        <label style="color: red; text-align: center"><? echo $msg?></label>
+                    <?if($_GET['msg'] != null){?>
+                        <?if($_GET['msg'] == 0){?>
+                            <label style="color: red; text-align: center"><? echo "El usuario no se encuentra habilitado o no esta registrado."?></label>
+                        <?}else{?>
+                            <label style="color: red; text-align: center"><? echo "La contraseña ingresada no es valida."?></label>
+                        <?}?>
                     <?}?>
                     
                 </form>
