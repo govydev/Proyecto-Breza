@@ -27,17 +27,19 @@ if ($_SESSION["acceso"]) {
         case 'Guardar':
             $datos = [trim($_POST["txtNombre"]), trim($_POST["txtPaterno"]), trim($_POST["txtMaterno"]), trim($_POST["txtUsuario"]), trim($_POST["txtPassword"])];
             $privilegiosUsuario = [$_POST["privilegio1"],$_POST["privilegio2"],$_POST["privilegio3"],$_POST["privilegio4"],$_POST["privilegio5"]];
+            $usuario= new Usuario();
+            $privilegios = new Privilegios();
             switch ($_POST["registrar"]) {
                 case 'NUEVO':
-                    $usuario= new Usuario();
-                    $privilegios = new Privilegios();
                     $id =  $usuario->agregar($datos);
                     if($id > 0)    $privilegios->agregar($privilegiosUsuario, $id);
-                    header("Location: getUsuario.php");   
                     break;
                 case 'EDITAR':
+                    $usuario->modificar($datos,$_POST['id']);
+                    $privilegios->modificar($privilegiosUsuario,$_POST['id']);
                     break;
             }
+            header("Location: getUsuario.php"); 
             break;
         
         default:

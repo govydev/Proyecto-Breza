@@ -7,7 +7,7 @@ class Principal{
                             </a>
                         <?php }?>
         <!DOCTYPE html>
-        <html lang="en">
+        <html lang="es">
             <head>
                 <title></title>
                 <meta charset="UTF-8">
