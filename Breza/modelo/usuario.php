@@ -4,7 +4,7 @@ include_once("conexion.php");
 class Usuario{
 
     public function autenticacion($txtUser, $txtPass){
-        $user = Conexion::select("SELECT * FROM usuarios WHERE login = '$txtUser' and estado = 1");
+        $user = Conexion::select("SELECT * FROM usuarios WHERE usuario = '$txtUser' and estado = 1");
         if($user[0][6] == 1){
             return $txtPass == $user[0][5] ? $user[0] : 1;
         }
@@ -38,16 +38,12 @@ class Usuario{
         return $user;
     }
 
-    public function agregar($nombre, $apPaterno, $apMaterno, $user, $password, $estado){
+    public function agregar($datos){
         $user = Conexion::query("INSERT INTO usuarios(nombre, apPaterno, apMaterno, usuario, `password`, estado) 
-                                VALUES ('$nombre', '$apPaterno', '$apMaterno', '$user', '$password', $estado)");
+                                VALUES ('$datos[0]', '$datos[1]', '$datos[2]', '$datos[3]', '$datos[4]', 1)", 1);
         return $user;
     }
 
-    
-
 }
-$usuario =  new Usuario;
-$respuesta = $usuario->autenticacion("root", "root");;
 
 ?>

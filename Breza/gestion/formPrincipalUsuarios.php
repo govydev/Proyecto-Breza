@@ -1,6 +1,6 @@
 <?php
 
-class gestionUsuario{
+class principalUsuario{
 
     public function formGestionUsuario($privilegios, $lista){?>
     <!DOCTYPE html>
@@ -46,9 +46,9 @@ class gestionUsuario{
                             NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA
 
                         -->
-                        <?session_start();
+                        <?php session_start();
                         $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
-                        <li class="hidden-xs hidden-sm"><label class="btn-PopUpLogin"><?=$nombre?></label></li>
+                        <li class="hidden-xs hidden-sm"><label class="btn-PopUpLogin"><?php echo $nombre;?></label></li>
                         <li class="hidden-xs hidden-sm">
                             <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
                             <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
@@ -87,13 +87,12 @@ class gestionUsuario{
                                     <li class="nav-items active" data-tab="Provedores">
                                     <a class="nav-link " href="getUsuario.php"> <i class="fa fa-group"></i> Usuarios</a>
                                     </li>
-                                    <?foreach ($privilegios as $value) {
+                                    <?php foreach ($privilegios as $value) {
                                         if($value[0] == "Usuario")  continue;?>
-                                        <li class="nav-items" data-tab="<?=$value[0]?>">
-                                            <a class="nav-link" href="<?=$value[1]?>"> <i class="fa fa-calendar"></i><?=$value[0]?></a>
+                                        <li class="nav-items" data-tab="<?php echo $value[0]?>">
+                                            <a class="nav-link" href="<?php echo $value[1]?>"> <i class="fa fa-calendar"></i><?=$value[0]?></a>
                                         </li>
-                                    <?}?>
-                                    
+                                    <?php }?>
                                 </ul>
                             </div>
                             <!-- Contenido-->
@@ -112,7 +111,7 @@ class gestionUsuario{
 								</div>
 								<div class="col-6 col-md-4">
 									<div class="der">
-                                        <form action="" method="get">
+                                        <form action="getUsuario.php" method="POST">
 										    <input type="submit" class="btn btn-second" value="Nuevo" name="accion">
                                         </form>    
 									</div>
@@ -131,21 +130,25 @@ class gestionUsuario{
                                 </tr>
 								</thead>
 								<tbody>
-                                    <?foreach ($lista as $value) {
+                                    <?php foreach ($lista as $value) {
                                         if($value[0] == $_SESSION['user'][0])   continue;?>
                                         <tr>
-                                            <td><?=$value[1]?></td>
-                                            <td><?=$value[2]?></td>
-                                            <td><?=$value[3]?></td>
-                                            <td><?=$value[4]?></td>
-                                            <td><?=$value[6] = 1? "<label style='color: green'>Habilitado</label>":"<label style='color: red'>Deshabilitado</label>"?></td>
+                                            <td><?php echo $value[1]?></td>
+                                            <td><?php echo $value[2]?></td>
+                                            <td><?php echo $value[3]?></td>
+                                            <td><?php echo $value[4]?></td>
+                                            <td><?php echo $value[6] = 1? "<label style='color: green'>Habilitado</label>":"<label style='color: red'>Deshabilitado</label>"?></td>
                                             <td><div class="izq">
-                                                    <button class="btn btn2-second ">Editar</button> 
-                                                </div>
+                                                <form action="getUsuario.php" method="post">
+                                                    <input type="hidden" name="id" value="<?php echo $value[0]?>">
+                                                    <input type="hidden" name="accion" value="Editar">
+                                                    <button class="btn btn2-second ">Editar</button>
+                                                </form>
+                                                 
+                                            </div>
                                             </td>
                                         </tr>
-                                    <?}?>
-									
+                                    <?php }?>
 								</tbody>
 							</table>
 					</div>
@@ -155,13 +158,13 @@ class gestionUsuario{
             </section>
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-            <script src="js/main.js"></script>
+            <script src="../style/style/js/bootstrap.min.js"></script>
+            <script src="../style/js/jquery.mCustomScrollbar.concat.min.js"></script>
+            <script src="../style/js/main.js"></script>
         </body>
     </html>
-    <?}
-
+    <?php
+    }
 }
 
 ?>
