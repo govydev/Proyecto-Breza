@@ -365,6 +365,16 @@ BOTONES
    
 }
 
+.form input .check{
+	background: rgba(0, 0,0, 0);
+    border-radius: 5px;
+    height: 20px;
+    width: 100%;
+    border: 0;
+    margin-top: 1px;
+    outline: none;
+}
+
 
 
 /**/
