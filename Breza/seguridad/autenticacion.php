@@ -54,7 +54,7 @@ class Index{
                         
                 </div><!-- social media -->
                 
-                <form class="form" method="POST" action="./seguridad/getIndex.php">
+                <form class="form" method="POST" action="seguridad/getIndex.php">
                     
                     <div class="grupo inner-addon left-addon">
                         <label class="labe" for="">Usuario</label>  
@@ -71,13 +71,13 @@ class Index{
                     </div>
                     <input type="hidden" value="Ingresar" name="login"> 
                     <button class="btn btn-second">ingresar</button>       
-                    <?if($_GET['msg'] != null){?>
-                        <?if($_GET['msg'] == 0){?>
-                            <label style="color: red; text-align: center"><? echo "El usuario no se encuentra habilitado o no esta registrado."?></label>
-                        <?}else{?>
-                            <label style="color: red; text-align: center"><? echo "La contraseña ingresada no es valida."?></label>
-                        <?}?>
-                    <?}?>
+                    <?php if($_GET['msg'] != null){?>
+                        <?php if($_GET['msg'] == 0){?>
+                            <label style="color: red; text-align: center"><?php echo "El usuario no se encuentra habilitado o no esta registrado."?></label>
+                        <?php }else{?>
+                            <label style="color: red; text-align: center"><?php echo "La contraseña ingresada no es valida."?></label>
+                        <?php }?>
+                    <?php }?>
                     
                 </form>
                 

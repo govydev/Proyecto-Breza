@@ -1,14 +1,13 @@
 <?php
 
-class gestionMaquinas{
-
-    public function formGestionMaquinas($privilegios, $lista){?>
+class neoMaquinas{
+    public function formneoMaquinas($titulo, $marcas){?>
         <!DOCTYPE html>
         <html lang="es">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-            <title>Pagina maquina</title>
+            <title><?php echo $titulo?>-MAQUINA</title>
             <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="../style/css/bootstrap.css">
             <link rel="stylesheet" href="../style/css/main.css">
@@ -20,7 +19,7 @@ class gestionMaquinas{
                     <img src="../style/assets/img/breza.png" class="imBreza" alt="">
                 </div>
                 <div class="titulo" >
-                    Maquinas
+                <?php echo $titulo?> MAQUINA
                 </div>
 
                 <nav class=" full-width NavBar-Nav">
@@ -66,103 +65,51 @@ class gestionMaquinas{
                 </div>
             </section>
         <!-- ====== Contenido de pagina ======-->
-            <section class="full-width section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-4 col-md-3">
-                            <!-- <div>
-                                debe ir aqui la lista a buscar cada tabla
-                            </div> -->
-                            <div class="full-width user-menu-xs">
-                                
-                                
+            <section class="contenido_principal">
+                <div class="contenido">
+                    <form class="form" acction="getMaquinas.php" method="POST" >
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">CÓDIGO</label>  
+                            <input type="text" placeholder="Ingrese código" name="txtcodigo" required><span class="barra"></span>  
+                        </div>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">Nombre</label>  
+                            <input type="text" placeholder="Ingrese su nombre" name="txtnombre" required><span class="barra"></span>  
+                        </div>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">MARCA</label>                      
+                            <div class="content-select">
+                                <select name="optmarca" id="">
+                                    <?php foreach($marcas as $value){ ?>
+                                    <option value="<?php echo $value[0]?>"><?php echo $value[1]?></option>
+                                    <?php } ?>
+                                </select>
+                                <i></i>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-3 col-md-9">
-                            
-                            <div class="full-width bar-info-user containerTab">
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-items " data-tab="Provedores">
-                                    <a class="nav-link " href="#"> <i class="fa fa-group"></i> Provedores</a>
-                                    </li>
-                                    <li class="nav-items active" data-tab="Maquinas">
-                                    <a class="nav-link" href="#" ><i class="fa fa-gear"></i> Maquinas</a>
-                                    </li>
-                                    <li class="nav-items" data-tab="Cronog. Mantenimiento">
-                                    <a class="nav-link" href="#"> <i class="fa fa-calendar-o" ></i> Cronog. Mantenimiento</a>
-                                    </li>
-                                    <li class="nav-items" data-tab="Cronog. Mantenimiento">
-                                    <a class="nav-link" href="#"> <i class="fa fa-calendar"></i> Cronog. Calibracion</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Contenido-->
-                            <div class="full-width" style="padding: 15px; border: 1px solid #E1E1E1;">
-                                <div class="d-flex bd-highlight">
-                                    <div class="row no-gutters">
-                                        <div class="col-sm-6 col-md-8">
-                                            <div class="content-select">
-                                                <select name="" id="">
-                                                    <option value="">Filtrar por :</option>
-                                                    <option value=""> </option>
-                                                    <option value="">option 1</option>
-                                                    <option value="">option 2</option>
-                                                    <option value="">option 3</option>
-                                                </select>
-                                                <i></i>
-                                            </div>
-                                        </div>
-                                        <!-- Implementacion de formulario neoMaquinas -->
-                                        <form action="getMaquinas.php" method="POST">
-                                            <div class="col-6 col-md-4">
-                                            <input type="hidden" value="Nuevo" name="accion">
-                                                <button class="btn btn-second">Nuevo</button>									
-                                            </div>
-                                        </form>
-                                    </div>	
-                                </div>
-                                <span></span>
-                                <hr>
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col">código</th>
-                                            <th scope="col">NOMBRE</th>
-                                            <th scope="col">MARCA</th>
-                                            <th scope="col">UBICACIÓN</th>
-                                            <th scope="col">CANTIDAD</th>
-                                            <th scope="col">ESTADO</th>
-                                            </tr>
-                                        </thead>
-                                        <?php foreach($lista as $value){?>
-                                        <tbody>
-                                            <tr>
-                                            <td><?php echo $value[1];?></td>
-                                            <td><?php echo $value[2];?></td>
-                                            <td><?php echo $value[3];?></td>
-                                            <td><?php echo $value[4];?></td>
-                                            <td><?php echo $value[5];?></td>
-                                            <td><?php $value[5] == "1" ? print("Activo") : print("Inactivo")?></td>
-                                            <td>
-                                                <form action="getMaquinas.php" method="post">
-                                                    <input type="hidden" value="Modificar" name="accion">
-                                                    <button class="btn btn-second">Modificar</button>
-                                                </form>
-                                            </td> <!--cambiar referencia -->
-                                            <td>
-                                                <form action="getMaquinas.php" method="post">
-                                                    <input type="hidden" value="Eliminar" name="accion">
-                                                    <input type="hidden" value="<?php $lista[0] ?>" name="txtid">
-                                                    <button class="btn btn-second">Eliminar</button>
-                                                </form>
-                                            </td> <!--cambiar referencia -->
-                                            </tr>
-                                        </tbody>
-                                        <?php } ?>
-                                    </table>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">UBICACIÓN</label>                      
+                            <input type="text" placeholder="Ingrese ubicación" name="txtubicacion" required ><span class="barra"></span>
+                        </div>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">CANTIDAD</label>                      
+                            <input type="number" placeholder="Ingrese ubicación" name="txtcantidad" required ><span class="barra"></span>
+                        </div>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">ESTADO</label>                      
+                            <div class="content-select">
+                                <select name="optestado" id="">
+                                    <option value="0">Activo</option>
+                                    <option value="1">Inactivo </option>
+                                    <option value="2">Por definir</option>
+                                </select>
+                                <i></i>
                             </div>
                         </div>
-                    </div>
+                        <button style="width: 280px; margin-top: 30px;"  class="btn btn3-second">Guardar</button>        
+                        <input type="hidden" value="Guardar" name="accion">
+                        <input type="hidden" value="<?php echo $titulo ?>" name="registrar">
+                    </form>
                 </div>
             </section>
             <!-- ====== Pie de pagina ======-->
@@ -246,10 +193,10 @@ class gestionMaquinas{
                 </div>
             </footer> -->
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-            <script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-            <script src="js/main.js"></script>
+            <script>window.jQuery || document.write('<script src="../style/js/jquery-1.11.2.min.js"><\/script>')</script>
+            <script src="../style/js/bootstrap.min.js"></script>
+            <script src="../style/js/jquery.mCustomScrollbar.concat.min.js"></script>
+            <script src="../style/js/main.js"></script>
         </body>
         </html>
         <?php
