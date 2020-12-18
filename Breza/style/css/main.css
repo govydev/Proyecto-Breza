@@ -776,7 +776,7 @@ AQUI CAMBIAMOS LAS LETRAS SI SE VA USAR LOS APELLIDOS DE LOS INTEGRANTES
 	height: 60px;
 	bottom: 0;
 }
-/* #categori-1:hover{ background-color: #E65100; border-color: #E65100; }
+#categori-1:hover{ background-color: #E65100; border-color: #E65100; }
 #categori-2:hover{ background-color: #B71C1C; border-color: #B71C1C; }
 #categori-3:hover{ background-color: #1A237E; border-color: #1A237E; }
 #categori-4:hover{ background-color: #03A9F4; border-color: #03A9F4; }
@@ -788,7 +788,7 @@ AQUI CAMBIAMOS LAS LETRAS SI SE VA USAR LOS APELLIDOS DE LOS INTEGRANTES
 #categori-10:hover{ background-color: #607D8B; border-color: #607D8B; }
 #categori-11:hover{ background-color: #1976D2; border-color: #1976D2; }
 #categori-12:hover{ background-color: #3949AB; border-color: #3949AB; } */ 
-/*.icon-index{
+.icon-index{
 	font-size: 90px;
 	width: 170px;
 	height: 170px;
@@ -800,9 +800,7 @@ AQUI CAMBIAMOS LAS LETRAS SI SE VA USAR LOS APELLIDOS DE LOS INTEGRANTES
 	border-radius: 100%;
 	background-color: #B71C1C;
 	color: #fff;
- */
-
-
+}
 /*============================
 =========commercial.html*/
 
