@@ -113,7 +113,7 @@ class gestionMaquinas{
                                             </div>
                                         </div>
                                         <!-- Implementacion de formulario neoMaquinas -->
-                                        <form action="neoMaquinas.php" method="POST">
+                                        <form action="getMaquinas.php" method="POST">
                                             <div class="col-6 col-md-4">
                                             <input type="hidden" value="Nuevo" name="accion">
                                                 <button class="btn btn-second">Nuevo</button>									
@@ -137,12 +137,25 @@ class gestionMaquinas{
                                         <?php foreach($lista as $value){?>
                                         <tbody>
                                             <tr>
-                                            <td><?php echo $value[0];?></td>
                                             <td><?php echo $value[1];?></td>
                                             <td><?php echo $value[2];?></td>
                                             <td><?php echo $value[3];?></td>
                                             <td><?php echo $value[4];?></td>
+                                            <td><?php echo $value[5];?></td>
                                             <td><?php $value[5] == "1" ? print("Activo") : print("Inactivo")?></td>
+                                            <td>
+                                                <form action="getMaquinas.php" method="post">
+                                                    <input type="hidden" value="Modificar" name="accion">
+                                                    <button class="btn btn-second">Modificar</button>
+                                                </form>
+                                            </td> <!--cambiar referencia -->
+                                            <td>
+                                                <form action="getMaquinas.php" method="post">
+                                                    <input type="hidden" value="Eliminar" name="accion">
+                                                    <input type="hidden" value="<?php $lista[0] ?>" name="txtid">
+                                                    <button class="btn btn-second">Eliminar</button>
+                                                </form>
+                                            </td> <!--cambiar referencia -->
                                             </tr>
                                         </tbody>
                                         <?php } ?>

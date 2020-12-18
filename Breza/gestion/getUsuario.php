@@ -6,7 +6,6 @@ include_once("formUsuario.php");
 
 session_start();
 if ($_SESSION["acceso"]) {
-    
     switch ($_POST['accion']) {
         case 'Nuevo':
             $privilegio = new Privilegios();

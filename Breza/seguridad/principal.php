@@ -1,7 +1,7 @@
 <?php
 class Principal{
     public function formPrincipal($path){?>
-    <?php foreach ($path as $value) {?>
+        <?php foreach ($path as $value) {?>
             <a href="<?php echo $value[1];?>">
             <?php  
                 echo $value[0]; 
@@ -76,7 +76,13 @@ class Principal{
                 <h2 class="text-center text-light">Elija su rol</h2><br>	
                 <div class="container">
                     <div class="full-width container-category">
-                        <a href="" id="categori-3">
+                        <?php foreach ($path as $value) {?>
+                                <a href="<?php $value[1];?>" id="categori-3"> <!--direccion del privilegio-->
+                                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i> <!--agregar value[2]-->
+                                    <span><?php echo $value[0];?></span> <!--nombre del privilegio-->
+                                </a>
+                        <?php }?>
+                        <!--<a href="" id="categori-3">
                             <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                             <span>Gestion de Proveedores</span>
                         </a>
@@ -91,7 +97,7 @@ class Principal{
                         <a href="" id="categori-9">
                             <i class="fa fa-calendar-o" aria-hidden="true"></i>
                             <span>Gestion de Calidad</span>
-                        </a>
+                        </a> -->
                     
                         <!-- <a href="" id="categori-3">
                             <i class="fa fa-address-book-o" aria-hidden="true"></i>

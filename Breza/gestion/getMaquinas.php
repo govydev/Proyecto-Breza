@@ -1,20 +1,57 @@
 <?php
 include_once("../modelo/maquinas.php");
+include_once("../modelo/marca.php");
+include_once("neoMaquinas.php");
 include_once("maquinas.php");
 
+
 session_start();
-$lista = new Maquinas();
 if ($_SESSION["acceso"]) {
-    switch ($_POST['accion']){
-        case 'Listar':
-            $maquinas = new gestionMaquinas();
-            $maquinas->formGestionMaquinas($_SESSION["privilegios"], $lista->listaMaquina());
+    switch ($_POST['accion']){   
         case 'Nuevo':
-            $maquinas = new NeoMaquinas();
-            $maquinas->formNeoMaquinas("Nuevo");
+            $maquinas = new Maquinas();
+            $neoMaquinas = new neoMaquinas();
+            $marcas = new Marca();
+            $neoMaquinas->formNeoMaquinas("NUEVA", $marcas->listMarca());
+            break;
         case 'Modificar':
-            $maquinas = new neoMaquinas();
-            $maquinas->formNeoMaquinas("Modificar");
+            $id = trim($_POST["txtid"]);
+            $maquinas = new Maquinas();
+            $neoMaquinas = new neoMaquinas();
+            $marcas = new Marca();
+            $maquinas->maquinaId($id);
+            $neoMaquinas->formNeoMaquinas("MODIFICAR", $marcas->listMarca());
+            break;
+        case 'Guardar':
+            // $datos = [trim($_POST["txtcodigo"]), trim($_POST["txtnombre"]), trim($_POST["optmarca"]), trim($_POST["txtubicacion"]), trim($_POST["txtcantidad"]), trim($_POST["optestado"])];
+            $codigo = trim($_POST["txtcodigo"]);
+            $nombre = trim($_POST["txtnombre"]);
+            $marca = trim($_POST["optmarca"]);
+            $ubicacion = trim($_POST["txtubicacion"]);
+            $cantidad = trim($_POST["txtcantidad"]);
+            $estado = trim($_POST["optestado"]);
+            switch ($_POST["registrar"]){
+                case 'NUEVA':
+                    $maquinas = new Maquinas();
+                    $maquinas->agregar($codigo, $nombre, $ubicacion, $cantidad, $estado, $marca);
+                    $lista = $maquinas->listaMaquina();
+                    header('Location: getMaquinas.php');
+                    break;
+                case 'MODIFICAR':
+                    
+                    $maquinas = new Maquinas();
+                    $maquinas->modificar($codigo, $nombre, $ubicacion, $cantidad, $estado, $marca);
+                    header('Location: getMaquinas.php');
+                    break;
+                default:
+                    header('Location: getMaquinas.php');
+                    break;
+            }
+        default:
+            $maquinas = new Maquinas();
+            $gestionMaquinas = new gestionMaquinas();
+            $gestionMaquinas->formGestionMaquinas($_SESSION["privilegios"], $maquinas->listaMaquina());
+            break;
     }
 }else{
     header("Location: ../index.php");   
