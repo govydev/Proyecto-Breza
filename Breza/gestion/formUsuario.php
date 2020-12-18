@@ -125,6 +125,9 @@ class formUsuario{
                         </div>
                         <input type="hidden" name="accion" value="Guardar">
                         <input type="hidden" name="registrar" value="<?php echo $tipo?>">
+                        <?php if($user != null){?> 
+                            <input type="hidden" name="id" value="<?php echo $user[0]?>">
+                        <?php }?>
                         <button style="width: 280px; justify-content: center; align-content: center;" class="btn btn3-second" type="submit" onclick="return verificar()">Guardar</button>        
                     </form>
                 </div>

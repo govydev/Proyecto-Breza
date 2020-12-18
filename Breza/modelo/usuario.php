@@ -23,8 +23,8 @@ class Usuario{
         return $user;
     }
 
-    public function modificar($id, $nombre, $apPaterno, $apMaterno, $password, $estado){
-        $user = Conexion::query("UPDATE usuarios SET nombre = '$nombre', apPaterno = '$apPaterno', apMaterno = '$apMaterno', `password` = '$password', estado = $estado WHERE idUsuario = $id");
+    public function modificar($datos, $id){
+        $user = Conexion::query("UPDATE usuarios SET nombre = '$datos[0]', apPaterno = '$datos[1]', apMaterno = '$datos[2]', usuario = '$datos[3]',`password` = '$datos[4]', estado = 1 WHERE idUsuario = $id");
         return $user;
     }
 

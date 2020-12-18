@@ -12,6 +12,48 @@ class principalUsuario{
             <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="../style/css/bootstrap.css">
             <link rel="stylesheet" href="../style/css/main.css">
+            <script type="text/javascript" src="../style/js/jquery-1.11.2.min.js"></script>
+            <script type="text/javascript">
+            (function(document) {
+            'use strict';
+
+            var LightTableFilter = (function(Arr) {
+
+                var _input;
+
+                function _onInputEvent(e) {
+                _input = e.target;
+                var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                Arr.forEach.call(tables, function(table) {
+                    Arr.forEach.call(table.tBodies, function(tbody) {
+                    Arr.forEach.call(tbody.rows, _filter);
+                    });
+                });
+                }
+
+                function _filter(row) {
+                var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                }
+
+                return {
+                init: function() {
+                    var inputs = document.getElementsByClassName('light-table-filter');
+                    Arr.forEach.call(inputs, function(input) {
+                    input.oninput = _onInputEvent;
+                    });
+                }
+                };
+            })(Array.prototype);
+
+            document.addEventListener('readystatechange', function() {
+                if (document.readyState === 'complete') {
+                LightTableFilter.init();
+                }
+            });
+
+            })(document);
+            </script>
         </head>
         <body>
             <!-- ====== Barra de navegacion ======-->
@@ -22,7 +64,9 @@ class principalUsuario{
                 <div class="titulo" >
                     Usuarios
                 </div>
-
+                <a href="../seguridad/getIndex.php" class="">
+                    <i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true"></i> INICIO
+                </a>
                 <nav class=" full-width NavBar-Nav">
                     <div class="full-width NavBar-Nav-bg hidden-md hidden-lg show-menu-mobile"></div>
                     <ul class="list-unstyled full-width menu-mobile-c">
@@ -101,12 +145,7 @@ class principalUsuario{
 							<div class="row no-gutters">
 								<div class="col-sm-6 col-md-8">
 									<div class="content-select">
-										<select name="" id="">
-											<option value="">option 1</option>
-											<option value="">option 2</option>
-											<option value="">option 3</option>
-										</select>
-										<i></i>
+                                        <input class="form-control col-md-3 light-table-filter" data-table="table table-striped" type="text" placeholder="Buscar">
 									</div>
 								</div>
 								<div class="col-6 col-md-4">

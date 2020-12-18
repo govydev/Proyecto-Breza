@@ -22,10 +22,21 @@ class Privilegios{
                                 VALUES ($id, $i, $estado)");
             $i++;
         }
-        
         return $user;
         
     }
+
+    public function modificar($datos, $id){
+        $i = 1;
+        foreach ($datos as $value) {
+            $estado = isset($value)? 1 : 0;
+            $user = Conexion::query("UPDATE detalleusuario SET estado = $estado WHERE idusuario = $id AND idprivilegios = $i");
+            $i++;
+        }
+        return $user;
+        
+    }
+
 
 }
 
