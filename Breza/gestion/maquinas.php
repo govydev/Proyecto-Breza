@@ -22,7 +22,7 @@ class gestionMaquinas{
                 <div class="titulo" >
                     Maquinas
                 </div>
-
+                         
                 <nav class=" full-width NavBar-Nav">
                     <div class="full-width NavBar-Nav-bg hidden-md hidden-lg show-menu-mobile"></div>
                     <ul class="list-unstyled full-width menu-mobile-c">
