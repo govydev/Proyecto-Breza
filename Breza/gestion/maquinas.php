@@ -116,7 +116,7 @@ class gestionMaquinas{
                                         <form action="getMaquinas.php" method="POST">
                                             <div class="col-6 col-md-4">
                                             <input type="hidden" value="Nuevo" name="accion">
-                                                <button class="btn btn-second">Nuevo</button>									
+                                                <button style="left: 50px;" class="btn btn-second">Nuevo</button>									
                                             </div>
                                         </form>
                                     </div>	
@@ -147,14 +147,14 @@ class gestionMaquinas{
                                                 <form action="getMaquinas.php" method="post">
                                                     <input type="hidden" value="Modificar" name="accion">
                                                     <input type="hidden" value="<?php echo $value[0] ?>" name="txtid">
-                                                    <button class="btn btn-second">Modificar</button>
+                                                    <button class="btn btn-info">Modificar</button>
                                                 </form>
                                             </td> <!--cambiar referencia -->
                                             <td>
                                                 <form action="getMaquinas.php" method="post">
                                                     <input type="hidden" value="Eliminar" name="accion">
                                                     <input type="hidden" value="<?php $lista[0] ?>" name="txtid">
-                                                    <button class="btn btn-second">Eliminar</button>
+                                                    <button class="btn btn-danger">Eliminar</button>
                                                 </form>
                                             </td> <!--cambiar referencia -->
                                             </tr>
@@ -248,9 +248,9 @@ class gestionMaquinas{
             </footer> -->
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-            <script src="js/main.js"></script>
+            <script src="../style/style/js/bootstrap.min.js"></script>
+            <script src="../style/js/jquery.mCustomScrollbar.concat.min.js"></script>
+            <script src="../style/js/main.js"></script>
         </body>
         </html>
         <?php
