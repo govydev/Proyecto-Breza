@@ -139,8 +139,13 @@ class principalUsuario{
                                             <td><?php echo $value[4]?></td>
                                             <td><?php echo $value[6] = 1? "<label style='color: green'>Habilitado</label>":"<label style='color: red'>Deshabilitado</label>"?></td>
                                             <td><div class="izq">
-                                                    <button class="btn btn2-second ">Editar</button> 
-                                                </div>
+                                                <form action="getUsuario.php" method="post">
+                                                    <input type="hidden" name="id" value="<?php echo $value[0]?>">
+                                                    <input type="hidden" name="accion" value="Editar">
+                                                    <button class="btn btn2-second ">Editar</button>
+                                                </form>
+                                                 
+                                            </div>
                                             </td>
                                         </tr>
                                     <?php }?>

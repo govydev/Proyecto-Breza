@@ -1,6 +1,11 @@
 <?php
 class Principal{
     public function formPrincipal($path){?>
+    <?php 
+                        foreach ($path as $value) { ?>
+                            <a href="<?php echo $value[1] ?>" ><?php echo $value[0] ?>
+                            </a>
+                        <?php }?>
         <!DOCTYPE html>
         <html lang="en">
             <head>
@@ -68,27 +73,13 @@ class Principal{
                 <h2 class="text-center text-light">Elija su rol</h2><br>	
                 <div class="container">
                     <div class="full-width container-category">
-                        <a href="" id="categori-3">
-                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                            <span>Gestion de Proveedores</span>
-                        </a>
-                        <a href="" id="categori-6">
-                            <i class="fa fa-cogs" aria-hidden="true"></i>
-                            <span>Gestion Maquinas</span>
-                        </a>
-                        <a href="" id="categori-2">
-                            <i class="	fa fa-group" aria-hidden="true"></i>
-                            <span>Gestion de Usuarios</span>
-                        </a>
-                        <a href="" id="categori-9">
-                            <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                            <span>Gestion de Calidad</span>
-                        </a>
-                    
-                        <!-- <a href="" id="categori-3">
-                            <i class="fa fa-address-book-o" aria-hidden="true"></i>
-                            <span>Gestion de  proovedores</span>
-                        </a> -->
+                        <?php 
+                        foreach ($path as $value) { ?>
+                            <a href="<?php echo $value[1] ?>" id="categori-9">
+                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                <span>Gestion de <?php echo $value[0] ?></span>
+                            </a>
+                        <?php }?>
                         
                     </div>
                 </div><br><br><br>

@@ -9,7 +9,7 @@ class Privilegios{
     }
 
     public function privilegiosUsuario($id){
-        $privilegios = Conexion::select("SELECT p.privilegio, p.path FROM detalleusuarios d, privilegios p WHERE d.idUsuario = $id AND p.idprivilegio = d.idPrivilegio AND d.estado = 1");
+        $privilegios = Conexion::select("SELECT p.privilegio, p.path FROM detalleusuario d, privilegios p WHERE d.idUsuario = $id AND p.idprivilegios = d.idprivilegios AND d.estado = 1");
         return $privilegios;
     }
 

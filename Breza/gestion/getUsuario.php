@@ -14,6 +14,16 @@ if ($_SESSION["acceso"]) {
             $formUsuario -> formUsuarios($privilegios =  $privilegio->privilegio(), $tipo = "NUEVO");
             break;
 
+        case 'Editar':
+            $privilegio = new Privilegios();
+            $formUsuario = new formUsuario();
+            $usuario= new Usuario();
+            $privilegios = new Privilegios();
+            $user = $usuario->usuarioId($_POST["id"]);
+            $detalle= $privilegios->privilegiosUsuario($_POST["id"]);
+            $formUsuario -> formUsuarios($privilegio->privilegio(), "EDITAR", $user, $detalle);
+            break;
+
         case 'Guardar':
             $datos = [trim($_POST["txtNombre"]), trim($_POST["txtPaterno"]), trim($_POST["txtMaterno"]), trim($_POST["txtUsuario"]), trim($_POST["txtPassword"])];
             $privilegiosUsuario = [$_POST["privilegio1"],$_POST["privilegio2"],$_POST["privilegio3"],$_POST["privilegio4"],$_POST["privilegio5"]];
@@ -23,11 +33,9 @@ if ($_SESSION["acceso"]) {
                     $privilegios = new Privilegios();
                     $id =  $usuario->agregar($datos);
                     if($id > 0)    $privilegios->agregar($privilegiosUsuario, $id);
-                    
+                    header("Location: getUsuario.php");   
                     break;
-                
-                default:
-                    # code...
+                case 'EDITAR':
                     break;
             }
             break;
