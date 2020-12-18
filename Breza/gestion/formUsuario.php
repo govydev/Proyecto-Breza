@@ -12,6 +12,20 @@ class formUsuario{
             <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="../style/css/bootstrap.css">
             <link rel="stylesheet" href="../style/css/main.css">
+            <script>
+                function verificar(){
+                    var passUno = document.getElementById("password1").value;
+                    var passDos = document.getElementById("password2").value;
+                    if(passUno == passDos){
+                        return true;
+                    }else{
+                        alert("Las contraseñas no coinciden. Verifique por favor.");
+                        document.getElementById("password1").value = "";
+                        document.getElementById("password2").value = "";
+                        return false;
+                    }
+                }
+            </script>
         </head>
         <body>
             <!-- ====== Barra de navegacion ======-->
@@ -69,39 +83,49 @@ class formUsuario{
                     <form class="form" action="getUsuario.php" method="POST">
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Nombre :</label>  
-                            <input type="text" placeholder="Ingrese su nombre" name="txtNombre" required><span class="barra"></span>  
+                            <input type="text" placeholder="Ingrese su nombre" name="txtNombre" <?php if($user != null) echo "value='".$user[1]."'"?> required><span class="barra"></span>  
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Apellido Paterno :</label>                      
-                            <input type="text" placeholder="Ingrese apellido paterno" name="txtPaterno" required ><span class="barra"></span>
+                            <input type="text" placeholder="Ingrese apellido paterno" name="txtPaterno" <?php if($user != null) echo "value='".$user[2]."'"?> required ><span class="barra"></span>
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Apellido Materno :</label>                      
-                            <input type="text" placeholder="Ingrese apellido materno" name="txtMaterno" required ><span class="barra"></span>
+                            <input type="text" placeholder="Ingrese apellido materno" name="txtMaterno" <?php if($user != null) echo "value='".$user[3]."'"?>required ><span class="barra"></span>
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Usuario :</label>  
-                            <input type="text" placeholder="Ingrese usuario" name="txtUsuario" required><span class="barra"></span>  
+                            <input type="text" placeholder="Ingrese usuario" name="txtUsuario" <?php if($user != null) echo "value='".$user[4]."'  readonly"?> required><span class="barra"></span>  
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Contraseña :</label>  
-                            <input type="text" placeholder="Ingrese password" name="txtPassword" required><span class="barra"></span>  
+                            <input type="text" placeholder="Ingrese Contraseña" name="txtPassword" id="password1" <?php if($user != null) echo "value='".$user[5]."'"?> required><span class="barra"></span>  
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Confirmar contraseña :</label>  
-                            <input type="text" placeholder="Ingrese password" required><span class="barra"></span>  
+                            <input type="text" placeholder="Ingrese Contraseña" id="password2" <?php if($user != null) echo "value='".$user[5]."'"?> required><span class="barra"></span>  
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe">Privilegios</label>  
                             <?php 
                             $i=0; 
-                            foreach ($privilegios as $value) {?>
-                                <?php echo "Gestión de ".$value[0]?><input type='checkbox' name="privilegio<?php echo ++$i;?>" value="1">
-                            <?php } ?>         
+                            if($detalle == null){
+                                foreach ($privilegios as $value) {
+                                    echo "Gestión de ".$value[0]; ?>
+                                    <input type='checkbox' name="privilegio<?php echo ++$i;?>" value="1">
+                            <?php }
+                            }else{
+                                $j=0;
+                                foreach ($privilegios as $value) {
+                                    echo "Gestión de ".$value[0]; ?>
+                                    <input type='checkbox' name="privilegio<?php echo ++$i;?>" value="1" <?php if($detalle[$j][0] == $value[0]){ echo "checked='checked'"; $j++;}?>>
+                                <?php                                    
+                                }
+                            } ?>                                        
                         </div>
                         <input type="hidden" name="accion" value="Guardar">
                         <input type="hidden" name="registrar" value="<?php echo $tipo?>">
-                        <button style="width: 280px; justify-content: center; align-content: center; " class="btn btn3-second ">Guardar</button>        
+                        <button style="width: 280px; justify-content: center; align-content: center;" class="btn btn3-second" type="submit" onclick="return verificar()">Guardar</button>        
                     </form>
                 </div>
             </section>
@@ -112,8 +136,8 @@ class formUsuario{
             <script src="../style/js/main.js"></script>
         </body>
         </html>
-    <?php }
-
+         <?php
+         }
 }
 
 ?>

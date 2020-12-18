@@ -76,33 +76,13 @@ class Principal{
                 <h2 class="text-center text-light">Elija su rol</h2><br>	
                 <div class="container">
                     <div class="full-width container-category">
-                        <?php foreach ($path as $value) {?>
-                                <a href="<?php $value[1];?>" id="categori-3"> <!--direccion del privilegio-->
-                                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i> <!--agregar value[2]-->
-                                    <span><?php echo $value[0];?></span> <!--nombre del privilegio-->
-                                </a>
+                        <?php 
+                        foreach ($path as $value) { ?>
+                            <a href="<?php echo $value[1] ?>" id="categori-9">
+                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                <span>Gestion de <?php echo $value[0] ?></span>
+                            </a>
                         <?php }?>
-                        <!--<a href="" id="categori-3">
-                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                            <span>Gestion de Proveedores</span>
-                        </a>
-                        <a href="" id="categori-6">
-                            <i class="fa fa-cogs" aria-hidden="true"></i>
-                            <span>Gestion Maquinas</span>
-                        </a>
-                        <a href="" id="categori-2">
-                            <i class="	fa fa-group" aria-hidden="true"></i>
-                            <span>Gestion de Usuarios</span>
-                        </a>
-                        <a href="" id="categori-9">
-                            <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                            <span>Gestion de Calidad</span>
-                        </a> -->
-                    
-                        <!-- <a href="" id="categori-3">
-                            <i class="fa fa-address-book-o" aria-hidden="true"></i>
-                            <span>Gestion de  proovedores</span>
-                        </a> -->
                         
                     </div>
                 </div><br><br><br>
