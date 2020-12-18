@@ -7,14 +7,14 @@ class neoMaquinas{
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-            <title><?php echo $titulo?>-MAQUINA</title>
+            <title><?php echo $titulo?> Maquina</title>
             <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="../style/css/bootstrap.css">
             <link rel="stylesheet" href="../style/css/main.css">
         </head>
         <body>
             <!-- ====== Barra de navegacion ======-->
-            print_r($maquina);
+            <?php  print_r($maquina);?>
             <div class="full-width NavBar">
                 <div class="full-width text-semi-bold NavBar-logo">
                     <img src="../style/assets/img/breza.png" class="imBreza" alt="">
@@ -46,7 +46,9 @@ class neoMaquinas{
                             NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA
 
                         -->
-                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!">Nombre</a></li>
+                        <?php session_start();
+                        $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
+                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!"><?php echo $nombre;?></a></li>
                         <li class="hidden-xs hidden-sm">
                             <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
                             <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
@@ -68,15 +70,14 @@ class neoMaquinas{
         <!-- ====== Contenido de pagina ======-->
             <section class="contenido_principal">
                 <div class="contenido">
-                    <?php if($maquina == null){ ?>
                     <form class="form" acction="getMaquinas.php" method="POST" >
                         <div class="grupo inner-addon">
                             <label class="labe" for="">CÓDIGO</label>  
-                            <input type="text" placeholder="Ingrese código" name="txtcodigo" required><span class="barra"></span>  
+                            <input type="text" placeholder="Ingrese código" name="txtcodigo" <?php if($maquina != null) echo "value='".$maquina[1]."'"?> required><span class="barra"></span>  
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Nombre</label>  
-                            <input type="text" placeholder="Ingrese su nombre" name="txtnombre" required><span class="barra"></span>  
+                            <input type="text" placeholder="Ingrese su nombre" name="txtnombre" <?php if($maquina != null) echo "value='".$maquina[2]."'"?> required><span class="barra"></span>  
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">MARCA</label>                      
@@ -91,76 +92,27 @@ class neoMaquinas{
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">UBICACIÓN</label>                      
-                            <input type="text" placeholder="Ingrese ubicación" name="txtubicacion" required ><span class="barra"></span>
+                            <input type="text" placeholder="Ingrese ubicación" name="txtubicacion" <?php if($maquina != null) echo "value='".$maquina[4]."'"?> required ><span class="barra"></span>
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">CANTIDAD</label>                      
-                            <input type="number" placeholder="Ingrese ubicación" name="txtcantidad" required ><span class="barra"></span>
+                            <input type="number" placeholder="Ingrese ubicación" name="txtcantidad" <?php if($maquina != null) echo "value='".$maquina[5]."'"?> required ><span class="barra"></span>
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">ESTADO</label>                      
                             <div class="content-select">
                                 <select name="optestado" id="">
-                                    <option value="0">Activo</option>
-                                    <option value="1">Inactivo </option>
-                                    <option value="2">Por definir</option>
+                                    <option value="1">Habilitado</option>
+                                    <option value="0">Inabilitado </option>
                                 </select>
                                 <i></i>
                             </div>
                         </div>
-                        <button style="width: 280px; margin-top: 30px;"  class="btn btn3-second">Guardar</button>        
                         <input type="hidden" value="Guardar" name="accion">
+                        <input type="hidden" <?php if($maquina != null) echo "value='".$maquina[0]."'"?> name="txtid">
                         <input type="hidden" value="<?php echo $titulo ?>" name="registrar">
-                    </form>
-                    <?php }else{ 
-                        foreach($maquina as $value){ ?>
-                        <form class="form" acction="getMaquinas.php" method="POST" >
-                        <div class="grupo inner-addon">
-                            <label class="labe" for="">CÓDIGO</label>  
-                            <input type="text" placeholder="Ingrese código" name="txtcodigo" value="<?php echo $value[1]?>" required><span class="barra"></span>  
-                        </div>
-                        <div class="grupo inner-addon">
-                            <label class="labe" for="">Nombre</label>  
-                            <input type="text" placeholder="Ingrese su nombre" name="txtnombre" value="<?php echo $value[2]?>" required><span class="barra"></span>  
-                        </div>
-                        <div class="grupo inner-addon">
-                            <label class="labe" for="">MARCA</label>                      
-                            <div class="content-select">
-                                <select name="optmarca" id="">
-                                    <?php foreach($marcas as $value){ ?>
-                                    <option value="<?php echo $value[0]?>"><?php echo $value[1]?></option>
-                                    <?php } ?>
-                                </select>
-                                <i></i>
-                            </div>
-                        </div>
-                        <?php }?>
-                        <?php foreach($maquina as $value){?>
-                        <div class="grupo inner-addon">
-                            <label class="labe" for="">UBICACIÓN</label>                      
-                            <input type="text" placeholder="Ingrese ubicación" name="txtubicacion" value="<?php echo $value[4]?>" required ><span class="barra"></span>
-                        </div>
-                        <div class="grupo inner-addon">
-                            <label class="labe" for="">CANTIDAD</label>                      
-                            <input type="number" placeholder="Ingrese ubicación" name="txtcantidad" value="<?php echo $value[5]?>" required ><span class="barra"></span>
-                        </div>
-                        <div class="grupo inner-addon">
-                            <label class="labe" for="">ESTADO</label>                      
-                            <div class="content-select">
-                                <select name="optestado" id="">
-                                    <option value="0">Activo</option>
-                                    <option value="1">Inactivo </option>
-                                    <option value="2">Por definir</option>
-                                </select>
-                                <i></i>
-                            </div>
-                        </div>
                         <button style="width: 280px; margin-top: 30px;"  class="btn btn3-second">Guardar</button>        
-                        <input type="hidden" value="Guardar" name="accion">
-                        <input type="hidden" value="<?php echo $value[0]?>" name="txtid">
-                        <input type="hidden" value="<?php echo $titulo ?>" name="registrar">
                     </form>
-                    <?php }} ?>
                 </div>
             </section>
             <!-- ====== Pie de pagina ======-->

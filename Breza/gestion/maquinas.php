@@ -8,7 +8,7 @@ class gestionMaquinas{
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-            <title>Pagina maquina</title>
+            <title>Maquinas</title>
             <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="../style/css/bootstrap.css">
             <link rel="stylesheet" href="../style/css/main.css">
@@ -42,11 +42,10 @@ class gestionMaquinas{
                                 <i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true"></i> INICIO
                             </a>
                         </li>
-                        <!-- 
-                            NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA
-
-                        -->
-                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!">Nombre</a></li>
+                        <!--NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA-->
+                        <?php session_start();
+                        $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
+                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!"><?php echo $nombre;?></a></li>
                         <li class="hidden-xs hidden-sm">
                             <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
                             <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
@@ -142,7 +141,7 @@ class gestionMaquinas{
                                             <td><?php echo $value[3];?></td>
                                             <td><?php echo $value[4];?></td>
                                             <td><?php echo $value[5];?></td>
-                                            <td><?php $value[5] == "1" ? print("Activo") : print("Inactivo")?></td>
+                                            <td><?php $value[6] == "1" ? print("Habilitado") : print("Inabilitado")?></td>
                                             <td>
                                                 <form action="getMaquinas.php" method="post">
                                                     <input type="hidden" value="Modificar" name="accion">

@@ -5,14 +5,14 @@ class Maquinas{
 
     public function listaMaquina(){
         $lista = Conexion::select("SELECT m.idmaquina, m.codigo, m.nombre 'Nombre de Maquina', mr.nombre Marca, m.ubicacion, m.cantidad, m.estado
-                                FROM maquinas m, marca mr WHERE m.idmarca = mr.idmarca");
+                                FROM maquinas m, marca mr WHERE m.idmarca = mr.idmarca ORDER BY m.estado DESC");
         return $lista;
     }
 
     public function maquinaId($id){
         $maquina = Conexion::select("SELECT m.idmaquina, m.codigo, m.nombre 'Nombre de Maquina', mr.nombre Marca, m.ubicacion, m.cantidad, m.estado
                                 FROM maquinas m, marca mr WHERE m.idmarca = mr.idmarca AND m.idmaquina = $id");
-        return $maquina; 
+        return $maquina[0]; 
     }
 
     public function modificar($id, $codigo, $nombre, $ubicacion, $cantidad, $estado, $idmarca){

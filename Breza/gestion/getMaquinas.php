@@ -22,7 +22,7 @@ if ($_SESSION["acceso"]) {
             $neoMaquinas->formNeoMaquinas("MODIFICAR", $marcas->listMarca(), $maquinas->maquinaId($id));
             break;
         case 'Guardar':
-            //$datos = [trim($_POST["txtid"]), trim($_POST["txtcodigo"]), trim($_POST["txtnombre"]), trim($_POST["optmarca"]), trim($_POST["txtubicacion"]), trim($_POST["txtcantidad"]), trim($_POST["optestado"])];
+            // $datos = [trim($_POST["txtid"]), trim($_POST["txtcodigo"]), trim($_POST["txtnombre"]), trim($_POST["optmarca"]), trim($_POST["txtubicacion"]), trim($_POST["txtcantidad"]), trim($_POST["optestado"])];
             // print_r($datos);
             $codigo = trim($_POST["txtcodigo"]);
             $nombre = trim($_POST["txtnombre"]);
