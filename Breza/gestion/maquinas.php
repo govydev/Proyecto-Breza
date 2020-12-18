@@ -2,7 +2,7 @@
 
 class gestionMaquinas{
 
-    public function formGestionMaquinas($privilegios, $lista){?>
+    public function formGestionMaquinas($privilegios, $marca){?>
         <!DOCTYPE html>
         <html lang="es">
         <head>
@@ -134,7 +134,7 @@ class gestionMaquinas{
                                             <th scope="col">ESTADO</th>
                                             </tr>
                                         </thead>
-                                        <?php foreach($lista as $value){?>
+                                        <?php foreach($marca as $value){?>
                                         <tbody>
                                             <tr>
                                             <td><?php echo $value[1];?></td>
@@ -146,6 +146,7 @@ class gestionMaquinas{
                                             <td>
                                                 <form action="getMaquinas.php" method="post">
                                                     <input type="hidden" value="Modificar" name="accion">
+                                                    <input type="hidden" value="<?php echo $value[0] ?>" name="txtid">
                                                     <button class="btn btn-second">Modificar</button>
                                                 </form>
                                             </td> <!--cambiar referencia -->

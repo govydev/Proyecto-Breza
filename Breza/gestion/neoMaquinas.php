@@ -1,7 +1,7 @@
 <?php
 
 class neoMaquinas{
-    public function formneoMaquinas($titulo, $marcas){?>
+    public function formneoMaquinas($titulo = null, $marcas = null, $maquina = null){?>
         <!DOCTYPE html>
         <html lang="es">
         <head>
@@ -14,6 +14,7 @@ class neoMaquinas{
         </head>
         <body>
             <!-- ====== Barra de navegacion ======-->
+            print_r($maquina);
             <div class="full-width NavBar">
                 <div class="full-width text-semi-bold NavBar-logo">
                     <img src="../style/assets/img/breza.png" class="imBreza" alt="">
@@ -67,6 +68,7 @@ class neoMaquinas{
         <!-- ====== Contenido de pagina ======-->
             <section class="contenido_principal">
                 <div class="contenido">
+                    <?php if($maquina == null){ ?>
                     <form class="form" acction="getMaquinas.php" method="POST" >
                         <div class="grupo inner-addon">
                             <label class="labe" for="">CÓDIGO</label>  
@@ -110,6 +112,55 @@ class neoMaquinas{
                         <input type="hidden" value="Guardar" name="accion">
                         <input type="hidden" value="<?php echo $titulo ?>" name="registrar">
                     </form>
+                    <?php }else{ 
+                        foreach($maquina as $value){ ?>
+                        <form class="form" acction="getMaquinas.php" method="POST" >
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">CÓDIGO</label>  
+                            <input type="text" placeholder="Ingrese código" name="txtcodigo" value="<?php echo $value[1]?>" required><span class="barra"></span>  
+                        </div>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">Nombre</label>  
+                            <input type="text" placeholder="Ingrese su nombre" name="txtnombre" value="<?php echo $value[2]?>" required><span class="barra"></span>  
+                        </div>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">MARCA</label>                      
+                            <div class="content-select">
+                                <select name="optmarca" id="">
+                                    <?php foreach($marcas as $value){ ?>
+                                    <option value="<?php echo $value[0]?>"><?php echo $value[1]?></option>
+                                    <?php } ?>
+                                </select>
+                                <i></i>
+                            </div>
+                        </div>
+                        <?php }?>
+                        <?php foreach($maquina as $value){?>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">UBICACIÓN</label>                      
+                            <input type="text" placeholder="Ingrese ubicación" name="txtubicacion" value="<?php echo $value[4]?>" required ><span class="barra"></span>
+                        </div>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">CANTIDAD</label>                      
+                            <input type="number" placeholder="Ingrese ubicación" name="txtcantidad" value="<?php echo $value[5]?>" required ><span class="barra"></span>
+                        </div>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">ESTADO</label>                      
+                            <div class="content-select">
+                                <select name="optestado" id="">
+                                    <option value="0">Activo</option>
+                                    <option value="1">Inactivo </option>
+                                    <option value="2">Por definir</option>
+                                </select>
+                                <i></i>
+                            </div>
+                        </div>
+                        <button style="width: 280px; margin-top: 30px;"  class="btn btn3-second">Guardar</button>        
+                        <input type="hidden" value="Guardar" name="accion">
+                        <input type="hidden" value="<?php echo $value[0]?>" name="txtid">
+                        <input type="hidden" value="<?php echo $titulo ?>" name="registrar">
+                    </form>
+                    <?php }} ?>
                 </div>
             </section>
             <!-- ====== Pie de pagina ======-->

@@ -12,7 +12,7 @@ class Maquinas{
     public function maquinaId($id){
         $maquina = Conexion::select("SELECT m.idmaquina, m.codigo, m.nombre 'Nombre de Maquina', mr.nombre Marca, m.ubicacion, m.cantidad, m.estado
                                 FROM maquinas m, marca mr WHERE m.idmarca = mr.idmarca AND m.idmaquina = $id");
-        return $maquina[0]; 
+        return $maquina; 
     }
 
     public function modificar($id, $codigo, $nombre, $ubicacion, $cantidad, $estado, $idmarca){

@@ -19,11 +19,11 @@ if ($_SESSION["acceso"]) {
             $maquinas = new Maquinas();
             $neoMaquinas = new neoMaquinas();
             $marcas = new Marca();
-            $maquinas->maquinaId($id);
-            $neoMaquinas->formNeoMaquinas("MODIFICAR", $marcas->listMarca());
+            $neoMaquinas->formNeoMaquinas("MODIFICAR", $marcas->listMarca(), $maquinas->maquinaId($id));
             break;
         case 'Guardar':
-            // $datos = [trim($_POST["txtcodigo"]), trim($_POST["txtnombre"]), trim($_POST["optmarca"]), trim($_POST["txtubicacion"]), trim($_POST["txtcantidad"]), trim($_POST["optestado"])];
+            //$datos = [trim($_POST["txtid"]), trim($_POST["txtcodigo"]), trim($_POST["txtnombre"]), trim($_POST["optmarca"]), trim($_POST["txtubicacion"]), trim($_POST["txtcantidad"]), trim($_POST["optestado"])];
+            // print_r($datos);
             $codigo = trim($_POST["txtcodigo"]);
             $nombre = trim($_POST["txtnombre"]);
             $marca = trim($_POST["optmarca"]);
@@ -38,9 +38,10 @@ if ($_SESSION["acceso"]) {
                     header('Location: getMaquinas.php');
                     break;
                 case 'MODIFICAR':
-                    
+                    $id = trim($_POST["txtid"]);
                     $maquinas = new Maquinas();
-                    $maquinas->modificar($codigo, $nombre, $ubicacion, $cantidad, $estado, $marca);
+                    //print_r($datos);
+                    $maquinas->modificar($id, $codigo, $nombre, $ubicacion, $cantidad, $estado, $marca);
                     header('Location: getMaquinas.php');
                     break;
                 default:
