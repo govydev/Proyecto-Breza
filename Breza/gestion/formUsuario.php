@@ -27,7 +27,7 @@ class formUsuario{
                 }
             </script>
         </head>
-        <body>
+        <body style="height: 153vh;">
             <!-- ====== Barra de navegacion ======-->
             <div class="full-width NavBar">
                 <div class="full-width text-semi-bold NavBar-logo">
@@ -112,13 +112,13 @@ class formUsuario{
                             if($detalle == null){
                                 foreach ($privilegios as $value) {
                                     echo "Gestión de ".$value[0]; ?>
-                                    <input type='checkbox' name="privilegio<?php echo ++$i;?>" value="1">
+                                    <input style="height: 30px; outline: none;" type='checkbox' name="privilegio<?php echo ++$i;?>" value="1">
                             <?php }
                             }else{
                                 $j=0;
                                 foreach ($privilegios as $value) {
                                     echo "Gestión de ".$value[0]; ?>
-                                    <input type='checkbox' name="privilegio<?php echo ++$i;?>" value="1" <?php if($detalle[$j][0] == $value[0]){ echo "checked='checked'"; $j++;}?>>
+                                    <input style="height: 30px; outline: none;"  type='checkbox' name="privilegio<?php echo ++$i;?>" value="1" <?php if($detalle[$j][0] == $value[0]){ echo "checked='checked'"; $j++;}?>>
                                 <?php                                    
                                 }
                             } ?>                                        
@@ -134,7 +134,7 @@ class formUsuario{
             </section>
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <script>window.jQuery || document.write('<script src="../style/js/jquery-1.11.2.min.js"><\/script>')</script>
-            <script src="../style/js/bootstrap.min.js"></script>
+            <script src="../style/style/js/bootstrap.min.js"></script>
             <script src="../style/js/jquery.mCustomScrollbar.concat.min.js"></script>
             <script src="../style/js/main.js"></script>
         </body>

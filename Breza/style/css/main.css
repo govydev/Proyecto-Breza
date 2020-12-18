@@ -278,6 +278,20 @@ BOTONES
     color: #58af9b;
     outline: none;
 }
+.btn3{
+	
+	background-color: #8f4040;
+    border: 1px solid #3d1414;
+    transition: background-color .5s;
+}
+.btn3:hover {
+    background-color: #fff;
+    border: 1px solid #a21d1d;
+    color: #cc7f83;
+    outline: none;
+
+}
+
 
 .btn3-second {
 	display: flex;
@@ -349,6 +363,16 @@ BOTONES
 	margin-top: 1px;
 	outline: none;
    
+}
+
+.form input .check{
+	background: rgba(0, 0,0, 0);
+    border-radius: 5px;
+    height: 20px;
+    width: 100%;
+    border: 0;
+    margin-top: 1px;
+    outline: none;
 }
 
 

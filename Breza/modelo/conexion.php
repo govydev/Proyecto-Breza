@@ -1,8 +1,8 @@
 <?php
 define("HOST","localhost");
 define("USER","root");
-define("PASSWORD","");
-define("BD","breza");
+define("PASSWORD","12345678");
+define("BD","breza"); 
 
 class Conexion{
 	public static $conexion = null;
