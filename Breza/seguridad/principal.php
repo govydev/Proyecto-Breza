@@ -71,7 +71,7 @@ class Principal{
                 <div class="full-width container-category">
                 <?php foreach ($path as $value) {?>
                         <ul id="categori-1">
-                        <a style="display: flex; justify-content: center; margin-top: 45px; margin-right:20px;" href="<?php echo $value[1];?>">
+                        <a style=" display: flex; justify-content: center; margin-top: 45px; margin-right:30px;font-weight: 600;" href="<?php echo $value[1];?>">
                         <i class="fa fa-calendar-o"></i>
                         <?php  
                             echo $value[0]; 
