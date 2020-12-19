@@ -143,12 +143,15 @@ class gestionMaquinas{
                                             <td><?php echo $value[4];?></td>
                                             <td><?php echo $value[5];?></td>
                                             <td><?php $value[5] == "1" ? print("Activo") : print("Inactivo")?></td>
-                                            <td>
+                                            <td>    
+                                            
+                                            <!-- boton modificar -->
                                                 <form action="getMaquinas.php" method="post">
                                                     <input type="hidden" value="Modificar" name="accion">
                                                     <input type="hidden" value="<?php echo $value[0] ?>" name="txtid">
                                                     <button class="btn btn-info">Modificar</button>
                                                 </form>
+
                                             </td> <!--cambiar referencia -->
                                             <td>
                                                 <form action="getMaquinas.php" method="post">

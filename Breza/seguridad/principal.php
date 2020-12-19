@@ -1,14 +1,7 @@
 <?php
 class Principal{
     public function formPrincipal($path){?>
-        <?php foreach ($path as $value) {?>
-            <a href="<?php echo $value[1];?>">
-            <?php  
-                echo $value[0]; 
-            ?>
-            </a>
-            <br>
-        <?php } ?>
+       
         <!DOCTYPE html>
         <html lang="en">
             <head>
@@ -75,13 +68,17 @@ class Principal{
             <section class="section">
                 <h2 class="text-center text-light">Elija su rol</h2><br>	
                 <div class="container">
-                    <div class="full-width container-category">
-                        <?php foreach ($path as $value) {?>
-                                <a href="<?php $value[1];?>" id="categori-3"> <!--direccion del privilegio-->
-                                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i> <!--agregar value[2]-->
-                                    <span><?php echo $value[0];?></span> <!--nombre del privilegio-->
-                                </a>
-                        <?php }?>
+                <div class="full-width container-category">
+                <?php foreach ($path as $value) {?>
+                        <ul id="categori-1">
+                        <a style="display: flex; justify-content: center; margin-top: 45px; margin-right:20px;" href="<?php echo $value[1];?>">
+                        <i class="fa fa-calendar-o"></i>
+                        <?php  
+                            echo $value[0]; 
+                        ?>
+                        </a>
+                        </ul>
+                <?php } ?>
                         <!--<a href="" id="categori-3">
                             <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                             <span>Gestion de Proveedores</span>
@@ -105,7 +102,7 @@ class Principal{
                         </a> -->
                         
                     </div>
-                </div><br><br><br>
+                </div>
         </section>
 
 
