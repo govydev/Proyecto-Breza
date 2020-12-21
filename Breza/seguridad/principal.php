@@ -1,12 +1,16 @@
 <?php
 class Principal{
     public function formPrincipal($path){?>
+<<<<<<< HEAD
         <?php foreach ($path as $value) {?>
             <a href="<?php echo $value[1];?>">
             <?php echo $value[0]; ?>
             </a>
             <br>
         <?php } ?>
+=======
+       
+>>>>>>> origin/milton
         <!DOCTYPE html>
         <html lang="es">
             <head>
@@ -75,15 +79,41 @@ class Principal{
             <section class="section">
                 <h2 class="text-center text-light">Elija su rol</h2><br>	
                 <div class="container">
-                    <div class="full-width container-category">
-                        <?php foreach ($path as $value) { ?>
-                            <a href="<?php echo $value[1];?>" id="categori-2">
-                                <i class="<?php echo $value[2] ?>" href="<?php echo $value[1];?>" aria-hidden="true"></i><br>
-                                <span>Gestion de <?php echo $value[0] ?></span>
-                            </a>
-                        <?php }?>
+                <div class="full-width container-category">
+                <?php foreach ($path as $value) {?>
+                        <ul id="categori-1">
+                        <a style=" display: flex; justify-content: center; margin-top: 45px; margin-right:30px;font-weight: 600;" href="<?php echo $value[1];?>">
+                        <i class="fa fa-calendar-o"></i>
+                        <?php  
+                            echo $value[0]; 
+                        ?>
+                        </a>
+                        </ul>
+                <?php } ?>
+                        <!--<a href="" id="categori-3">
+                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                            <span>Gestion de Proveedores</span>
+                        </a>
+                        <a href="" id="categori-6">
+                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                            <span>Gestion Maquinas</span>
+                        </a>
+                        <a href="" id="categori-2">
+                            <i class="	fa fa-group" aria-hidden="true"></i>
+                            <span>Gestion de Usuarios</span>
+                        </a>
+                        <a href="" id="categori-9">
+                            <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                            <span>Gestion de Calidad</span>
+                        </a> -->
+                    
+                        <!-- <a href="" id="categori-3">
+                            <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                            <span>Gestion de  proovedores</span>
+                        </a> -->
+                        
                     </div>
-                </div><br><br><br>
+                </div>
         </section>
 
 

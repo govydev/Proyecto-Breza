@@ -184,6 +184,7 @@ class gestionMaquinas{
                                                     <input type="hidden" value="<?php echo $value[0] ?>" name="txtid">
                                                     <button class="btn btn-info">Modificar</button>
                                                 </form>
+
                                             </td> <!--cambiar referencia -->
                                             <!--
                                             <td>
