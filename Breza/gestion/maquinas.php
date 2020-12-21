@@ -87,7 +87,7 @@ class gestionMaquinas{
                         <!--NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA-->
                         <?php session_start();
                         $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
-                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!"><?php echo $nombre;?></a></li>
+                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" ><?php echo $nombre;?></a></li>
                         <li class="hidden-xs hidden-sm">
                             <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
                             <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
@@ -120,13 +120,14 @@ class gestionMaquinas{
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-3 col-md-9">
-                            
                             <div class="full-width bar-info-user containerTab">
                                 <ul class="nav nav-tabs">
-                                    <li class="nav-items " data-tab="Provedores">
-                                    <a class="nav-link " href="#"> <i class="fa fa-group"></i> Provedores</a>
-                                    </li>
-                                    <li class="nav-items active" data-tab="Maquinas">
+                                    <?php foreach($privilegios as $value){?>
+                                        <li class="nav-items " data-tab="Provedores">
+                                        <a class="nav-link " href="<?php  echo $value[1]?>"> <i class="fa fa-group"></i><?php  echo $value[0]?></a>
+                                        </li>
+                                    <?php }?>
+                                    <!--<li class="nav-items active" data-tab="Maquinas">
                                     <a class="nav-link" href="#" ><i class="fa fa-gear"></i> Maquinas</a>
                                     </li>
                                     <li class="nav-items" data-tab="Cronog. Mantenimiento">
@@ -134,7 +135,7 @@ class gestionMaquinas{
                                     </li>
                                     <li class="nav-items" data-tab="Cronog. Mantenimiento">
                                     <a class="nav-link" href="#"> <i class="fa fa-calendar"></i> Cronog. Calibracion</a>
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </div>
                             <!-- Contenido-->
@@ -176,7 +177,7 @@ class gestionMaquinas{
                                             <td><?php echo $value[3];?></td>
                                             <td><?php echo $value[4];?></td>
                                             <td><?php echo $value[5];?></td>
-                                            <td><?php $value[6] == "1" ? print("Habilitado") : print("Inabilitado")?></td>
+                                            <td><?php echo $value[6] == "1" ? "<label style='color: green'>Habilitado</label>":"<label style='color: red'>Deshabilitado</label>"?></td>
                                             <td>
                                                 <form action="getMaquinas.php" method="post">
                                                     <input type="hidden" value="Modificar" name="accion">
@@ -184,13 +185,14 @@ class gestionMaquinas{
                                                     <button class="btn btn-info">Modificar</button>
                                                 </form>
                                             </td> <!--cambiar referencia -->
+                                            <!--
                                             <td>
                                                 <form action="getMaquinas.php" method="post">
                                                     <input type="hidden" value="Eliminar" name="accion">
                                                     <input type="hidden" value="<?php $lista[0] ?>" name="txtid">
                                                     <button class="btn btn-danger">Eliminar</button>
                                                 </form>
-                                            </td> <!--cambiar referencia -->
+                                            </td> --> <!--cambiar referencia --> 
                                             </tr>
                                         </tbody>
                                         <?php } ?>
