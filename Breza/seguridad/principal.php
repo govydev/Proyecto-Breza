@@ -3,9 +3,7 @@ class Principal{
     public function formPrincipal($path){?>
         <?php foreach ($path as $value) {?>
             <a href="<?php echo $value[1];?>">
-            <?php  
-                echo $value[0]; 
-            ?>
+            <?php echo $value[0]; ?>
             </a>
             <br>
         <?php } ?>
@@ -66,8 +64,8 @@ class Principal{
             <!-- ====== PopUpLogin ======-->
             <section class="full-width PopUpLogin PopUpLogin-2">
                 <div class="full-width">
-                    <a href="perfil.html"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
-                    <a href="config.html"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
+                    <a href="#!"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
+                    <a href="#!"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
                     <div role="separator" class="divider"></div>
                     <a href="#!"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
                 </div>
@@ -78,14 +76,12 @@ class Principal{
                 <h2 class="text-center text-light">Elija su rol</h2><br>	
                 <div class="container">
                     <div class="full-width container-category">
-                        <?php 
-                        foreach ($path as $value) { ?>
-                            <a href="<?php echo $value[1] ?>" id="categori-9">
-                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                        <?php foreach ($path as $value) { ?>
+                            <a href="<?php echo $value[1];?>" id="categori-2">
+                                <i class="<?php echo $value[2] ?>" href="<?php echo $value[1];?>" aria-hidden="true"></i><br>
                                 <span>Gestion de <?php echo $value[0] ?></span>
                             </a>
                         <?php }?>
-                        
                     </div>
                 </div><br><br><br>
         </section>
