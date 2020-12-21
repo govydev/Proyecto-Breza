@@ -3,6 +3,8 @@ include_once("../modelo/maquinas.php");
 include_once("../modelo/marca.php");
 include_once("neoMaquinas.php");
 include_once("maquinas.php");
+header('Cache-Control: no cache'); 
+session_cache_limiter('private_no_expire');
 
 
 session_start();
