@@ -14,7 +14,6 @@ class neoMaquinas{
         </head>
         <body>
             <!-- ====== Barra de navegacion ======-->
-            <?php  print_r($maquina);?>
             <div class="full-width NavBar">
                 <div class="full-width text-semi-bold NavBar-logo">
                     <img src="../style/assets/img/breza.png" class="imBreza" alt="">
