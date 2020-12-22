@@ -88,12 +88,12 @@ class neoMaquinas{
                                     <?php 
                                         }
                                     }else{?>
-                                        <option value="<?php echo $maquina[0]?>"><?php echo $maquina[3]?>
+
                                         <?php foreach($marcas as $value){ ?>
-                                            <option value="<?php echo $value[0]?>"><?php echo $value[1]?></option>
-                                    
-                                    <?php
-                                } }?>
+                                            <option value="<?php echo $value[0]?>" <?php if($value[1] == $maquina[3]){echo "selected";};?> > <?php echo $value[1]?> </option>
+                                        <?php
+                                        }
+                                    }?>
                                 </select>
                                 <i></i>
                             </div>
