@@ -278,6 +278,20 @@ BOTONES
     color: #58af9b;
     outline: none;
 }
+.btn3{
+	
+	background-color: #8f4040;
+    border: 1px solid #3d1414;
+    transition: background-color .5s;
+}
+.btn3:hover {
+    background-color: #fff;
+    border: 1px solid #a21d1d;
+    color: #cc7f83;
+    outline: none;
+
+}
+
 
 .btn3-second {
 	display: flex;
@@ -349,6 +363,16 @@ BOTONES
 	margin-top: 1px;
 	outline: none;
    
+}
+
+.form input .check{
+	background: rgba(0, 0,0, 0);
+    border-radius: 5px;
+    height: 20px;
+    width: 100%;
+    border: 0;
+    margin-top: 1px;
+    outline: none;
 }
 
 
@@ -580,6 +604,58 @@ img.NavBar-Nav-icon{
 	top: 0;
 	border-width: 1px;
 }
+/* Menu PRIVILEGIOS*/
+.container-category{
+	text-align: center;
+	
+}
+.container-category ul{
+	justify-content: center;
+	text-decoration: none;
+	width: 150px;
+	height: 150px;
+	border: 1px solid #B3E5FC;
+	box-sizing: border-box;
+	margin: 5px;
+	display: inline-block;
+	overflow: hidden;
+	transition: all .3s ease-in-out;
+	position: relative;
+    background: rgba(0,0, 0,0.02);
+	overflow: hidden;
+	box-shadow: 5px 7px 15px -4px rgba(0,0,0,0.08);
+}
+.container-category ul::before{
+    content: '';
+    position: absolute;
+    top: -30%;
+    width: 200%;
+    height: 200%;
+    background: rgb(144, 220, 255);
+    transform: skewY(345deg);
+    transition: 0.5s;
+}
+.container-category ul:hover::before{
+    top: -70%;
+    transform: skewY(298deg);
+}
+.container-category ul::after{
+    content: 'Breza';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-weight: 800;
+    font-size: 3em;
+    color: rgba(0,0, 0,0.1);
+}
+.container-category i{
+	height: 20px;
+	line-height: 20px;
+	top: 0;
+	font-size: 20px;
+}
+#categori-1:hover{ background-color: #332f2f; border-color: #7e7b7b; }
+
 /*====PopUpLogin==*/
 .PopUpLogin{
 	width: 400px;
@@ -672,6 +748,10 @@ img.NavBar-Nav-icon{
 	transform: scale(1.2);
 	font-size: 10px;
 }
+
+
+
+
 /* 
 
 AQUI CAMBIAMOS LAS LETRAS SI SE VA USAR LOS APELLIDOS DE LOS INTEGRANTES
@@ -735,74 +815,6 @@ AQUI CAMBIAMOS LAS LETRAS SI SE VA USAR LOS APELLIDOS DE LOS INTEGRANTES
 } */
 /*============================
 ==================index.html*/
-.header-index{
-	background: url(../assets/img/header-index.jpg) #fff no-repeat bottom left;
-	background-size: cover;
-	min-height: 500px;
-	padding: 70px 0;
-}
-.container-category{
-	text-align: center;
-}
-.container-category a{
-	text-decoration: none;
-	width: 150px;
-	height: 150px;
-	background-color: #FFF;
-	border: 1px solid #B3E5FC;
-	box-sizing: border-box;
-	margin: 5px;
-	display: inline-block;
-	overflow: hidden;
-	transition: all .3s ease-in-out;
-	position: relative;
-}
-.container-category a:hover{ color: #FFF; }
-.container-category i,
-.container-category span{
-	width: 100%;
-	box-sizing: border-box;
-	text-align: center;
-	position: absolute;
-	left: 0;
-}
-.container-category i{
-	height: 90px;
-	line-height: 90px;
-	top: 0;
-	font-size: 40px;
-}
-.container-category span{
-	height: 60px;
-	bottom: 0;
-}
-/* #categori-1:hover{ background-color: #E65100; border-color: #E65100; }
-#categori-2:hover{ background-color: #B71C1C; border-color: #B71C1C; }
-#categori-3:hover{ background-color: #1A237E; border-color: #1A237E; }
-#categori-4:hover{ background-color: #03A9F4; border-color: #03A9F4; }
-#categori-5:hover{ background-color: #263238; border-color: #263238; }
-#categori-6:hover{ background-color: #AFB42B; border-color: #AFB42B; }
-#categori-7:hover{ background-color: #00ACC1; border-color: #00ACC1; }
-#categori-8:hover{ background-color: #EF6C00; border-color: #EF6C00; }
-#categori-9:hover{ background-color: #00695C; border-color: #00695C; }
-#categori-10:hover{ background-color: #607D8B; border-color: #607D8B; }
-#categori-11:hover{ background-color: #1976D2; border-color: #1976D2; }
-#categori-12:hover{ background-color: #3949AB; border-color: #3949AB; } */ 
-/*.icon-index{
-	font-size: 90px;
-	width: 170px;
-	height: 170px;
-	line-height: 170px;
-	margin: 20px auto;
-	display: block;
-	padding: 0;
-	text-align: center;
-	border-radius: 100%;
-	background-color: #B71C1C;
-	color: #fff;
- */
-
-
 /*============================
 =========commercial.html*/
 

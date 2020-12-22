@@ -65,7 +65,7 @@ class principalUsuario{
                     Usuarios
                 </div>
                 <a href="../seguridad/getIndex.php" class="">
-                    <i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true"></i> INICIO
+                    <i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true">INICIO</i> 
                 </a>
                 <nav class=" full-width NavBar-Nav">
                     <div class="full-width NavBar-Nav-bg hidden-md hidden-lg show-menu-mobile"></div>
@@ -75,7 +75,7 @@ class principalUsuario{
                             <!--
                                 Aqui va los elementos para hacerlos responsive	
                             -->
-                            <img src="assets/img/user.png" alt="" class="header-menu-mobile-icon">
+                            <img src="../style/assets/img/user.png" alt="" class="header-menu-mobile-icon">
                             <div class="divider"></div>
                             <a href="#!" class="btn btn-success header-menu-mobile-btn">
                                 <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión
@@ -197,9 +197,9 @@ class principalUsuario{
             </section>
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-            <script src="js/main.js"></script>
+            <script src="../style/style/js/bootstrap.min.js"></script>
+            <script src="../style/js/jquery.mCustomScrollbar.concat.min.js"></script>
+            <script src="../style/js/main.js"></script>
         </body>
     </html>
     <?php

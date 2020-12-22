@@ -1,11 +1,7 @@
 <?php
 class Principal{
     public function formPrincipal($path){?>
-    <?php 
-                        foreach ($path as $value) { ?>
-                            <a href="<?php echo $value[1] ?>" ><?php echo $value[0] ?>
-                            </a>
-                        <?php }?>
+       
         <!DOCTYPE html>
         <html lang="es">
             <head>
@@ -48,7 +44,9 @@ class Principal{
                             NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA
 
                         -->
-                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!">Nombre</a></li>
+                        <?php session_start();
+                        $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
+                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!"><?php echo $nombre;?></a></li>
                         <li class="hidden-xs hidden-sm">
                             <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
                             <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
@@ -61,8 +59,8 @@ class Principal{
             <!-- ====== PopUpLogin ======-->
             <section class="full-width PopUpLogin PopUpLogin-2">
                 <div class="full-width">
-                    <a href="perfil.html"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
-                    <a href="config.html"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
+                    <a href="#!"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
+                    <a href="#!"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
                     <div role="separator" class="divider"></div>
                     <a href="#!"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
                 </div>
@@ -72,17 +70,42 @@ class Principal{
             <section class="section">
                 <h2 class="text-center text-light">Elija su rol</h2><br>	
                 <div class="container">
-                    <div class="full-width container-category">
-                        <?php 
-                        foreach ($path as $value) { ?>
-                            <a href="<?php echo $value[1]; ?>" id="categori-9">
-                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                                <span>Gestion de <?php echo $value[0]; ?></span>
-                            </a>
-                        <?php }?>
+                <div class="full-width container-category">
+                <?php foreach ($path as $value) {?>
+                        <ul id="categori-1">
+                        <a style=" display: flex; justify-content: center; margin-top: 45px; margin-right:30px;font-weight: 600;" href="<?php echo $value[1];?>">
+                        <i class="fa fa-calendar-o"></i>
+                        <?php  
+                            echo $value[0]; 
+                        ?>
+                        </a>
+                        </ul>
+                <?php } ?>
+                        <!--<a href="" id="categori-3">
+                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                            <span>Gestion de Proveedores</span>
+                        </a>
+                        <a href="" id="categori-6">
+                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                            <span>Gestion Maquinas</span>
+                        </a>
+                        <a href="" id="categori-2">
+                            <i class="	fa fa-group" aria-hidden="true"></i>
+                            <span>Gestion de Usuarios</span>
+                        </a>
+                        <a href="" id="categori-9">
+                            <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                            <span>Gestion de Calidad</span>
+                        </a> -->
+                    
+                        <!-- <a href="" id="categori-3">
+                            <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                            <span>Gestion de  proovedores</span>
+                        </a> -->
+
                         
                     </div>
-                </div><br><br><br>
+                </div>
         </section>
 
 

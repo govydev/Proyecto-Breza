@@ -2,16 +2,58 @@
 
 class gestionMaquinas{
 
-    public function formGestionMaquinas($privilegios, $lista){?>
+    public function formGestionMaquinas($privilegios, $marca){?>
         <!DOCTYPE html>
         <html lang="es">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-            <title>Pagina maquina</title>
+            <title>Maquinas</title>
             <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="../style/css/bootstrap.css">
             <link rel="stylesheet" href="../style/css/main.css">
+            <script type="text/javascript" src="../style/js/jquery-1.11.2.min.js"></script>
+            <script type="text/javascript">
+            (function(document) {
+            'use strict';
+
+            var LightTableFilter = (function(Arr) {
+
+                var _input;
+
+                function _onInputEvent(e) {
+                _input = e.target;
+                var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                Arr.forEach.call(tables, function(table) {
+                    Arr.forEach.call(table.tBodies, function(tbody) {
+                    Arr.forEach.call(tbody.rows, _filter);
+                    });
+                });
+                }
+
+                function _filter(row) {
+                var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                }
+
+                return {
+                init: function() {
+                    var inputs = document.getElementsByClassName('light-table-filter');
+                    Arr.forEach.call(inputs, function(input) {
+                    input.oninput = _onInputEvent;
+                    });
+                }
+                };
+            })(Array.prototype);
+
+            document.addEventListener('readystatechange', function() {
+                if (document.readyState === 'complete') {
+                LightTableFilter.init();
+                }
+            });
+
+            })(document);
+            </script>
         </head>
         <body>
             <!-- ====== Barra de navegacion ======-->
@@ -22,7 +64,7 @@ class gestionMaquinas{
                 <div class="titulo" >
                     Maquinas
                 </div>
-
+                         
                 <nav class=" full-width NavBar-Nav">
                     <div class="full-width NavBar-Nav-bg hidden-md hidden-lg show-menu-mobile"></div>
                     <ul class="list-unstyled full-width menu-mobile-c">
@@ -42,11 +84,10 @@ class gestionMaquinas{
                                 <i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true"></i> INICIO
                             </a>
                         </li>
-                        <!-- 
-                            NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA
-
-                        -->
-                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!">Nombre</a></li>
+                        <!--NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA-->
+                        <?php session_start();
+                        $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
+                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" ><?php echo $nombre;?></a></li>
                         <li class="hidden-xs hidden-sm">
                             <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
                             <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
@@ -79,13 +120,14 @@ class gestionMaquinas{
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-3 col-md-9">
-                            
                             <div class="full-width bar-info-user containerTab">
                                 <ul class="nav nav-tabs">
-                                    <li class="nav-items " data-tab="Provedores">
-                                    <a class="nav-link " href="#"> <i class="fa fa-group"></i> Provedores</a>
-                                    </li>
-                                    <li class="nav-items active" data-tab="Maquinas">
+                                    <?php foreach($privilegios as $value){?>
+                                        <li class="nav-items " data-tab="Provedores">
+                                        <a class="nav-link " href="<?php  echo $value[1]?>"> <i class="fa fa-group"></i><?php  echo $value[0]?></a>
+                                        </li>
+                                    <?php }?>
+                                    <!--<li class="nav-items active" data-tab="Maquinas">
                                     <a class="nav-link" href="#" ><i class="fa fa-gear"></i> Maquinas</a>
                                     </li>
                                     <li class="nav-items" data-tab="Cronog. Mantenimiento">
@@ -93,30 +135,23 @@ class gestionMaquinas{
                                     </li>
                                     <li class="nav-items" data-tab="Cronog. Mantenimiento">
                                     <a class="nav-link" href="#"> <i class="fa fa-calendar"></i> Cronog. Calibracion</a>
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </div>
                             <!-- Contenido-->
                             <div class="full-width" style="padding: 15px; border: 1px solid #E1E1E1;">
                                 <div class="d-flex bd-highlight">
                                     <div class="row no-gutters">
-                                        <div class="col-sm-6 col-md-8">
-                                            <div class="content-select">
-                                                <select name="" id="">
-                                                    <option value="">Filtrar por :</option>
-                                                    <option value=""> </option>
-                                                    <option value="">option 1</option>
-                                                    <option value="">option 2</option>
-                                                    <option value="">option 3</option>
-                                                </select>
-                                                <i></i>
-                                            </div>
+                                    <div class="col-sm-6 col-md-8">
+                                        <div class="content-select">
+                                            <input class="form-control col-md-3 light-table-filter" data-table="table table-striped" type="text" placeholder="Buscar">
                                         </div>
+                                    </div>
                                         <!-- Implementacion de formulario neoMaquinas -->
-                                        <form action="neoMaquinas.php" method="POST">
+                                        <form action="getMaquinas.php" method="POST">
                                             <div class="col-6 col-md-4">
                                             <input type="hidden" value="Nuevo" name="accion">
-                                                <button class="btn btn-second">Nuevo</button>									
+                                                <button style="left: 50px;" class="btn btn-second">Nuevo</button>									
                                             </div>
                                         </form>
                                     </div>	
@@ -134,15 +169,31 @@ class gestionMaquinas{
                                             <th scope="col">ESTADO</th>
                                             </tr>
                                         </thead>
-                                        <?php foreach($lista as $value){?>
+                                        <?php foreach($marca as $value){?>
                                         <tbody>
                                             <tr>
-                                            <td><?php echo $value[0];?></td>
                                             <td><?php echo $value[1];?></td>
                                             <td><?php echo $value[2];?></td>
                                             <td><?php echo $value[3];?></td>
                                             <td><?php echo $value[4];?></td>
-                                            <td><?php $value[5] == "1" ? print("Activo") : print("Inactivo")?></td>
+                                            <td><?php echo $value[5];?></td>
+                                            <td><?php echo $value[6] == "1" ? "<label style='color: green'>Habilitado</label>":"<label style='color: red'>Deshabilitado</label>"?></td>
+                                            <td>
+                                                <form action="getMaquinas.php" method="post">
+                                                    <input type="hidden" value="Modificar" name="accion">
+                                                    <input type="hidden" value="<?php echo $value[0] ?>" name="txtid">
+                                                    <button class="btn btn-info">Modificar</button>
+                                                </form>
+
+                                            </td> <!--cambiar referencia -->
+                                            <!--
+                                            <td>
+                                                <form action="getMaquinas.php" method="post">
+                                                    <input type="hidden" value="Eliminar" name="accion">
+                                                    <input type="hidden" value="<?php $lista[0] ?>" name="txtid">
+                                                    <button class="btn btn-danger">Eliminar</button>
+                                                </form>
+                                            </td> --> <!--cambiar referencia --> 
                                             </tr>
                                         </tbody>
                                         <?php } ?>
@@ -234,9 +285,9 @@ class gestionMaquinas{
             </footer> -->
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-            <script src="js/main.js"></script>
+            <script src="../style/style/js/bootstrap.min.js"></script>
+            <script src="../style/js/jquery.mCustomScrollbar.concat.min.js"></script>
+            <script src="../style/js/main.js"></script>
         </body>
         </html>
         <?php

@@ -3,10 +3,11 @@ include_once("../modelo/usuario.php");
 include_once("../modelo/privilegios.php");
 include_once("formPrincipalUsuarios.php");
 include_once("formUsuario.php");
+header('Cache-Control: no cache'); 
+session_cache_limiter('private_no_expire');
 
 session_start();
 if ($_SESSION["acceso"]) {
-    
     switch ($_POST['accion']) {
         case 'Nuevo':
             $privilegio = new Privilegios();

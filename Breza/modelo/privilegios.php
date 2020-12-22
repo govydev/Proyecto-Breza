@@ -9,7 +9,8 @@ class Privilegios{
     }
 
     public function privilegiosUsuario($id){
-        $privilegios = Conexion::select("SELECT p.privilegio, p.path FROM detalleusuario d, privilegios p WHERE d.idUsuario = $id AND p.idprivilegios = d.idprivilegios AND d.estado = 1");
+        //TODO: Agregar columna de iconos
+        $privilegios = Conexion::select("SELECT p.privilegio, p.path, p.icono FROM detalleusuario d, privilegios p WHERE d.idUsuario = $id AND p.idPrivilegios = d.idprivilegios AND d.estado = 1");
         return $privilegios;
     }
 

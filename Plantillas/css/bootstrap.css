@@ -3193,17 +3193,20 @@ fieldset[disabled] .btn-success.focus {
   color: #fff;
   background-color: #5bc0de;
   border-color: #46b8da;
+  transition: background-color .5s;
 }
-.btn-info:focus,
+/* .btn-info:focus,
 .btn-info.focus {
   color: #fff;
   background-color: #31b0d5;
   border-color: #1b6d85;
-}
+} */
 .btn-info:hover {
-  color: #fff;
-  background-color: #31b0d5;
-  border-color: #269abc;
+  color: rgb(67, 170, 211);
+  background-color: #f7fcfd;
+  border-color: #f0f9fc;
+  outline: none;
+}
 }
 .btn-info:active,
 .btn-info.active,

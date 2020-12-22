@@ -1,26 +1,25 @@
 <?php
 
-class NeoMaquinas{
-
-    public function neoMaquinas($titulo){?>
+class neoMaquinas{
+    public function formneoMaquinas($titulo = null, $marcas = null, $maquina = null){?>
         <!DOCTYPE html>
         <html lang="es">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-            <title>NUEVA-MAQUINA</title>
+            <title><?php echo $titulo?> Maquina</title>
             <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-            <link rel="stylesheet" href="css/bootstrap.css">
-            <link rel="stylesheet" href="css/main.css">
+            <link rel="stylesheet" href="../style/css/bootstrap.css">
+            <link rel="stylesheet" href="../style/css/main.css">
         </head>
         <body>
             <!-- ====== Barra de navegacion ======-->
             <div class="full-width NavBar">
                 <div class="full-width text-semi-bold NavBar-logo">
-                    <img src="assets/img/breza.png" class="imBreza" alt="">
+                    <img src="../style/assets/img/breza.png" class="imBreza" alt="">
                 </div>
                 <div class="titulo" >
-                    NUEVA MAQUINA
+                <?php echo $titulo?> MAQUINA
                 </div>
 
                 <nav class=" full-width NavBar-Nav">
@@ -31,7 +30,7 @@ class NeoMaquinas{
                             <!--
                                 Aqui va los elementos para hacerlos responsive	
                             -->
-                            <img src="assets/img/user.png" alt="" class="header-menu-mobile-icon">
+                            <img src="../style/assets/img/user.png" alt="" class="header-menu-mobile-icon">
                             <div class="divider"></div>
                             <a href="#!" class="btn btn-success header-menu-mobile-btn">
                                 <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión
@@ -46,10 +45,12 @@ class NeoMaquinas{
                             NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA
 
                         -->
-                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!">Nombre</a></li>
+                        <?php session_start();
+                        $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
+                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!"><?php echo $nombre;?></a></li>
                         <li class="hidden-xs hidden-sm">
                             <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
-                            <img src="assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
+                            <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
                         </li>
                     </ul>
                 </nav>
@@ -68,36 +69,69 @@ class NeoMaquinas{
         <!-- ====== Contenido de pagina ======-->
             <section class="contenido_principal">
                 <div class="contenido">
-                    <form class="form">
+                    <form class="form" acction="getMaquinas.php" method="POST" >
                         <div class="grupo inner-addon">
                             <label class="labe" for="">CÓDIGO</label>  
-                            <input type="text" placeholder="Ingrese código" required><span class="barra"></span>  
+                            <input type="text" placeholder="Ingrese código" name="txtcodigo" <?php if($maquina != null) echo "value='".$maquina[1]."'"?> required><span class="barra"></span>  
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Nombre</label>  
-                            <input type="text" placeholder="Ingrese su nombre" required><span class="barra"></span>  
+                            <input type="text" placeholder="Ingrese su nombre" name="txtnombre" <?php if($maquina != null) echo "value='".$maquina[2]."'"?> required><span class="barra"></span>  
                         </div>
                         <div class="grupo inner-addon">
-                            <label class="labe" for="">DESCRIPCIÓN</label>                      
-                            <textarea class="form-control" placeholder="Ingrese descripción" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <div class="grupo inner-addon">
-                            <label class="labe" for=""> UBICACIÓN</label>                      
-                            <input type="text" placeholder="Ingrese ubicación" required ><span class="barra"></span>
-                        </div>
-                        <div class="grupo inner-addon">
-                            <label class="labe" for="">TIPO</label>                      
+                            <label class="labe" for="">MARCA</label>                      
                             <div class="content-select">
-                                <select name="" id="">
-                                    <option value="">Eligir tipo</option>
-                                    <option value=""> </option>
-                                    <option value="">option 1</option>
-                                    <option value="">option 2</option>
-                                    <option value="">option 3</option>
+                                <select name="optmarca" id="">
+                                    <?php if($maquina == null){
+                                        foreach($marcas as $value){ ?>
+                                            <option value="<?php echo $value[0]?>"><?php echo $value[1]?></option>
+                                    <?php 
+                                        }
+                                    }else{?>
+                                        <option value="<?php echo $maquina[0]?>"><?php echo $maquina[3]?>
+                                        <?php foreach($marcas as $value){ ?>
+                                            <option value="<?php echo $value[0]?>"><?php echo $value[1]?></option>
+                                    
+                                    <?php
+                                } }?>
                                 </select>
                                 <i></i>
                             </div>
                         </div>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">UBICACIÓN</label>                      
+                            <input type="text" placeholder="Ingrese ubicación" name="txtubicacion" <?php if($maquina != null) echo "value='".$maquina[4]."'"?> required ><span class="barra"></span>
+                        </div>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">CANTIDAD</label>                      
+                            <input type="number" placeholder="Ingrese ubicación" name="txtcantidad" <?php if($maquina != null) echo "value='".$maquina[5]."'"?> required ><span class="barra"></span>
+                        </div>
+                        <div class="grupo inner-addon">
+                            <label class="labe" for="">ESTADO</label>                      
+                            <div class="content-select">
+                                <select name="optestado" id="">
+                                    <?php if($maquina == null){?>
+                                        <option value="1">Habilitado</option>
+                                        <option value="0">Deshabilitado </option>
+                                    <?php }else{
+                                            if($maquina[6]== "1"){?>
+                                                <option value="1">Habilitado</option>
+                                                <option value="0">Deshabilitado </option>
+                                            <?php
+                                            }else{?>
+                                                <option value="0">Deshabilitado </option>
+                                                <option value="1">Habilitado</option>
+                                            <?php
+                                        }
+                                    }?>
+                                    
+                                </select>
+                                <i></i>
+                            </div>
+                        </div>
+                        <input type="hidden" value="Guardar" name="accion">
+                        <input type="hidden" <?php if($maquina != null) echo "value='".$maquina[0]."'"?> name="txtid">
+                        <input type="hidden" value="<?php echo $titulo ?>" name="registrar">
                         <button style="width: 280px; margin-top: 30px;"  class="btn btn3-second">Guardar</button>        
                     </form>
                 </div>
@@ -183,10 +217,10 @@ class NeoMaquinas{
                 </div>
             </footer> -->
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-            <script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-            <script src="js/main.js"></script>
+            <script>window.jQuery || document.write('<script src="../style/js/jquery-1.11.2.min.js"><\/script>')</script>
+            <script src="../style/js/bootstrap.min.js"></script>
+            <script src="../style/js/jquery.mCustomScrollbar.concat.min.js"></script>
+            <script src="../style/js/main.js"></script>
         </body>
         </html>
         <?php
