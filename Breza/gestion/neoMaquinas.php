@@ -82,9 +82,18 @@ class neoMaquinas{
                             <label class="labe" for="">MARCA</label>                      
                             <div class="content-select">
                                 <select name="optmarca" id="">
-                                    <?php foreach($marcas as $value){ ?>
-                                    <option value="<?php echo $value[0]?>"><?php echo $value[1]?></option>
-                                    <?php } ?>
+                                    <?php if($maquina == null){
+                                        foreach($marcas as $value){ ?>
+                                            <option value="<?php echo $value[0]?>"><?php echo $value[1]?></option>
+                                    <?php 
+                                        }
+                                    }else{?>
+                                        <option value="<?php echo $maquina[0]?>"><?php echo $maquina[3]?>
+                                        <?php foreach($marcas as $value){ ?>
+                                            <option value="<?php echo $value[0]?>"><?php echo $value[1]?></option>
+                                    
+                                    <?php
+                                } }?>
                                 </select>
                                 <i></i>
                             </div>
@@ -101,8 +110,21 @@ class neoMaquinas{
                             <label class="labe" for="">ESTADO</label>                      
                             <div class="content-select">
                                 <select name="optestado" id="">
-                                    <option value="1">Habilitado</option>
-                                    <option value="0">Inabilitado </option>
+                                    <?php if($maquina == null){?>
+                                        <option value="1">Habilitado</option>
+                                        <option value="0">Deshabilitado </option>
+                                    <?php }else{
+                                            if($maquina[6]== "1"){?>
+                                                <option value="1">Habilitado</option>
+                                                <option value="0">Deshabilitado </option>
+                                            <?php
+                                            }else{?>
+                                                <option value="0">Deshabilitado </option>
+                                                <option value="1">Habilitado</option>
+                                            <?php
+                                        }
+                                    }?>
+                                    
                                 </select>
                                 <i></i>
                             </div>
