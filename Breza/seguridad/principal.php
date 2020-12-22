@@ -71,16 +71,18 @@ class Principal{
                 <h2 class="text-center text-light">Elija su rol</h2><br>	
                 <div class="container">
                 <div class="full-width container-category">
+                
                 <?php foreach ($path as $value) {?>
                         <ul id="categori-1">
                         <a style=" display: flex; justify-content: center; margin-top: 45px; margin-right:30px;font-weight: 600;" href="<?php echo $value[1];?>">
-                        <i class="fa fa-calendar-o"></i>
+                        <i class="<?php  echo $value[2] ?>"></i>
                         <?php  
                             echo $value[0]; 
                         ?>
                         </a>
                         </ul>
                 <?php } ?>
+<<<<<<< HEAD
                         <!--<a href="" id="categori-3">
                             <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                             <span>Gestion de Proveedores</span>
@@ -104,6 +106,8 @@ class Principal{
                         </a> -->
 
                         
+=======
+>>>>>>> f32187624e20b67687c9f48fbc756f6ad73ff56b
                     </div>
                 </div>
         </section>

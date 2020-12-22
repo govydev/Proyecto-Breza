@@ -99,11 +99,11 @@ class formUsuario{
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Contraseña :</label>  
-                            <input type="text" placeholder="Ingrese Contraseña" name="txtPassword" id="password1" <?php if($user != null) echo "value='".$user[5]."'"?> required><span class="barra"></span>  
+                            <input type="password" placeholder="Ingrese Contraseña" name="txtPassword" id="password1" <?php if($user != null) echo "value='".$user[5]."'"?> required><span class="barra"></span>  
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Confirmar contraseña :</label>  
-                            <input type="text" placeholder="Ingrese Contraseña" id="password2" <?php if($user != null) echo "value='".$user[5]."'"?> required><span class="barra"></span>  
+                            <input type="password" placeholder="Ingrese Contraseña" id="password2" <?php if($user != null) echo "value='".$user[5]."'"?> required><span class="barra"></span>  
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe">Privilegios</label>  
