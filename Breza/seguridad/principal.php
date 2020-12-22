@@ -75,9 +75,9 @@ class Principal{
                     <div class="full-width container-category">
                         <?php 
                         foreach ($path as $value) { ?>
-                            <a href="<?php echo $value[1] ?>" id="categori-9">
+                            <a href="<?php echo $value[1]; ?>" id="categori-9">
                                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                                <span>Gestion de <?php echo $value[0] ?></span>
+                                <span>Gestion de <?php echo $value[0]; ?></span>
                             </a>
                         <?php }?>
                         
