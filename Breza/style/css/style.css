@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
+:root{
+    --colorTextos:#49454567;
+    --colorFondo:#faf7f7f8;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--colorFondo);
+}
+/* splash creem*/
+h1{
+    text-align: center;
+    font-weight: 700;
+
+}
+.splash{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    
+
+}
+/**/
+input{
+    width: 100%;
+    display: inline-block;
+    background: none;
+    color: #333232;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px ;
+    border: none;
+    border-bottom: 1px solid var(--colorTextos);
+    align-items: center;
+    border: 0;
+    outline: none;
+    margin-left: 10px;
+}
+
+form .grupo{
+    position: relative;
+    margin: 5px;
+}
+.inner-addon {
+    position: relative;
+}
+.inner-addon .far ,.fa-user, .fas , .fa-lock {
+    position: absolute;
+    padding: 9px;
+    pointer-events: none;
+}
+.left-addon .glyphicon {
+    left: 0px;
+}
+.right-addon .glyphicon {
+    right: 0px;
+}
+.left-addon input {
+    padding-left: 30px;
+}
+.right-addon input {
+    padding-right: 30px;
+}
+.inner-addon .far ,.fa-user, .fas , .fa-lock{
+    background: rgba(243, 157, 232, 0.05)
+
+}
+
+.labe{
+    display: block;
+    margin-left: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111111;
+}
+.barra{
+    outline: none;
+    position: relative;
+    display: block;
+    width: 100%;
+}
+input:focus~.barra::before{
+    width: 100%;
+}
+.barra::before{
+        content: "";
+        height: 2px;
+        width: 0%;
+        bottom: 0;
+        position: absolute ;
+        background: linear-gradient(to right, #b06ab3,#4568dc );
+        transition: 0.3s ease width;
+        left: 0;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("../assets/img/img.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    clip-path: circle(5px at 50% calc(50% + 40px));
+    background-position: center;
+    animation-name: reveal;
+    animation-duration: 6s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes reveal{
+    0%{
+        clip-path: circle(5px at 50% calc(50% + 40px));
+    }
+    20%{
+        clip-path: circle(20px at 50% calc(50% + 40px));
+    }
+    40%{
+        clip-path: circle(5px at 50% calc(50% + 40px));
+    }
+    50%{
+        clip-path: circle(50px at 50% calc(50% + 40px));
+    }
+    65%{
+        clip-path: circle(10px at 50% calc(50% + 40px));
+    }
+    100%{
+        clip-path: circle(300% at 50% calc(50% + 40px));
+    }
+}
+
+
+.content {
+    background: #111;
+    border-radius: 15px;
+    width: 960px;
+    height: 50%;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.description {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 30px;
+}
+
+.btn {
+    border-radius: 15px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 10px;
+    padding: 10px 50px;
+    cursor: pointer;
+    font-weight: bold ;
+    width: 150px;
+    align-self: center;
+    border: none;
+    margin-top: 1rem;
+}
+img{
+    height: 100px;
+    margin-left: 15px;
+    margin-top: -98px;
+    padding: 8px;
+    
+}
+
+.btn-primary {
+    background-color: transparent;
+    border: 1px solid #fff;
+    transition: background-color .5s;
+
+}
+.btn-primary:hover {
+    background-color: #fff;
+    color: #58af9b;
+    border: 0;
+}
+.btn-second {
+    background-color: #66408f;
+    border: 1px solid #66408f;
+    transition: background-color .5s;
+}
+.btn-second:hover {
+    background-color: #fff;
+    border: 1px solid #58af9b;
+    color: #58af9b;
+    outline: none;
+}
+
+.first-content {
+    display: flex;
+}
+.first-content .second-column {
+    z-index: 11;
+}
+.first-column {
+    text-align: center;
+    width: 40%;
+    z-index: 10;
+}
+.second-column {
+    border-radius: 8px;
+    width: 40%;
+    margin-top: 89px;
+    height: 50%;
+    display: flex;
+    background: rgba(0, 0,0, 0.002);
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 6px 10px 15px 0px rgba(157, 153, 153, 0.55);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin-top: 26px;
+
+}
+.form input {
+    /**/
+    background: rgba(0, 0,0, 0);
+    border-radius: 5px;
+    height: 45px;
+    width: 100%;
+    border: 0;
+   
+}
+     
+#logo{
+    color: #000;
+    height: 35px;
+    margin-top: 10px;
+    animation: fill 0.5s ease forwards 3s;
+}
+#logo path:nth-child(1){
+    stroke-dasharray: 572px;
+    stroke-dashoffset: 572px;
+    animation: line-anim 2s ease forwards 0.3s;
+}
+#logo path:nth-child(2){
+    stroke-dasharray: 463px;
+    stroke-dashoffset: 463px;
+    animation: line-anim 2s ease forwards 0.6s;
+
+}
+#logo path:nth-child(3){
+    stroke-dasharray: 495px;
+    stroke-dashoffset: 495px;
+    animation: line-anim 2s ease forwards 0.9s;
+
+}
+#logo path:nth-child(4){
+    stroke-dasharray: 227px;
+    stroke-dashoffset: 227px;
+    animation: line-anim 2s ease forwards 1.2s;
+
+}
+#logo path:nth-child(5){
+    stroke-dasharray: 635px;
+    stroke-dashoffset: 635px;
+    animation: line-anim 2s ease forwards 1.5s;
+}
+#logo path:nth-child(6){
+  stroke-dasharray: 572px;
+  stroke-dashoffset: 572px;
+  animation: line-anim 2s ease forwards 0.9s;
+}
+#logo path:nth-child(7){
+  stroke-dasharray: 463px;
+  stroke-dashoffset: 463px;
+  animation: line-anim 2s ease forwards 0.6s;
+
+}
+#logo path:nth-child(8){
+  stroke-dasharray: 495px;
+  stroke-dashoffset: 495px;
+  animation: line-anim 2s ease forwards 0.9s;
+
+}
+#logo path:nth-child(9){
+  stroke-dasharray: 227px;
+  stroke-dashoffset: 227px;
+  animation: line-anim 2s ease forwards 1.2s;
+
+}
+#logo path:nth-child(10){
+  stroke-dasharray: 605px;
+  stroke-dashoffset: 605px;
+  animation: line-anim 2s ease forwards 0.5s;
+}
+@keyframes line-anim{
+    to{
+        stroke-dashoffset: 0;
+        color: #111111;
+    }
+}
+@keyframes fill{
+    to{
+        fill: rgb(34, 34, 34);
+        color: #000;
+    }
+}
