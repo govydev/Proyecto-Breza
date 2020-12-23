@@ -82,32 +82,6 @@ class Principal{
                         </a>
                         </ul>
                 <?php } ?>
-<<<<<<< HEAD
-                        <!--<a href="" id="categori-3">
-                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                            <span>Gestion de Proveedores</span>
-                        </a>
-                        <a href="" id="categori-6">
-                            <i class="fa fa-cogs" aria-hidden="true"></i>
-                            <span>Gestion Maquinas</span>
-                        </a>
-                        <a href="" id="categori-2">
-                            <i class="	fa fa-group" aria-hidden="true"></i>
-                            <span>Gestion de Usuarios</span>
-                        </a>
-                        <a href="" id="categori-9">
-                            <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                            <span>Gestion de Calidad</span>
-                        </a> -->
-                    
-                        <!-- <a href="" id="categori-3">
-                            <i class="fa fa-address-book-o" aria-hidden="true"></i>
-                            <span>Gestion de  proovedores</span>
-                        </a> -->
-
-                        
-=======
->>>>>>> f32187624e20b67687c9f48fbc756f6ad73ff56b
                     </div>
                 </div>
         </section>
