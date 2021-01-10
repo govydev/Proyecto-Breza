@@ -6,7 +6,6 @@ include_once("maquinas.php");
 header('Cache-Control: no cache'); 
 session_cache_limiter('private_no_expire');
 
-
 session_start();
 if ($_SESSION["acceso"]) {
     switch ($_POST['accion']){   

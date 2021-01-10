@@ -10,7 +10,7 @@ if(isset($_POST['login'])){
     $user = $_POST["txtUser"];
     $password = $_POST["txtPassword"];
     $usuario =  new Usuario;
-    $respuesta = $usuario->autenticacion(trim($user), trim($password));
+    $respuesta = $usuario->autenticacion(trim($user), md5(trim($password)));
     if($respuesta[0] > 0){
         $carga = TRUE;
         $privilegios = new Privilegios();

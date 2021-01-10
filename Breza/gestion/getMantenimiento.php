@@ -1,4 +1,4 @@
-<?php
+<?php 
 include_once("../modelo/usuario.php");
 include_once("../modelo/privilegios.php");
 include_once("formPrincipalUsuarios.php");

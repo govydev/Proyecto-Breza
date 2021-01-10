@@ -1,7 +1,7 @@
 <?php
 include_once("conexion.php");
 
-class Usuario{
+class Mantenimiento{
 
     public function autenticacion($txtUser, $txtPass){
         $user = Conexion::select("SELECT * FROM usuarios WHERE usuario = '$txtUser' and estado = 1");
