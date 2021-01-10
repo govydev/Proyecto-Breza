@@ -2,7 +2,7 @@
 define("HOST","localhost");
 define("USER","root");
 define("PASSWORD","");
-define("BD","aaa"); 
+define("BD","breza"); 
 
 class Conexion{
 	public static $conexion = null;
