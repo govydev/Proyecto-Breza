@@ -51,6 +51,8 @@ if ($_SESSION["acceso"]) {
     }
 
 }else{
+    session_start();
+    session_destroy();
     header("Location: ../index.php");   
 }
 
