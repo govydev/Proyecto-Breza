@@ -107,7 +107,6 @@ class gestionCalibracion{
                 </div>
             </section>
         <!-- ====== Contenido de pagina ======-->
-        <?php print_r($calibracion[6])?>
             <section class="full-width section">
                 <div class="container">
                     <div class="row">
@@ -171,18 +170,28 @@ class gestionCalibracion{
                                         <?php foreach($calibracion as $value){?>
                                         <tbody>
                                             <tr>
-                                            <td><?php echo $value[1];?></td>
-                                            <td><?php echo $value[2];?></td>
-                                            <td><?php echo $value[3];?></td>
-                                            <td><?php echo $value[4];?></td>
-                                            <td><?php echo $value[5] == "1" ? "<label style='color: green'>Habilitado</label>":"<label style='color: red'>Deshabilitado</label>"?></td>
-                                            <td>
+                                            <td><?php echo $value[1]?></td>
+                                            <td><?php echo $value[2]?></td>
+                                            <td><?php echo $value[3]?></td>
+                                            <td><?php echo $value[4]?></td>
+                                            <td><?php switch($value[5]){
+                                                case '0':?>
+                                                    <label style='color: green'>Realizado</label>
+                                                    <?php break;    
+                                                 case '1': ?>
+                                                    <label style='color: orange'>En Proceso</label>
+                                                    <?php break;    
+                                                case '2': ?>
+                                                    <label style='color: red'>Por Hacer</label>
+                                                    <?php break;    
+                                            } ?>
+                                            </td>
+                                            <td>  
                                                 <form action="getCalibracion.php" method="post">
                                                     <input type="hidden" value="Modificar" name="accion">
                                                     <input type="hidden" value="<?php echo $value[0] ?>" name="txtid">
                                                     <button class="btn btn-info">Modificar</button>
                                                 </form>
-
                                             </td> <!--cambiar referencia -->
                                             <!--
                                             <td>

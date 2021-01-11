@@ -31,7 +31,7 @@ class Calibracion{
     }
 
     public function agregar($fecha, $numCertificado, $estado, $idmaquina, $idproveedor){
-        $calibracion = Conexion::query("INSERT INTO mantemiento(Fecha, numCertificado, Estado, idmaquina, idproveedor) 
+        $calibracion = Conexion::query("INSERT INTO calibracion(Fecha, numCertificado, Estado, idmaquina, idproveedor) 
                                 VALUES ('$fecha','$numCertificado', '$estado', '$idmaquina', '$idproveedor')");
         return $calibracion;
     }   

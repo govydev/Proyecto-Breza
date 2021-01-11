@@ -26,8 +26,6 @@ if ($_SESSION["acceso"]) {
             $neoCalibracion->formNeoCalibracion("MODIFICAR", $proveedor->listaProveedores(), $maquina->listaMaquina(), $calibracion->calibracionId($id));
             break;
         case 'Guardar':
-            // $datos = [trim($_POST["txtid"]), trim($_POST["txtcodigo"]), trim($_POST["txtnombre"]), trim($_POST["optmarca"]), trim($_POST["txtubicacion"]), trim($_POST["txtcantidad"]), trim($_POST["optestado"])];
-            // print_r($datos);
             $certificado = trim($_POST["txtcertificado"]);
             $maquina = trim($_POST["optmaquina"]);
             $fecha = trim($_POST["txtfecha"]);
@@ -37,13 +35,12 @@ if ($_SESSION["acceso"]) {
                 case 'NUEVA':
                     $calibracion = new Calibracion();
                     $calibracion->agregar($fecha, $certificado, $estado, $maquina, $proveedor);
-                    $lista = $calibracion->listaCalibracion();
                     header('Location: getCalibracion.php');
                     break;
                 case 'MODIFICAR':
                     $id = trim($_POST["txtid"]);
-                    $maquinas = new Maquinas();
-                    $maquinas->modificar($id, $fecha, $certificado, $estado, $maquina, $proveedor);
+                    $calibracion = new Calibracion();
+                    $calibracion->modificar($id, $fecha, $certificado, $estado, $maquina, $proveedor);
                     header('Location: getCalibracion.php');
                     break;
                 default:

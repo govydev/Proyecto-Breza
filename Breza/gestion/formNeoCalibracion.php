@@ -11,19 +11,25 @@ class neoCalibracion{
             <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="../style/css/bootstrap.css">
             <link rel="stylesheet" href="../style/css/main.css">
-            <link rel="stylesheet" type="/text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
             <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script> 
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-            <script type='text/javascript'>
-                $( document ).ready(function() {
-                    $('#datetimepicker1').datetimepicker();
+            <script type="text/javascript">
+                $(function () {
+                    $('#datetimepicker1').datetimepicker({
+                        viewMode: 'months',
+                        format: 'YYYY-MM-DD', //año - mes - dia
+                        showClose: true,
+                        allowInputToggle: true,
+                        keepInvalid: true,
+                        ignoreReadonly: true,
+                    });
                 });
             </script>
         </head>
         <body>
             <!-- ====== Barra de navegacion ======-->
-            <?php print($calibracion)?>
             <div class="full-width NavBar">
                 <div class="full-width text-semi-bold NavBar-logo">
                     <img src="../style/assets/img/breza.png" class="imBreza" alt="">
@@ -65,7 +71,6 @@ class neoCalibracion{
                     </ul>
                 </nav>
                 <i class="fa fa-bars hidden-md hidden-lg btn-mobile-menu show-menu-mobile" aria-hidden="true"></i>
-                <?php print_r($calibracion)?>
             </div>
             <!-- ====== PopUpLogin ======-->
             <section class="full-width PopUpLogin PopUpLogin-2">
@@ -79,7 +84,7 @@ class neoCalibracion{
         <!-- ====== Contenido de pagina ======-->
             <section class="contenido_principal3">
                 <div class="contenido">
-                    <form class="form">
+                <form class="form" acction="getCalibracion.php" method="POST" >
                         <div class="grupo inner-addon">
                             <label class="labe" for="">NUMERO DE CERTIFICADO</label>  
                             <input type="text" placeholder="Ingrese certificado" name="txtcertificado" <?php if($calibracion != null) echo "value='".$calibracion[2]."'"?> required><span class="barra"></span>  
@@ -142,21 +147,28 @@ class neoCalibracion{
                             <label class="labe" for="">ESTADO</label>                      
                             <div class="content-select">
                                 <select name="optestado" id="">
-                                    <?php if($calibracion == null){?>
-                                        <option value="1">Habilitado</option>
-                                        <option value="0">Deshabilitado </option>
+                                <?php if($calibracion == null){?>
+                                        <option value="0">Realizado</option>
+                                        <option value="1">En Proceso </option>
+                                        <option value="2">Por Hacer </option>
                                     <?php }else{
-                                            if($calibracion[3]== "1"){?>
-                                                <option value="1">Habilitado</option>
-                                                <option value="0">Deshabilitado </option>
-                                            <?php
-                                            }else{?>
-                                                <option value="0">Deshabilitado </option>
-                                                <option value="1">Habilitado</option>
-                                            <?php
-                                        }
-                                    }?>
-                                    
+                                        switch($calibracion[3]){
+                                        case '0':?>
+                                            <option value="0">Realizado</option>
+                                            <option value="1">En Proceso </option>
+                                            <option value="2">Por Hacer </option>
+                                            <?php break;    
+                                            case '1': ?>
+                                            <option value="1">En Proceso </option>
+                                            <option value="0">Realizado</option>
+                                            <option value="2">Por Hacer </option>
+                                            <?php break;    
+                                        case '2': ?>
+                                            <option value="2">Por Hacer </option>
+                                            <option value="1">En Proceso </option>
+                                            <option value="0">Realizado</option>
+                                            <?php break;    
+                                    } }?>
                                 </select>
                                 <i></i>
                             </div>
@@ -164,7 +176,7 @@ class neoCalibracion{
                         <input type="hidden" value="Guardar" name="accion">
                         <input type="hidden" <?php if($calibracion != null) echo "value='".$calibracion[0]."'"?> name="txtid">
                         <input type="hidden" value="<?php echo $titulo ?>" name="registrar">
-                        <button style="width: 280px; margin-top: 30px;"  class="btn btn3-second">Guardar</button>      
+                        <button style="width: 200px; margin-top: 30px;"  class="btn btn3-second">Guardar</button>      
                     </form>
                 </div>
             </section>

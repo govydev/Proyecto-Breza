@@ -11,11 +11,28 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script> 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-    <script type='text/javascript'>
-		$( document ).ready(function() {
-			$('#datetimepicker1').datetimepicker();
-		});
+	<script type="text/javascript">
+		$(function () {
+          $('#datetimepicker1').datetimepicker({
+			viewMode: 'years',
+			format: 'YYYY-MM-DD', //año - mes - dia
+			maxDate: Date.now(),
+			showClose: true,
+			allowInputToggle: true,
+			keepInvalid: true,
+			ignoreReadonly: true, 
+			});
+      });
 	</script>
+	<!-- <script type='text/javascript'>
+		$( document ).ready(function() {
+			format: 'yyyy-mm-dd hh:ii',
+			$('#datetimepicker1').datetimepicker({
+				// autoclose: true,
+				// todayBtn: true
+			});
+		});
+	</script> -->
 </head>
 <body>
 	<!-- ====== Barra de navegacion ======-->
