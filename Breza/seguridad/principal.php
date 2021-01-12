@@ -17,10 +17,6 @@ class Principal{
                 <div class="full-width text-semi-bold NavBar-logo">
                     <img src="../style/assets/img/breza.png" class="imBreza" alt="">
                 </div>
-                <div class="titulo" >
-                
-                </div>
-
                 <nav class=" full-width NavBar-Nav">
                     <div class="full-width NavBar-Nav-bg hidden-md hidden-lg show-menu-mobile"></div>
                     <ul class="list-unstyled full-width menu-mobile-c">
@@ -31,7 +27,7 @@ class Principal{
                             -->
                             <img src="../style/assets/img/user.png" alt="" class="header-menu-mobile-icon">
                             <div class="divider"></div>
-                            <a href="#!" class="btn btn-success header-menu-mobile-btn">
+                            <a href="../seguridad/cierreSesion.php" class="btn btn-success header-menu-mobile-btn">
                                 <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión
                             </a>
                         </div>
@@ -40,10 +36,6 @@ class Principal{
                                 <i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true"></i> INICIO
                             </a>
                         </li>
-                        <!-- 
-                            NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA
-
-                        -->
                         <?php session_start();
                         $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
                         <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!"><?php echo $nombre;?></a></li>
@@ -62,7 +54,7 @@ class Principal{
                     <a href="#!"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
                     <a href="#!"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
                     <div role="separator" class="divider"></div>
-                    <a href="#!"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
+                    <a href="../seguridad/cierreSesion.php"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
                 </div>
             </section>
 
@@ -82,32 +74,6 @@ class Principal{
                         </a>
                         </ul>
                 <?php } ?>
-<<<<<<< HEAD
-                        <!--<a href="" id="categori-3">
-                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                            <span>Gestion de Proveedores</span>
-                        </a>
-                        <a href="" id="categori-6">
-                            <i class="fa fa-cogs" aria-hidden="true"></i>
-                            <span>Gestion Maquinas</span>
-                        </a>
-                        <a href="" id="categori-2">
-                            <i class="	fa fa-group" aria-hidden="true"></i>
-                            <span>Gestion de Usuarios</span>
-                        </a>
-                        <a href="" id="categori-9">
-                            <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                            <span>Gestion de Calidad</span>
-                        </a> -->
-                    
-                        <!-- <a href="" id="categori-3">
-                            <i class="fa fa-address-book-o" aria-hidden="true"></i>
-                            <span>Gestion de  proovedores</span>
-                        </a> -->
-
-                        
-=======
->>>>>>> f32187624e20b67687c9f48fbc756f6ad73ff56b
                     </div>
                 </div>
         </section>

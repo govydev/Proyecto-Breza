@@ -37,7 +37,6 @@ if ($_SESSION["acceso"]) {
                     break;
                 case 'EDITAR':
                     array_push($datos,$_POST["rbEstado"]);
-                    print_r($datos);
                     $usuario->modificar($datos,$_POST['id']);
                     $privilegios->modificar($privilegiosUsuario,$_POST['id']);
                     break;

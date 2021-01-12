@@ -1,8 +1,9 @@
 <?php 
-include_once("../modelo/usuario.php");
-include_once("../modelo/privilegios.php");
-include_once("formPrincipalUsuarios.php");
-include_once("formUsuario.php");
+include_once("formPrincipalMantenimiento.php");
+include_once("formMantenimiento.php");
+include_once("../modelo/mantenimiento.php");
+include_once("../modelo/proveedor.php");
+include_once("../modelo/maquinas.php");
 header('Cache-Control: no cache'); 
 session_cache_limiter('private_no_expire');
 
@@ -10,45 +11,43 @@ session_start();
 if ($_SESSION["acceso"]) {
     switch ($_POST['accion']) {
         case 'Nuevo':
-            $privilegio = new Privilegios();
-            $formUsuario = new formUsuario();
-            $formUsuario -> formUsuarios($privilegios =  $privilegio->privilegio(), $tipo = "NUEVO");
+            $proveedor = new Proveedor();
+            $maquinas = new Maquinas();
+            $formMantenimiento = new formMantenimiento();
+            $listaMaquina =  $maquinas->listaMaquina();
+            $listaProveedor = $proveedor->listaProveedores();
+            $formMantenimiento-> formMantenimientos("NUEVO", null, $listaMaquina, $listaProveedor);
             break;
 
         case 'Editar':
-            $privilegio = new Privilegios();
-            $formUsuario = new formUsuario();
-            $usuario= new Usuario();
-            $privilegios = new Privilegios();
-            $user = $usuario->usuarioId($_POST["id"]);
-            $detalle= $privilegios->privilegiosUsuario($_POST["id"]);
-            $formUsuario -> formUsuarios($privilegio->privilegio(), "EDITAR", $user, $detalle);
+            $datos = new Mantenimiento();
+            $proveedor = new Proveedor();
+            $maquinas = new Maquinas();
+            $formMantenimiento = new formMantenimiento();
+            $detalle = $datos->MantenimientoId($_POST['id']);
+            $listaMaquina =  $maquinas->listaMaquina();
+            $listaProveedor = $proveedor->listaProveedores();
+            $formMantenimiento-> formMantenimientos("EDITAR", $detalle, $listaMaquina, $listaProveedor);
             break;
 
         case 'Guardar':
-            $datos = [trim($_POST["txtNombre"]), trim($_POST["txtPaterno"]), trim($_POST["txtMaterno"]), trim($_POST["txtUsuario"]), trim($_POST["txtPassword"])];
-            $privilegiosUsuario = [$_POST["privilegio1"],$_POST["privilegio2"],$_POST["privilegio3"],$_POST["privilegio4"],$_POST["privilegio5"]];
-            $usuario= new Usuario();
-            $privilegios = new Privilegios();
+            $datos = [$_POST["txtMotivo"], $_POST["txtFecha"], $_POST["nbFactura"], $_POST["txtObservacion"], $_POST["ddEstado"], $_POST["ddMaquina"], $_POST["ddProveedor"]];
+            $mantenimiento = new Mantenimiento();
             switch ($_POST["registrar"]) {
                 case 'NUEVO':
-                    $id =  $usuario->agregar($datos);
-                    if($id > 0)    $privilegios->agregar($privilegiosUsuario, $id);
+                    $mantenimiento->agregar($datos);
                     break;
                 case 'EDITAR':
-                    array_push($datos,$_POST["rbEstado"]);
-                    print_r($datos);
-                    $usuario->modificar($datos,$_POST['id']);
-                    $privilegios->modificar($privilegiosUsuario,$_POST['id']);
+                    echo $mantenimiento->modificar($datos,$_POST["id"]);
                     break;
             }
-            header("Location: getUsuario.php"); 
+            header("Location: getMantenimiento.php"); 
             break;
         
         default:
-            $usuario= new Usuario();
-            $formUsuario = new principalUsuario();
-            $formUsuario->formGestionUsuario($_SESSION["privilegios"], $usuario->usuarios());
+            $lista = new Mantenimiento();
+            $formMantenimiento = new principalMantenimiento();
+            $formMantenimiento->formPrincipalMantenimiento($lista->listaMantenimientos()); 
             break;
     }
 
