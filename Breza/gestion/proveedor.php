@@ -131,7 +131,7 @@ class formProveedor{
                                     </li>
                                     <?php foreach ($privilegios as $value) {?>
                                         <li class="nav-items <?php if($value[0] == "Proveedores"){ echo "active";} ?>" data-tab="<?php echo $value[0]?>" >
-                                            <a class="nav-link" href="<?php echo $value[1]?>"> <i class="fa fa-calendar"></i><?=$value[0]?></a>
+                                        <a class="nav-link " href="<?php  echo $value[1]?>"> <i class="<?php  echo $value[2]?>"></i><?php  echo $value[0]?></a>
                                         </li>
                                     <?php }?>
                                 </ul>

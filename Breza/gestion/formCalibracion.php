@@ -123,8 +123,8 @@ class gestionCalibracion{
                             <div class="full-width bar-info-user containerTab">
                                 <ul class="nav nav-tabs">
                                     <?php foreach($privilegios as $value){?>
-                                        <li class="nav-items " data-tab="Provedores">
-                                        <a class="nav-link " href="<?php  echo $value[1]?>"> <i class="fa fa-group"></i><?php  echo $value[0]?></a>
+                                        <li class="nav-items <?php echo trim($value[0]) == "Cronograma Calibración"? " active" : " " ?>" data-tab="Provedores">
+                                        <a class="nav-link " href="<?php  echo $value[1]?>"> <i class="<?php  echo $value[2]?>"></i><?php  echo $value[0]?></a>
                                         </li>
                                     <?php }?>
                                     <!--<li class="nav-items active" data-tab="Maquinas">

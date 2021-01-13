@@ -134,7 +134,8 @@ class principalUsuario{
                                     <?php foreach ($privilegios as $value) {
                                         if($value[0] == "Usuario")  continue;?>
                                         <li class="nav-items" data-tab="<?php echo $value[0]?>">
-                                            <a class="nav-link" href="<?php echo $value[1]?>"> <i class="<?php echo $value[2]?>"></i><?=$value[0]?></a>
+                                        <a class="nav-link " href="<?php  echo $value[1]?>"> <i class="<?php  echo $value[2]?>"></i><?php  echo $value[0]?></a>    
+                                        
                                         </li>
                                     <?php }?>
                                 </ul>
