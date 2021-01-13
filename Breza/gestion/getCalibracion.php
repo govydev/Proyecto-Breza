@@ -15,7 +15,7 @@ if ($_SESSION["acceso"]) {
             $maquina = new Maquinas();
             $proveedor = new Proveedor();
             $neoCalibracion = new neoCalibracion();
-            $neoCalibracion->formNeoCalibracion("NUEVA", $proveedor->listaProveedores(), $maquina->listaMaquina());
+            $neoCalibracion->formNeoCalibracion("NUEVA", $proveedor->listar(), $maquina->listaMaquina());
             break;
         case 'Modificar':
             $id = trim($_POST["txtid"]);
@@ -23,7 +23,7 @@ if ($_SESSION["acceso"]) {
             $proveedor = new Proveedor();
             $calibracion = new Calibracion();
             $neoCalibracion = new neoCalibracion();
-            $neoCalibracion->formNeoCalibracion("MODIFICAR", $proveedor->listaProveedores(), $maquina->listaMaquina(), $calibracion->calibracionId($id));
+            $neoCalibracion->formNeoCalibracion("MODIFICAR", $proveedor->listar(), $maquina->listaMaquina(), $calibracion->calibracionId($id));
             break;
         case 'Guardar':
             $certificado = trim($_POST["txtcertificado"]);

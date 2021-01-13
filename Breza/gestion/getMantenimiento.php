@@ -15,7 +15,7 @@ if ($_SESSION["acceso"]) {
             $maquinas = new Maquinas();
             $formMantenimiento = new formMantenimiento();
             $listaMaquina =  $maquinas->listaMaquina();
-            $listaProveedor = $proveedor->listaProveedores();
+            $listaProveedor = $proveedor->listar();
             $formMantenimiento-> formMantenimientos("NUEVO", null, $listaMaquina, $listaProveedor);
             break;
 
@@ -26,7 +26,7 @@ if ($_SESSION["acceso"]) {
             $formMantenimiento = new formMantenimiento();
             $detalle = $datos->MantenimientoId($_POST['id']);
             $listaMaquina =  $maquinas->listaMaquina();
-            $listaProveedor = $proveedor->listaProveedores();
+            $listaProveedor = $proveedor->listar();
             $formMantenimiento-> formMantenimientos("EDITAR", $detalle, $listaMaquina, $listaProveedor);
             break;
 
