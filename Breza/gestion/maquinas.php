@@ -87,7 +87,7 @@ class gestionMaquinas{
                         <!--NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA-->
                         <?php session_start();
                         $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
-                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" ><?php echo $nombre;?></a></li>
+                        <li class="hidden-xs hidden-sm"><label class="btn-PopUpLogin"><?php echo $nombre;?></label></li>
                         <li class="hidden-xs hidden-sm">
                             <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
                             <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
@@ -103,7 +103,7 @@ class gestionMaquinas{
                     <a href="perfil.html"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
                     <a href="config.html"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
                     <div role="separator" class="divider"></div>
-                    <a href="#!"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
+                    <a href=""><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
                 </div>
             </section>
         <!-- ====== Contenido de pagina ======-->
@@ -115,27 +115,18 @@ class gestionMaquinas{
                                 debe ir aqui la lista a buscar cada tabla
                             </div> -->
                             <div class="full-width user-menu-xs">
-                                
-                                
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-3 col-md-9">
                             <div class="full-width bar-info-user containerTab">
                                 <ul class="nav nav-tabs">
-                                    <?php foreach($privilegios as $value){?>
-                                        <li class="nav-items " data-tab="Provedores">
-                                        <a class="nav-link " href="<?php  echo $value[1]?>"> <i class="fa fa-group"></i><?php  echo $value[0]?></a>
+                                    <?php 
+                                    $privilegios = $_SESSION["privilegios"];
+                                    foreach($privilegios as $value){?>
+                                        <li class="nav-items <?php echo trim($value[0]) == "Maquinas"? " active" : " " ?>" data-tab="Provedores">
+                                        <a class="nav-link " href="<?php  echo $value[1]?>"> <i class="<?php  echo $value[2]?>"></i><?php  echo $value[0]?></a>
                                         </li>
                                     <?php }?>
-                                    <!--<li class="nav-items active" data-tab="Maquinas">
-                                    <a class="nav-link" href="#" ><i class="fa fa-gear"></i> Maquinas</a>
-                                    </li>
-                                    <li class="nav-items" data-tab="Cronog. Mantenimiento">
-                                    <a class="nav-link" href="#"> <i class="fa fa-calendar-o" ></i> Cronog. Mantenimiento</a>
-                                    </li>
-                                    <li class="nav-items" data-tab="Cronog. Mantenimiento">
-                                    <a class="nav-link" href="#"> <i class="fa fa-calendar"></i> Cronog. Calibracion</a>
-                                    </li>-->
                                 </ul>
                             </div>
                             <!-- Contenido-->

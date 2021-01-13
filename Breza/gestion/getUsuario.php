@@ -36,6 +36,7 @@ if ($_SESSION["acceso"]) {
                     if($id > 0)    $privilegios->agregar($privilegiosUsuario, $id);
                     break;
                 case 'EDITAR':
+                    array_push($datos,$_POST["rbEstado"]);
                     $usuario->modificar($datos,$_POST['id']);
                     $privilegios->modificar($privilegiosUsuario,$_POST['id']);
                     break;
