@@ -18,7 +18,7 @@ class formNP{
                 <img src="../style/assets/img/breza.png" class="imBreza" alt="">
             </div>
             <div class="titulo" >
-                NUEVO PROVEEDOR
+                <?php echo $tipo ?> PROVEEDOR
             </div>
 
             <nav class=" full-width NavBar-Nav">
@@ -81,7 +81,8 @@ class formNP{
                     </div>
                     <div class="grupo inner-addon">
                         <label class="labe" for="">DIRECCIÓN</label>                      
-                        <input type="text" placeholder="Ingrese dirección" name="txtDireccion" <?php if($proveedor != null) echo "value='".$proveedor[5]."'"?> ><span class="barra"></span>
+                        <textarea class="form-control" placeholder="Ingrese dirección" name="txtDireccion"  rows="3"><?php if($proveedor != null) echo "$proveedor[5]"?></textarea>
+                        
                     </div>
                     <div class="content-select">
                         <label class="labe" for="">ESTADO</label>

@@ -16,7 +16,7 @@ if ($_SESSION["acceso"]) {
     switch ($_POST['accion']){   
         case 'Nuevo':
             $formProveedor = new formNP;
-            $formProveedor->formNPShow("NUEVA");
+            $formProveedor->formNPShow("NUEVO");
             break;
         case 'Editar':
             $objProveedor = new proveedor;
@@ -27,7 +27,7 @@ if ($_SESSION["acceso"]) {
         case 'Guardar':
             $objProveedor = new proveedor;
             switch ($_POST["registrar"]){
-                case 'NUEVA':
+                case 'NUEVO':
                     $datos = [trim($_POST["txtNombre"]),trim($_POST["txtRuc"]),trim($_POST["txtTelefono"]),
                     trim($_POST["txtCorreo"]),trim($_POST["txtDireccion"]),trim($_POST["txtEstado"])];
                     $objProveedor->agregar($datos);
