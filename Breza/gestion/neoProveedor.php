@@ -77,11 +77,11 @@ class formNP{
                     </div>
                     <div class="grupo inner-addon">
                         <label class="labe" for="">CORREO</label>                      
-                        <input type="text" placeholder="Ingrese correo" name="txtCorreo" <?php if($proveedor != null) echo "value='".$proveedor[4]."'"?> ><span class="barra"></span>
+                        <input type="email" placeholder="Ingrese correo" name="txtCorreo" <?php if($proveedor != null) echo "value='".$proveedor[4]."'"?> ><span class="barra"></span>
                     </div>
                     <div class="grupo inner-addon">
                         <label class="labe" for="">DIRECCIÓN</label>                      
-                        <input type="email" placeholder="Ingrese dirección" name="txtDireccion" <?php if($proveedor != null) echo "value='".$proveedor[5]."'"?> ><span class="barra"></span>
+                        <input type="text" placeholder="Ingrese dirección" name="txtDireccion" <?php if($proveedor != null) echo "value='".$proveedor[5]."'"?> ><span class="barra"></span>
                     </div>
                     <div class="content-select">
                         <label class="labe" for="">ESTADO</label>
