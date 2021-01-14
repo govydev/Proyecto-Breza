@@ -24,7 +24,7 @@ class Usuario{
     }
 
     public function modificar($datos, $id){
-        $user = Conexion::query("UPDATE usuarios SET nombre = '$datos[0]', apPaterno = '$datos[1]', apMaterno = '$datos[2]', usuario = '$datos[3]',`password` = '$datos[4]', estado = 1 WHERE idUsuario = $id");
+        $user = Conexion::query("UPDATE usuarios SET nombre = '$datos[0]', apPaterno = '$datos[1]', apMaterno = '$datos[2]', usuario = '$datos[3]',`password` = '$datos[4]', estado = $datos[5] WHERE idUsuario = $id");
         return $user;
     }
 

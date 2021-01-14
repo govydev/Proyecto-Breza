@@ -25,6 +25,8 @@ if(isset($_POST['login'])){
         header("Location: ../index.php?msg=$respuesta");
     }
 }else{
+    session_start();
+    session_destroy();
     header("Location: ../index.php");
 }
 
