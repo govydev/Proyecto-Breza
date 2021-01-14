@@ -48,6 +48,7 @@ if ($_SESSION["acceso"]) {
                     break;
             }
         default:
+            print("opcion default");
             $calibracion = new Calibracion();
             $gestionMaquinas = new gestionCalibracion();
             $gestionMaquinas->formGestionCalibracion($_SESSION["privilegios"], $calibracion->listaCalibracion());
