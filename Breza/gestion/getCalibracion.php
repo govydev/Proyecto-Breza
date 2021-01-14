@@ -2,8 +2,8 @@
 include_once("../modelo/maquinas.php");
 include_once("../modelo/proveedor.php");
 include_once("../modelo/calibracion.php");
-include_once("formNeoCalibracion.php");
-include_once("formCalibracion.php");
+include_once("./formNeoCalibracion.php");
+include_once("./formCalibracion.php");
 header('Cache-Control: no cache'); 
 session_cache_limiter('private_no_expire');
 print("entrada");
@@ -51,7 +51,7 @@ if ($_SESSION["acceso"]) {
             print("opcion default");
             $calibracion = new Calibracion();
             $gestionMaquinas = new gestionCalibracion();
-            $gestionMaquinas->formGestionCalibracion($_SESSION["privilegios"], $calibracion->listaCalibracion());
+            $gestionMaquinas->formGestionCalibracion($calibracion->listaCalibracion());
             break;
     }
 }else{

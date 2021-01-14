@@ -2,7 +2,7 @@
 
 class gestionCalibracion{
 
-    public function formGestionCalibracion($privilegios, $calibracion){?>
+    public function formGestionCalibracion($calibracion){?>
         <!DOCTYPE html>
         <html lang="es">
         <head>
