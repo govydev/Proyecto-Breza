@@ -6,7 +6,7 @@ include_once("formNeoCalibracion.php");
 include_once("formCalibracion.php");
 header('Cache-Control: no cache'); 
 session_cache_limiter('private_no_expire');
-
+print("HOla error");
 
 session_start();
 if ($_SESSION["acceso"]) {
