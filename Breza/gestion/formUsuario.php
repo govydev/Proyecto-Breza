@@ -120,8 +120,11 @@ class formUsuario{
                                     echo "Gestión de ".$value[0]; ?>
                                     <input style="height: 30px; outline: none;"  type='checkbox' name="privilegio<?php echo ++$i;?>" value="1" <?php if($detalle[$j][0] == $value[0]){ echo "checked='checked'"; $j++;}?>>
                                 <?php                                    
-                                }
-                            } ?>                                        
+                                }?>
+                                <label class="labe">Estado</label>  
+                                <input type="radio" name="rbEstado" value="0">Deshabilitado
+                                <input type="radio" name="rbEstado" value="1">Habilitado
+                            <?php } ?>                                        
                         </div>
                         <input type="hidden" name="accion" value="Guardar">
                         <input type="hidden" name="registrar" value="<?php echo $tipo?>">

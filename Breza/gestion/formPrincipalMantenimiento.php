@@ -1,18 +1,16 @@
 <?php
 
-class principalUsuario{
-
-    public function formGestionUsuario($privilegios, $lista){?>
-    <!DOCTYPE html>
+    class principalMantenimiento{
+        public function formPrincipalMantenimiento($lista){?>
+        <!DOCTYPE html>
         <html lang="es">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-            <title>Gestion Usuarios</title>
+            <title>Cronograma Mantenimiento</title>
             <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="../style/css/bootstrap.css">
             <link rel="stylesheet" href="../style/css/main.css">
-            <script type="text/javascript" src="../style/js/jquery-1.11.2.min.js"></script>
             <script type="text/javascript">
             (function(document) {
             'use strict';
@@ -62,11 +60,9 @@ class principalUsuario{
                     <img src="../style/assets/img/breza.png" class="imBreza" alt="">
                 </div>
                 <div class="titulo" >
-                    Usuarios
+                    Cronograma de Mantenimiento
                 </div>
-                <a href="../seguridad/getIndex.php" class="">
-                    <i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true">INICIO</i> 
-                </a>
+                         
                 <nav class=" full-width NavBar-Nav">
                     <div class="full-width NavBar-Nav-bg hidden-md hidden-lg show-menu-mobile"></div>
                     <ul class="list-unstyled full-width menu-mobile-c">
@@ -86,13 +82,10 @@ class principalUsuario{
                                 <i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true"></i> INICIO
                             </a>
                         </li>
-                        <!-- 
-                            NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA
-
-                        -->
+                        <!--NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA-->
                         <?php session_start();
                         $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
-                        <li class="hidden-xs hidden-sm"><label class="btn-PopUpLogin"><?php echo $nombre;?></label></li>
+                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" ><?php echo $nombre;?></a></li>
                         <li class="hidden-xs hidden-sm">
                             <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
                             <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
@@ -126,85 +119,94 @@ class principalUsuario{
                         </div>
                         <div class="col-xs-12 col-sm-3 col-md-9">
                             
-                            <div class="full-width bar-info-user containerTab">
+                        <div class="full-width bar-info-user containerTab">
                                 <ul class="nav nav-tabs">
-                                    <li class="nav-items active" data-tab="Provedores">
-                                    <a class="nav-link " href="getUsuario.php"> <i class="fa fa-group"></i> Usuarios</a>
-                                    </li>
-                                    <?php foreach ($privilegios as $value) {
-                                        if($value[0] == "Usuario")  continue;?>
-                                        <li class="nav-items" data-tab="<?php echo $value[0]?>">
-                                        <a class="nav-link " href="<?php  echo $value[1]?>"> <i class="<?php  echo $value[2]?>"></i><?php  echo $value[0]?></a>    
-                                        
+                                    <?php 
+                                    $privilegios = $_SESSION["privilegios"];
+                                    foreach($privilegios as $value){?>
+                                        <li class="nav-items <?php echo trim($value[0]) == "Cronograma Mantenimiento"? " active" : " " ?>" data-tab="Provedores">
+                                        <a class="nav-link " href="<?php  echo $value[1]?>"> <i class="<?php  echo $value[2]?>"></i><?php  echo $value[0]?></a>
                                         </li>
                                     <?php }?>
                                 </ul>
                             </div>
                             <!-- Contenido-->
-					<div class="full-width" style="padding: 15px; border: 1px solid #E1E1E1;">
-						<div class="d-flex bd-highlight">
-							<div class="row no-gutters">
-								<div class="col-sm-6 col-md-8">
-									<div class="content-select">
-                                        <input class="form-control col-md-3 light-table-filter" data-table="table table-striped" type="text" placeholder="Buscar">
-									</div>
-								</div>
-								<div class="col-6 col-md-4">
-									<div class="der">
-                                        <form action="getUsuario.php" method="POST">
-										    <input type="submit" class="btn btn-second" value="Nuevo" name="accion">
-                                        </form>    
-									</div>
-							  </div>	
-						</div>
-						<span></span>
-						<hr>
-							<table class="table table-striped" style="text-align: center">
-								<thead>
-									<tr>
-									<th scope="col"><center>Nombre</center></th>
-									<th scope="col"><center>Apellido Paterno</center></th>
-									<th scope="col"><center>Apellido Materno</center></th>
-                                    <th scope="col"><center>Usuario</center></th>
-                                    <th scope="col"><center>Estado</center></th>
-                                </tr>
-								</thead>
-								<tbody>
-                                    <?php foreach ($lista as $value) {
-                                        if($value[0] == $_SESSION['user'][0])   continue;?>
-                                        <tr>
-                                            <td><?php echo $value[1]?></td>
-                                            <td><?php echo $value[2]?></td>
-                                            <td><?php echo $value[3]?></td>
-                                            <td><?php echo $value[4]?></td>
-                                            <td><?php echo $value[6] == 1? "<label style='color: green'>Habilitado</label>":"<label style='color: red'>Deshabilitado</label>"?></td>
-                                            <td><div class="izq">
-                                                <form action="getUsuario.php" method="post">
-                                                    <input type="hidden" name="id" value="<?php echo $value[0]?>">
-                                                    <input type="hidden" name="accion" value="Editar">
-                                                    <button class="btn btn2-second ">Editar</button>
-                                                </form>
-                                                 
+                            <div class="full-width" style="padding: 15px; border: 1px solid #E1E1E1;">
+                                <div class="d-flex bd-highlight">
+                                    <div class="row no-gutters">
+                                        <div class="col-sm-6 col-md-8">
+                                            <div class="content-select">
+                                            <input class="form-control col-md-3 light-table-filter" data-table="table table-striped" type="text" placeholder="Buscar">
                                             </div>
-                                            </td>
+                                        </div>
+                                        <div class="col-6 col-md-4">
+                                            <div class="der">
+                                                <form action="getMantenimiento.php" method="POST">
+                                                    <input type="submit" class="btn btn-second" value="Nuevo" name="accion">
+                                                </form>    
+                                            </div>
+                                        </div>
+                                    </div>	
+                                </div>
+                                <span></span>
+                                <hr>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col"><center>Fecha</center></th>
+                                            <th scope="col"><center>Factura</center></th>
+                                            <th scope="col"><center>Maquina</center></th>
+                                            <th scope="col"><center>Proveedoor</center></th>
+                                            <th scope="col"><center>Observacion</center></th>
+                                            <th scope="col"><center>Estado</center></th>
                                         </tr>
-                                    <?php }?>
-								</tbody>
-							</table>
-					</div>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($lista as $value) {?>
+                                                <tr>
+                                                    <td><?php echo $value[2]?></td>
+                                                    <td><?php echo $value[3]?></td>
+                                                    <td><?php echo $value[4]?></td>
+                                                    <td><?php echo $value[5]?></td>
+                                                    <td><?php echo $value[6] == null? "Sin Observacion": $value[6]?></td>
+                                                    <td><?php 
+                                                    switch ($value[7]) {
+                                                        case 0:
+                                                            echo "<label style='color: green'>Realizado</label>";
+                                                            break;
+                                                        case 1:
+                                                            echo "<label style='color: orange'>En Proceso</label>";
+                                                            break;
+                                                        case 2:
+                                                            echo "<label style='color: red'>Por Hacer</label>";
+                                                            break;
+                                                    }
+                                                    ?></td>
+                                                    <td><div class="izq">
+                                                        <form action="getMantenimiento.php" method="post">
+                                                            <input type="hidden" name="id" value="<?php echo $value[0]?>">
+                                                            <input type="hidden" name="accion" value="Editar">
+                                                            <button class="btn btn2-second ">Editar</button>
+                                                        </form>
+                                                    </div>
+                                                    </td>
+                                                </tr>
+                                            <?php }?>
+                                        </tbody>
+                                    </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
-            <script src="../style/style/js/bootstrap.min.js"></script>
+            <script src="../style/js/bootstrap.min.js"></script>
             <script src="../style/js/jquery.mCustomScrollbar.concat.min.js"></script>
             <script src="../style/js/main.js"></script>
         </body>
-    </html>
-    <?php
+        </html>
+        <?php }
     }
-}
 
 ?>

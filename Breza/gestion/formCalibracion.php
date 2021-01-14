@@ -1,8 +1,8 @@
 <?php
 
-class gestionMaquinas{
+class gestionCalibracion{
 
-    public function formGestionMaquinas($privilegios, $marca){?>
+    public function formGestionCalibracion($privilegios, $calibracion){?>
         <!DOCTYPE html>
         <html lang="es">
         <head>
@@ -62,7 +62,7 @@ class gestionMaquinas{
                     <img src="../style/assets/img/breza.png" class="imBreza" alt="">
                 </div>
                 <div class="titulo" >
-                    Maquinas
+                    Calibracion
                 </div>
                          
                 <nav class=" full-width NavBar-Nav">
@@ -87,7 +87,7 @@ class gestionMaquinas{
                         <!--NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA-->
                         <?php session_start();
                         $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
-                        <li class="hidden-xs hidden-sm"><label class="btn-PopUpLogin"><?php echo $nombre;?></label></li>
+                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" ><?php echo $nombre;?></a></li>
                         <li class="hidden-xs hidden-sm">
                             <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
                             <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
@@ -103,7 +103,7 @@ class gestionMaquinas{
                     <a href="perfil.html"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
                     <a href="config.html"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
                     <div role="separator" class="divider"></div>
-                    <a href=""><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
+                    <a href="#!"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
                 </div>
             </section>
         <!-- ====== Contenido de pagina ======-->
@@ -115,18 +115,27 @@ class gestionMaquinas{
                                 debe ir aqui la lista a buscar cada tabla
                             </div> -->
                             <div class="full-width user-menu-xs">
+                                
+                                
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-3 col-md-9">
                             <div class="full-width bar-info-user containerTab">
                                 <ul class="nav nav-tabs">
-                                    <?php 
-                                    $privilegios = $_SESSION["privilegios"];
-                                    foreach($privilegios as $value){?>
-                                        <li class="nav-items <?php echo trim($value[0]) == "Maquinas"? " active" : " " ?>" data-tab="Provedores">
+                                    <?php foreach($privilegios as $value){?>
+                                        <li class="nav-items <?php echo trim($value[0]) == "Cronograma Calibración"? " active" : " " ?>" data-tab="Provedores">
                                         <a class="nav-link " href="<?php  echo $value[1]?>"> <i class="<?php  echo $value[2]?>"></i><?php  echo $value[0]?></a>
                                         </li>
                                     <?php }?>
+                                    <!--<li class="nav-items active" data-tab="Maquinas">
+                                    <a class="nav-link" href="#" ><i class="fa fa-gear"></i> Maquinas</a>
+                                    </li>
+                                    <li class="nav-items" data-tab="Cronog. Mantenimiento">
+                                    <a class="nav-link" href="#"> <i class="fa fa-calendar-o" ></i> Cronog. Mantenimiento</a>
+                                    </li>
+                                    <li class="nav-items" data-tab="Cronog. Mantenimiento">
+                                    <a class="nav-link" href="#"> <i class="fa fa-calendar"></i> Cronog. Calibracion</a>
+                                    </li>-->
                                 </ul>
                             </div>
                             <!-- Contenido-->
@@ -138,8 +147,7 @@ class gestionMaquinas{
                                             <input class="form-control col-md-3 light-table-filter" data-table="table table-striped" type="text" placeholder="Buscar">
                                         </div>
                                     </div>
-                                        <!-- Implementacion de formulario neoMaquinas -->
-                                        <form action="getMaquinas.php" method="POST">
+                                        <form action="getCalibracion.php" method="POST">
                                             <div class="col-6 col-md-4">
                                             <input type="hidden" value="Nuevo" name="accion">
                                                 <button style="left: 50px;" class="btn btn-second">Nuevo</button>									
@@ -152,30 +160,38 @@ class gestionMaquinas{
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                            <th scope="col">código</th>
-                                            <th scope="col">NOMBRE</th>
-                                            <th scope="col">MARCA</th>
-                                            <th scope="col">UBICACIÓN</th>
-                                            <th scope="col">CANTIDAD</th>
+                                            <th scope="col">FECHA</th>
+                                            <th scope="col">N. CERTIFICADO</th>
+                                            <th scope="col">MAQUINA</th>
+                                            <th scope="col">PROVEEDOR</th>
                                             <th scope="col">ESTADO</th>
                                             </tr>
                                         </thead>
-                                        <?php foreach($marca as $value){?>
+                                        <?php foreach($calibracion as $value){?>
                                         <tbody>
                                             <tr>
-                                            <td><?php echo $value[1];?></td>
-                                            <td><?php echo $value[2];?></td>
-                                            <td><?php echo $value[3];?></td>
-                                            <td><?php echo $value[4];?></td>
-                                            <td><?php echo $value[5];?></td>
-                                            <td><?php echo $value[6] == "1" ? "<label style='color: green'>Habilitado</label>":"<label style='color: red'>Deshabilitado</label>"?></td>
-                                            <td>
-                                                <form action="getMaquinas.php" method="post">
+                                            <td><?php echo $value[1]?></td>
+                                            <td><?php echo $value[2]?></td>
+                                            <td><?php echo $value[3]?></td>
+                                            <td><?php echo $value[4]?></td>
+                                            <td><?php switch($value[5]){
+                                                case '0':?>
+                                                    <label style='color: green'>Realizado</label>
+                                                    <?php break;    
+                                                 case '1': ?>
+                                                    <label style='color: orange'>En Proceso</label>
+                                                    <?php break;    
+                                                case '2': ?>
+                                                    <label style='color: red'>Por Hacer</label>
+                                                    <?php break;    
+                                            } ?>
+                                            </td>
+                                            <td>  
+                                                <form action="getCalibracion.php" method="post">
                                                     <input type="hidden" value="Modificar" name="accion">
                                                     <input type="hidden" value="<?php echo $value[0] ?>" name="txtid">
                                                     <button class="btn btn-info">Modificar</button>
                                                 </form>
-
                                             </td> <!--cambiar referencia -->
                                             <!--
                                             <td>
