@@ -6,10 +6,10 @@ include_once("formNeoCalibracion.php");
 include_once("formCalibracion.php");
 header('Cache-Control: no cache'); 
 session_cache_limiter('private_no_expire');
-
+print("entrada");
 session_start();
 if ($_SESSION["acceso"]) {
-    print("HOla error");
+    print("paso de if");
     switch ($_POST['accion']){   
         case 'Nuevo':
             $maquina = new Maquinas();
@@ -54,6 +54,7 @@ if ($_SESSION["acceso"]) {
             break;
     }
 }else{
+    print("salida");
     header("Location: ../index.php");   
 }
 
