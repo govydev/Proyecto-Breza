@@ -1,7 +1,6 @@
 <?php
 define("HOST","localhost");
 define("USER","root");
-<<<<<<< HEAD
 define("PASSWORD","12345678");
 define("BD","sistemaBreza");
 
