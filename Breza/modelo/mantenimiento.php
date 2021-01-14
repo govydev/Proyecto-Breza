@@ -4,16 +4,16 @@ include_once("conexion.php");
 class Mantenimiento{
 
     public function listaMantenimientos(){
-        $lista = Conexion::select("SELECT M.IDMANTENIMIENTO, M.MOTIVO, M.FECHA, M.FACTURA, MQ.NOMBRE, P.NOMBRE, M.OBSERVACION, M.ESTADO
-                                   FROM MAQUINAS MQ,MANTENIMIENTO M, PROVEEDOR P 
-                                   WHERE MQ.IDMAQUINA =  M.IDMAQUINA AND M.IDPROVEEDOR = P.IDPROVEEDOR ORDER BY M.FECHA DESC");
+        $lista = Conexion::select("SELECT M.IDMANTENIMIENTO, M.Motivo, M.Fecha, M.Factura, MQ.Nombre, P.Nombre, M.Observacion, M.Estado
+                                    FROM maquinas MQ, mantenimiento M, proveedor P 
+                                    WHERE MQ.idmaquina =  M.idmaquina AND M.idproveedor = P.idproveedor ORDER BY M.Fecha DESC");
         return $lista;
     }
 
     public function MantenimientoId($id){
-        $mantenimiento = Conexion::select("SELECT M.IDMANTENIMIENTO, M.MOTIVO, M.FECHA, M.FACTURA, MQ.NOMBRE, P.NOMBRE, M.OBSERVACION, M.ESTADO
-                                     FROM MAQUINAS MQ,MANTENIMIENTO M, PROVEEDOR P 
-                                     WHERE MQ.IDMAQUINA =  M.IDMAQUINA AND M.IDPROVEEDOR = P.IDPROVEEDOR AND M.IDMANTENIMIENTO = $id");
+        $mantenimiento = Conexion::select("SELECT M.IDMANTENIMIENTO, M.Motivo, M.Fecha, M.Factura, MQ.Nombre, P.Nombre, M.Observacion, M.Estado
+                                            FROM maquinas MQ, mantenimiento M, proveedor P 
+                                            WHERE MQ.idmaquina =  M.idmaquina AND M.idproveedor = P.idproveedor AND M.idmantenimiento = $id");
         return $mantenimiento[0]; 
     }
 
