@@ -122,6 +122,7 @@ class gestionCalibracion{
                         <div class="col-xs-12 col-sm-3 col-md-9">
                             <div class="full-width bar-info-user containerTab">
                                 <ul class="nav nav-tabs">
+                                    $privilegios = $_SESSION["privilegios"];
                                     <?php foreach($privilegios as $value){?>
                                         <li class="nav-items <?php echo trim($value[0]) == "Cronograma Calibración"? " active" : " " ?>" data-tab="Provedores">
                                         <a class="nav-link " href="<?php  echo $value[1]?>"> <i class="<?php  echo $value[2]?>"></i><?php  echo $value[0]?></a>
@@ -292,7 +293,7 @@ class gestionCalibracion{
             </footer> -->
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
-            <script src="../style/style/js/bootstrap.min.js"></script>
+            <script src="../style/js/bootstrap.min.js"></script>
             <script src="../style/js/jquery.mCustomScrollbar.concat.min.js"></script>
             <script src="../style/js/main.js"></script>
         </body>
