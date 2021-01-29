@@ -1,7 +1,7 @@
 <?php
 define("HOST","localhost");
 define("USER","root");
-define("PASSWORD","");
+define("PASSWORD","12345678");
 define("BD","breza"); 
 
 class Conexion{

@@ -4,7 +4,7 @@ include_once("conexion.php");
 class Mantenimiento{
 
     public function listaMantenimientos(){
-        $lista = Conexion::select("SELECT M.IDMANTENIMIENTO, M.MOTIVO, M.FECHA, M.FACTURA, MQ.NOMBRE, P.NOMBRE, M.OBSERVACION, M.ESTADO
+        $lista = Conexion::select("SELECT M.IDMANTENIMIENTO, M.MOTIVO, M.FECHA, M.FACTURA, MQ.NOMBRE, P.NOMBRE, M.OBSERVACION, M.ESTADO, MQ.CODIGO, MQ.UBICACION 
                                    FROM MAQUINAS MQ,MANTENIMIENTO M, PROVEEDOR P 
                                    WHERE MQ.IDMAQUINA =  M.IDMAQUINA AND M.IDPROVEEDOR = P.IDPROVEEDOR ORDER BY M.FECHA DESC");
         return $lista;

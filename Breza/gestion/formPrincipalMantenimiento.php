@@ -143,7 +143,10 @@
                                             <div class="der">
                                                 <form action="getMantenimiento.php" method="POST">
                                                     <input type="submit" class="btn btn-second" value="Nuevo" name="accion">
-                                                </form>    
+                                                </form>
+                                            </div>
+                                            <div class="izq">
+                                                <a href="reporte.php?tipo=1" class="btn btn-info">Reporte</a>    
                                             </div>
                                         </div>
                                     </div>	
