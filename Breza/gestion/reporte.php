@@ -54,14 +54,27 @@
             $this->SetFillColor(255,255,255);
             $this->SetTextColor(40,40,40);
             $this->SetDrawColor(88,88,88);
-            $this->Cell(20,10,'Fecha',1,0,'C',1);
-            $this->Cell(20,10,'Maquina',1,0,'C',1);
-            $this->Cell(20,10,'Modelo',1,0,'C',1);
-            $this->Cell(40,10,'Ubicacion',1,0,'C',1);
-            $this->Cell(60,10,'Motivo',1,0,'C',1);
-            $this->Cell(60,10,'Observaciones',1,0,'C',1);
-            $this->Cell(20,10,('# Factura'),1,0,'C',1);
-            $this->Cell(20,10,'Estado',1,0,'C',1);
+            if($this->tipo == "MANTENIMIENTO"){
+                $this->Cell(20,10,'Fecha',1,0,'C',1);
+                $this->Cell(20,10,'Maquina',1,0,'C',1);
+                $this->Cell(25,10,'Modelo',1,0,'C',1);
+                $this->Cell(35,10,'Ubicacion',1,0,'C',1);
+                $this->Cell(60,10,'Motivo',1,0,'C',1);
+                $this->Cell(60,10,'Observaciones',1,0,'C',1);
+                $this->Cell(20,10,'# Factura',1,0,'C',1);
+                $this->Cell(20,10,'Estado',1,0,'C',1);
+            }
+            if($this->tipo == "CALIBRACION"){
+                $this->Cell(20,10,'Fecha',1,0,'C',1);
+                $this->Cell(30,10,'Maquina',1,0,'C',1);
+                $this->Cell(30,10,'Modelo',1,0,'C',1);
+                $this->Cell(60,10,'Ubicacion',1,0,'C',1);
+                $this->Cell(40,10,'Certificado',1,0,'C',1);
+                $this->Cell(40,10,'Proveedor',1,0,'C',1);
+                $this->Cell(20,10,'Telefono',1,0,'C',1);
+                $this->Cell(20,10,'Estado',1,0,'C',1);
+            }
+            
             $this->Ln();
         }
 
@@ -98,8 +111,8 @@
             foreach ($lista as $value) {
                 $pdf->Cell(20,10,$value[2],1,0,'C',1);
                 $pdf->Cell(20,10,$value[4],1,0,'C',1);
-                $pdf->Cell(20,10,$value[8],1,0,'C',1);
-                $pdf->Cell(40,10,$value[9],1,0,'C',1);
+                $pdf->Cell(25,10,$value[8],1,0,'C',1);
+                $pdf->Cell(35,10,$value[9],1,0,'C',1);
                 $pdf->Cell(60,10,utf8_decode($value[1]),1,0,'C',1);
                 $observacion = isset($value[6])? $value[6] : "Sin observacion";
                 $pdf->Cell(60,10,utf8_decode(trim($observacion)),1,0,'C',1);
@@ -110,15 +123,15 @@
             }
         }else {
             foreach ($lista as $value) {
-                $pdf->Cell(20,10,$value[2],1,0,'C',1);
-                $pdf->Cell(20,10,$value[4],1,0,'C',1);
+                $pdf->Cell(20,10,$value[1],1,0,'C',1);
+                $pdf->Cell(30,10,utf8_decode(trim($value[3])),1,0,'C',1);
+                $pdf->Cell(30,10,$value[6],1,0,'C',1);
+                $pdf->Cell(60,10,utf8_decode(trim($value[7])),1,0,'C',1);
+                $certificado = $value[2] != null? $value[2] : " - ";
+                $pdf->Cell(40,10,utf8_decode($certificado),1,0,'C',1);
+                $pdf->Cell(40,10,utf8_decode(trim($value[4])),1,0,'C',1);
                 $pdf->Cell(20,10,$value[8],1,0,'C',1);
-                $pdf->Cell(40,10,$value[9],1,0,'C',1);
-                $pdf->Cell(60,10,utf8_decode($value[1]),1,0,'C',1);
-                $observacion = isset($value[6])? $value[6] : "Sin observacion";
-                $pdf->Cell(60,10,utf8_decode(trim($observacion)),1,0,'C',1);
-                $pdf->Cell(20,10,$value[3],1,0,'C',1);
-                $estado = $value[7] == 0 ? "Realizado": ($value[7] == 1 ? "En Proceso" : "Por hacer");
+                $estado = $value[5] == 0 ? "Realizado": ($value[7] == 1 ? "En Proceso" : "Por hacer");
                 $pdf->Cell(20,10,$estado,1,0,'C',1);
                 $pdf->Ln();
             }
