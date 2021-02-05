@@ -4,16 +4,23 @@ include_once("conexion.php");
 class Mantenimiento{
 
     public function listaMantenimientos(){
-        $lista = Conexion::select("SELECT M.IDMANTENIMIENTO, M.MOTIVO, M.FECHA, M.FACTURA, MQ.NOMBRE, P.NOMBRE, M.OBSERVACION, M.ESTADO, MQ.CODIGO, MQ.UBICACION 
-                                   FROM MAQUINAS MQ,MANTENIMIENTO M, PROVEEDOR P 
-                                   WHERE MQ.IDMAQUINA =  M.IDMAQUINA AND M.IDPROVEEDOR = P.IDPROVEEDOR ORDER BY M.FECHA DESC");
+        $lista = Conexion::select("SELECT m.idmantenimiento, m.motivo, m.fecha, m.factura, mq.nombre, p.nombre, m.observacion, m.estado, mq.codigo, mq.ubicacion 
+                                   FROM maquinas mq,mantenimiento m, proveedor p 
+                                   WHERE mq.idmaquina =  m.idmaquina and m.idproveedor = p.idproveedor order by m.fecha desc");
+        return $lista;
+    }
+
+    public function listaReporte($year){
+        $lista = Conexion::select("SELECT m.idmantenimiento, m.motivo, m.fecha, m.factura, mq.nombre, p.nombre, m.observacion, m.estado, mq.codigo, mq.ubicacion 
+                                   FROM maquinas mq,mantenimiento m, proveedor p 
+                                   WHERE mq.idmaquina =  m.idmaquina and m.idproveedor = p.idproveedor and YEAR(m.fecha) = $year order by m.fecha desc");
         return $lista;
     }
 
     public function MantenimientoId($id){
-        $mantenimiento = Conexion::select("SELECT M.IDMANTENIMIENTO, M.MOTIVO, M.FECHA, M.FACTURA, MQ.NOMBRE, P.NOMBRE, M.OBSERVACION, M.ESTADO
-                                     FROM MAQUINAS MQ,MANTENIMIENTO M, PROVEEDOR P 
-                                     WHERE MQ.IDMAQUINA =  M.IDMAQUINA AND M.IDPROVEEDOR = P.IDPROVEEDOR AND M.IDMANTENIMIENTO = $id");
+        $mantenimiento = Conexion::select("SELECT m.idmantenimiento, m.motivo, m.fecha, m.factura, mq.nombre, p.nombre, m.observacion, m.estado
+                                           FROM maquinas mq,mantenimiento m, proveedor p 
+                                           WHERE mq.idmaquina =  m.idmaquina and m.idproveedor = p.idproveedor and m.idmantenimiento = $id");
         return $mantenimiento[0]; 
     }
 

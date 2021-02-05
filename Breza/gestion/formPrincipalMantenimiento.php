@@ -49,8 +49,20 @@
                 LightTableFilter.init();
                 }
             });
-
             })(document);
+
+            function reporte(){
+                let year = parseInt(prompt("Año del reporte","2019"));
+                let y = new Date().getFullYear();
+                if(year < 2019 || year > y){
+                    alert("El año no cuenta con reporte");
+                    return false;
+                }
+                else{
+                    document.getElementById("reporte").href = "reporte.php?tipo=1&a="+year;
+                    return true;
+                }
+            }
             </script>
         </head>
         <body>
@@ -146,7 +158,7 @@
                                                 </form>
                                             </div>
                                             <div class="izq">
-                                                <a href="reporte.php?tipo=1" class="btn btn-info">Reporte</a>    
+                                                <a href="reporte.php?tipo=1" class="btn btn-info" id="reporte" onclick="return reporte()">Reporte</a>    
                                             </div>
                                         </div>
                                     </div>	

@@ -42,7 +42,8 @@
             $this->SetX(215);
             date_default_timezone_set('America/Lima');
             $hoy = getdate();
-            $this->Cell(55,5,'Fecha:  '.$hoy[mday]."/".$hoy[mon]."/".$hoy[year],1,1,'',0);
+            $fecha = $hoy['mday'].'/'.$hoy['mon'].'/'.$hoy['year'];
+            $this->Cell(55,5,'Fecha: '.$fecha,1,1,'',0);
             $this->SetY(10);
             $this->SetX(65);
             $this->SetFontSize(12);
@@ -93,11 +94,11 @@
         if($_GET['tipo']==1){
             $pdf->setTipo("MANTENIMIENTO");
             $lista = new Mantenimiento();
-            $lista = $lista->listaMantenimientos();
+            $lista = $lista->listaReporte($_GET['a']);
         }else{
             $pdf->setTipo("CALIBRACION");
             $lista = new Calibracion();
-            $lista = $lista->listaCalibracion();
+            $lista = $lista->listaReporte($_GET['a']);
         }
         $pdf->setUser($_SESSION['user'][1]." ".$_SESSION['user'][2]);
         $pdf->AddPage('landscape', 'letter');
