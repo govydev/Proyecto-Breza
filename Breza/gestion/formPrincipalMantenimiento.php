@@ -59,8 +59,11 @@
                     return false;
                 }
                 else{
-                    document.getElementById("reporte").href = "reporte.php?tipo=1&a="+year;
-                    return true;
+                    if(!isNaN(year)){
+                        document.getElementById("reporte").href = "reporte.php?tipo=1&a="+year;
+                        return true;
+                    }
+                    return false;
                 }
             }
             </script>
@@ -97,7 +100,7 @@
                         <!--NOMBRE DE LA PERSONA RESPONSABLE HA ADMINISTRAR LA PAGINA-->
                         <?php session_start();
                         $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
-                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" ><?php echo $nombre;?></a></li>
+                        <li class="hidden-xs hidden-sm"><label class="btn-PopUpLogin"><?php echo $nombre;?></label></li>
                         <li class="hidden-xs hidden-sm">
                             <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
                             <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
@@ -110,10 +113,7 @@
             <!-- ====== PopUpLogin ======-->
             <section class="full-width PopUpLogin PopUpLogin-2">
                 <div class="full-width">
-                    <a href="perfil.html"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
-                    <a href="config.html"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
-                    <div role="separator" class="divider"></div>
-                    <a href=""><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
+                <a href="../seguridad/cierreSesion.php"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
                 </div>
             </section>
         <!-- ====== Contenido de pagina ======-->

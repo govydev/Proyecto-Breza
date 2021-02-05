@@ -44,6 +44,10 @@ class Usuario{
         return $user;
     }
 
+    public function usuarioExiste($nombre){
+        $user = Conexion::select("SELECT COUNT(*) FROM usuarios WHERE usuario='$nombre'");
+        return $user[0];
+    }
 }
 
 ?>

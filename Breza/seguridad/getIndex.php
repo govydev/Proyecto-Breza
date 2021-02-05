@@ -3,8 +3,7 @@ include_once("../modelo/usuario.php");
 include_once("../modelo/privilegios.php");
 include_once("autenticacion.php");
 include_once("principal.php");
-header('Cache-Control: no cache'); 
-session_cache_limiter('private_no_expire');
+session_start();
 
 if(isset($_POST['login'])){
     $user = $_POST["txtUser"];
@@ -15,7 +14,6 @@ if(isset($_POST['login'])){
         $carga = TRUE;
         $privilegios = new Privilegios();
         $path = $privilegios->privilegiosUsuario($respuesta[0]);
-        session_start();
         $_SESSION['user'] = $respuesta;
         $_SESSION['acceso'] = true; 
         $_SESSION['privilegios'] = $path;
@@ -24,9 +22,13 @@ if(isset($_POST['login'])){
     }else{
         header("Location: ../index.php?msg=$respuesta");
     }
-}else{
-    session_start();
-    session_destroy();
+}elseif($_SESSION['acceso']){
+    $privilegios = new Privilegios();
+    $path = $privilegios->privilegiosUsuario($_SESSION['user'][0]);
+    $principal = new Principal();
+    $principal->formPrincipal($path);
+}
+else{
     header("Location: ../index.php");
 }
 

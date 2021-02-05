@@ -91,11 +91,11 @@
     session_start();
     if($_SESSION["acceso"]){
         $pdf = new PDF();
-        if($_GET['tipo']==1){
+        if($_GET['tipo'] == 1){
             $pdf->setTipo("MANTENIMIENTO");
             $lista = new Mantenimiento();
             $lista = $lista->listaReporte($_GET['a']);
-        }else{
+        }elseif ($_GET['tipo'] == 0) {
             $pdf->setTipo("CALIBRACION");
             $lista = new Calibracion();
             $lista = $lista->listaReporte($_GET['a']);
@@ -122,7 +122,7 @@
                 $pdf->Cell(20,10,$estado,1,0,'C',1);
                 $pdf->Ln();
             }
-        }else {
+        }elseif ($_GET['tipo'] == 0) {
             foreach ($lista as $value) {
                 $pdf->Cell(20,10,$value[1],1,0,'C',1);
                 $pdf->Cell(30,10,utf8_decode(trim($value[3])),1,0,'C',1);

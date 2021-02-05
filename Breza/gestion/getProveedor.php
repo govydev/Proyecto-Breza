@@ -2,8 +2,6 @@
 include_once("../modelo/proveedor.php");
 include_once("neoProveedor.php");
 include_once("proveedor.php");
-header('Cache-Control: no cache'); 
-session_cache_limiter('private_no_expire');
 
 if(isset($_POST['accion'])){
 

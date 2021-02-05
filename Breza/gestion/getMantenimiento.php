@@ -4,8 +4,6 @@ include_once("formMantenimiento.php");
 include_once("../modelo/mantenimiento.php");
 include_once("../modelo/proveedor.php");
 include_once("../modelo/maquinas.php");
-header('Cache-Control: no cache'); 
-session_cache_limiter('private_no_expire');
 
 session_start();
 if ($_SESSION["acceso"]) {

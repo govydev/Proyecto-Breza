@@ -8,7 +8,7 @@ class gestionMaquinas{
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-            <title>Maquinas</title>
+            <title>Gestion de Maquinas</title>
             <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="../style/css/bootstrap.css">
             <link rel="stylesheet" href="../style/css/main.css">
@@ -100,10 +100,7 @@ class gestionMaquinas{
             <!-- ====== PopUpLogin ======-->
             <section class="full-width PopUpLogin PopUpLogin-2">
                 <div class="full-width">
-                    <a href="perfil.html"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
-                    <a href="config.html"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
-                    <div role="separator" class="divider"></div>
-                    <a href=""><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
+                <a href="../seguridad/cierreSesion.php"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
                 </div>
             </section>
         <!-- ====== Contenido de pagina ======-->
@@ -173,7 +170,7 @@ class gestionMaquinas{
                                                 <form action="getMaquinas.php" method="post">
                                                     <input type="hidden" value="Modificar" name="accion">
                                                     <input type="hidden" value="<?php echo $value[0] ?>" name="txtid">
-                                                    <button class="btn btn-info">Modificar</button>
+                                                    <button class="btn btn2-second">Modificar</button>
                                                 </form>
 
                                             </td> <!--cambiar referencia -->

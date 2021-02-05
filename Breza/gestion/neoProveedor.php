@@ -10,6 +10,11 @@ class formNP{
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../style/css/bootstrap.css">
         <link rel="stylesheet" href="../style/css/main.css">
+        <script>
+            if (window.history.replaceState) { // verificamos disponibilidad
+                window.history.replaceState(null, null, window.location.href);
+            }
+        </script>
     </head>
     <body>
         <!-- ====== Barra de navegacion ======-->
@@ -40,7 +45,9 @@ class formNP{
                             <i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true"></i> INICIO
                         </a>
                     </li>
-                    <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!">Nombre</a></li>
+                    <?php session_start();
+                    $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
+                    <li class="hidden-xs hidden-sm"><label class="btn-PopUpLogin"><?php echo $nombre;?></label></li>
                     <li class="hidden-xs hidden-sm">
                         <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
                         <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
@@ -53,10 +60,7 @@ class formNP{
         <!-- ====== PopUpLogin ======-->
         <section class="full-width PopUpLogin PopUpLogin-2">
             <div class="full-width">
-                <a href="perfil.html"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
-                <a href="config.html"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
-                <div role="separator" class="divider"></div>
-                <a href="#!"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
+            <a href="../seguridad/cierreSesion.php"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
             </div>
         </section>
     <!-- ====== Contenido de pagina ======-->

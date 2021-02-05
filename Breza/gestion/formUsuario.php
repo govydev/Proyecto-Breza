@@ -12,7 +12,12 @@ class formUsuario{
             <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="../style/css/bootstrap.css">
             <link rel="stylesheet" href="../style/css/main.css">
+            <script src="../style/js/jquery-3.4.1.min.js"></script>
             <script>
+                if (window.history.replaceState) { // verificamos disponibilidad
+                    window.history.replaceState(null, null, window.location.href);
+                }
+                
                 function verificar(){
                     var passUno = document.getElementById("password1").value;
                     var passDos = document.getElementById("password2").value;
@@ -25,6 +30,21 @@ class formUsuario{
                         return false;
                     }
                 }
+
+            
+                $(function () {
+                    $("#user").on("keyup", function () {
+                        $.ajax({
+                            url: 'getValidacion.php',
+                            type: 'POST',
+                            data: $('#formx').serialize(),
+                            success: function (datos) {
+                                $("#mensaje").html(datos);
+                            }
+                        });
+                    });
+                });
+                 
             </script>
         </head>
         <body style="height: 153vh;">
@@ -71,16 +91,13 @@ class formUsuario{
             <!-- ====== PopUpLogin ======-->
             <section class="full-width PopUpLogin PopUpLogin-2">
                 <div class="full-width">
-                    <a href="perfil.html"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
-                    <a href="config.html"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
-                    <div role="separator" class="divider"></div>
-                    <a href="#!"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
+                    <a href="../seguridad/cierreSesion.php"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
                 </div>
             </section>
         <!-- ====== Contenido de pagina ======-->
             <section class="contenido_principal">
                 <div class="contenido">
-                    <form class="form" action="getUsuario.php" method="POST">
+                    <form class="form" action="getUsuario.php" id="formx" method="POST">
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Nombre :</label>  
                             <input type="text" placeholder="Ingrese su nombre" name="txtNombre" <?php if($user != null) echo "value='".$user[1]."'"?> required><span class="barra"></span>  
@@ -95,7 +112,8 @@ class formUsuario{
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Usuario :</label>  
-                            <input type="text" placeholder="Ingrese usuario" name="txtUsuario" <?php if($user != null) echo "value='".$user[4]."'  readonly"?> required><span class="barra"></span>  
+                            <input type="text" placeholder="Ingrese usuario" name="txtUsuario" <?php if($user != null) echo "value='".$user[4]."'  readonly"?> id="user" required><span class="barra"></span>  
+                            <div id="mensaje"></div>
                         </div>
                         <div class="grupo inner-addon">
                             <label class="labe" for="">Contraseña :</label>  

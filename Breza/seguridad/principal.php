@@ -5,11 +5,16 @@ class Principal{
         <!DOCTYPE html>
         <html lang="es">
             <head>
-                <title></title>
+                <title>Principal</title>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='../style/text/css'>
                 <link rel="stylesheet" href="../style/css/main.css">
+                <script>
+                if (window.history.replaceState) { // verificamos disponibilidad
+                    window.history.replaceState(null, null, window.location.href);
+                }
+                </script>
             </head>
             
         <body>
@@ -38,7 +43,7 @@ class Principal{
                         </li>
                         <?php session_start();
                         $nombre =  $_SESSION['user'][1]." ".$_SESSION['user'][2]." ".$_SESSION['user'][3];?>
-                        <li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!"><?php echo $nombre;?></a></li>
+                        <li class="hidden-xs hidden-sm"><label class="btn-PopUpLogin"><?php echo $nombre;?></label></li>
                         <li class="hidden-xs hidden-sm">
                             <!--<i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i>-->
                             <img src="../style/assets/img/user.png" alt="" class="NavBar-Nav-icon btn-PopUpLogin">
@@ -51,10 +56,7 @@ class Principal{
             <!-- ====== PopUpLogin ======-->
             <section class="full-width PopUpLogin PopUpLogin-2">
                 <div class="full-width">
-                    <a href="#!"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
-                    <a href="#!"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
-                    <div role="separator" class="divider"></div>
-                    <a href="../seguridad/cierreSesion.php"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
+                    <a href="cierreSesion.php"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
                 </div>
             </section>
 
