@@ -57,17 +57,32 @@ class gestionCalibracion{
             function reporte(){
                 let year = parseInt(prompt("Año del reporte","2019"));
                 let y = new Date().getFullYear();
+                let cod = prompt("Codigo");
+                let ver = prompt("Version:");
+                let res = false;
                 if(year < 2019 || year > y){
                     alert("El año no cuenta con reporte");
-                    return false;
+                    res = false;
                 }
                 else{
                     if(!isNaN(year)){
-                        document.getElementById("reporte").href = "reporte.php?tipo=0&a="+year;
-                        return true;
+                        if(cod.trim() != ""){
+                            if (ver.trim() != "") {
+                                document.getElementById("reporte").href = "reporte.php?tipo=0&a="+year+"&c="+cod+"&v="+ver;
+                                res = true;
+                            }else{
+                                alert("No ingreso version");
+                                res = false;
+                            }
+                        }else{
+                            alert("No ingreso codigo");
+                            res = false;
+                        }
+                    }else{
+                        res = false;
                     }
-                    return false;
                 }
+                return res;
             }
             </script>
         </head>

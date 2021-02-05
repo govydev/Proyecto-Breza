@@ -6,6 +6,8 @@
     class PDF extends FPDF{
         private $tipo;
         private $user;
+        private $cod;
+        private $ver;
         
         function setTipo($tipo){
             $this->tipo = $tipo;
@@ -23,6 +25,11 @@
             return $this->user;
         }
 
+        function setData($cod, $ver){
+            $this->ver = $ver;
+            $this->cod = $cod;
+        }
+
         function Header()
         {
             $this->SetFontSize(12);
@@ -34,9 +41,9 @@
             $this->SetFontSize(10);
             $this->SetFont('Arial','B');
             $this->SetX(215);
-            $this->Cell(55,5,'Codigo: ',1,1,'',0);
+            $this->Cell(55,5,'Codigo: '.$this->cod,1,1,'',0);
             $this->SetX(215);
-            $this->Cell(55,5,'Version: ',1,1,'',0);
+            $this->Cell(55,5,'Version: '.$this->ver,1,1,'',0);
             $this->SetX(215);
             $this->Cell(55,5,'Elaborado:  '.$this->user,1,1,'',0);
             $this->SetX(215);
@@ -91,6 +98,7 @@
     session_start();
     if($_SESSION["acceso"]){
         $pdf = new PDF();
+        $pdf->setData($_GET['c'], $_GET['v']);
         if($_GET['tipo'] == 1){
             $pdf->setTipo("MANTENIMIENTO");
             $lista = new Mantenimiento();
