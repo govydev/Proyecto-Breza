@@ -1,8 +1,8 @@
 <?php
 define("HOST","localhost");
 define("USER","root");
-define("PASSWORD","12345678");
-define("BD","breza"); 
+define("PASSWORD","UntelsIS_2020@");
+define("BD","sistemaBreza"); 
 
 class Conexion{
 	public static $conexion = null;

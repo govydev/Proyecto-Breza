@@ -57,32 +57,26 @@ class gestionCalibracion{
             function reporte(){
                 let year = parseInt(prompt("Año del reporte","2019"));
                 let y = new Date().getFullYear();
-                let cod = prompt("Codigo");
-                let ver = prompt("Version:");
-                let res = false;
                 if(year < 2019 || year > y){
                     alert("El año no cuenta con reporte");
-                    res = false;
                 }
                 else{
                     if(!isNaN(year)){
+                        let cod = prompt("Codigo: ","");
                         if(cod.trim() != ""){
+                            let ver = prompt("Version:");
                             if (ver.trim() != "") {
                                 document.getElementById("reporte").href = "reporte.php?tipo=0&a="+year+"&c="+cod+"&v="+ver;
-                                res = true;
+                                return true;
                             }else{
                                 alert("No ingreso version");
-                                res = false;
                             }
                         }else{
                             alert("No ingreso codigo");
-                            res = false;
                         }
-                    }else{
-                        res = false;
                     }
                 }
-                return res;
+                return false;
             }
             </script>
         </head>
@@ -182,7 +176,7 @@ class gestionCalibracion{
                                             </div>
                                         </form>
                                         <div class="izq">
-                                            <a href="reporte.php?tipo=0" class="btn btn-info" id="reporte" onclick="return reporte()">Reporte</a>    
+                                            <a href="" class="btn btn-info" id="reporte" onclick="return reporte()">Reporte</a>    
                                         </div>
                                     </div>	
                                 </div>
