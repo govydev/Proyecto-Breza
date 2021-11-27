@@ -32,7 +32,7 @@ class Principal{
                             </a>
                         </div>
                         <li>
-                            <a href="index.html" class="">
+                            <a href="#" class="">
                                 <i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true"></i> INICIO
                             </a>
                         </li>

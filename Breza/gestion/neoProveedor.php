@@ -31,7 +31,7 @@ class formNP{
                         -->
                         <img src="../style/assets/img/user.png" alt="" class="header-menu-mobile-icon">
                         <div class="divider"></div>
-                        <a href="#!" class="btn btn-success header-menu-mobile-btn">
+                        <a href="../seguridad/cierreSesion.php" class="btn btn-success header-menu-mobile-btn">
                             <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión
                         </a>
                     </div>
@@ -56,7 +56,7 @@ class formNP{
                 <a href="perfil.html"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Tu perfil</a>
                 <a href="config.html"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i> Configuración</a>
                 <div role="separator" class="divider"></div>
-                <a href="#!"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
+                <a href="../seguridad/cierreSesion.php"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Cerrar sesión</a>
             </div>
         </section>
     <!-- ====== Contenido de pagina ======-->
