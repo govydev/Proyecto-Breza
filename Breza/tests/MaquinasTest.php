@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 
 include_once("../Breza/modelo/maquinas.php");
-
 include_once("../Breza/modelo/conexion.php");
 // require "../Breza/modelo/maquinas.php";
 
@@ -26,7 +25,6 @@ class MaquinasTest extends TestCase {
         $estado = $maquinas->agregar($codigo, $nombre, $ubicacion, $cantidad, $estado, $idmarca);
         $lista = Conexion::select("SELECT m.idmaquina, m.codigo, m.nombre 'Nombre de Maquina', mr.idmarca Marca, m.ubicacion, m.cantidad, m.estado
             FROM maquinas m, marca mr WHERE m.idmarca = mr.idmarca ORDER BY m.idmaquina DESC LIMIT 1");
-        print_r($lista);
         //aseerts
         $this->assertIsArray($lista); //verificacion de array
         $this->assertEquals('1', $estado); //verificacion de estado al guardar
