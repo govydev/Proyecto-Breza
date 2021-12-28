@@ -1,4 +1,5 @@
 <?php
+namespace App\gestion;
 
 class neoMaquinas{
     public function formneoMaquinas($titulo = null, $marcas = null, $maquina = null){?>

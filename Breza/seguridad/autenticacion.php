@@ -1,4 +1,5 @@
 <?php
+namespace App\seguridad;
 class Index{
 
     public function formIndex(){?>

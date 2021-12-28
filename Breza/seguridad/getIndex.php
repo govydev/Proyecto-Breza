@@ -1,5 +1,8 @@
 <?php
+namespace App\seguridad;
+
 include_once("facadeLogin.php");
+
 header('Cache-Control: no cache'); 
 session_cache_limiter('private_no_expire');
 

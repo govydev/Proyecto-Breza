@@ -1,6 +1,10 @@
 <?php
-    require('../style/fpdf/fpdf.php');
-    require('mantenimiento.php');
+namespace App\modelo;
+
+use App\style\fpdf\FPDF;
+require('../style/fpdf/fpdf.php');
+require('mantenimiento.php');
+
     $mantenimiento = new Mantenimiento();
     class PDF extends FPDF
     {

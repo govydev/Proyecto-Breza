@@ -1,4 +1,8 @@
 <?php 
+namespace App\seguridad;
+use App\modelo\Privilegios;
+use App\modelo\Usuario;
+
 include_once("../modelo/usuario.php");
 include_once("../modelo/privilegios.php");
 include_once("principal.php");

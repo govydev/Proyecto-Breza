@@ -1,4 +1,9 @@
 <?php
+namespace App\gestion;
+
+use App\modelo\Privilegios;
+use App\modelo\Usuario;
+
 include_once("../modelo/usuario.php");
 include_once("../modelo/privilegios.php");
 include_once("formPrincipalUsuarios.php");
@@ -41,7 +46,7 @@ if ($_SESSION["acceso"]) {
                     $privilegios->modificar($privilegiosUsuario,$_POST['id']);
                     break;
             }
-            header("Location: getUsuario.php"); 
+            header("Location: getUsuario.php");
             break;
         
         default:
@@ -54,7 +59,7 @@ if ($_SESSION["acceso"]) {
 }else{
     session_start();
     session_destroy();
-    header("Location: ../index.php");   
+    header("Location: ../index.php");
 }
 
 

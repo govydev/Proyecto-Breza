@@ -1,5 +1,5 @@
 <?php
-
+namespace App\gestion;
 class gestionCalibracion{
 
     public function formGestionCalibracion($calibracion){?>

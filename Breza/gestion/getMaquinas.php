@@ -1,4 +1,11 @@
 <?php
+namespace App\gestion;
+
+use App\modelo\Maquinas;
+use App\modelo\Marca;
+use App\gestion\gestionMaquinas;
+use App\gestion\neoMaquinas;
+
 include_once("../modelo/maquinas.php");
 include_once("../modelo/marca.php");
 include_once("neoMaquinas.php");
@@ -8,7 +15,7 @@ session_cache_limiter('private_no_expire');
 
 session_start();
 if ($_SESSION["acceso"]) {
-    switch ($_POST['accion']){   
+    switch ($_POST['accion']){
         case 'Nuevo':
             $maquinas = new Maquinas();
             $neoMaquinas = new neoMaquinas();

@@ -1,4 +1,5 @@
 <?php
+namespace App\seguridad;
 
 session_start();
 $_SESSION = array();

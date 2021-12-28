@@ -1,4 +1,5 @@
 <?php
+namespace App\modelo;
 include_once("conexion.php");
 
 class Maquinas{
@@ -35,6 +36,11 @@ class Maquinas{
                                 VALUES ('$codigo', '$nombre', '$ubicacion', '$cantidad', '$estado', '$idmarca')");
         return $maquina;
     }
+    public function hola()
+    {
+        return 'Hola';
+    }
+
 }
 
 ?>

@@ -1,4 +1,10 @@
 <?php
+namespace App\gestion;
+
+use App\modelo\Calibracion;
+use App\modelo\Maquinas;
+use App\modelo\Proveedor;
+
 include_once("../modelo/maquinas.php");
 include_once("../modelo/proveedor.php");
 include_once("../modelo/calibracion.php");

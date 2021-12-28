@@ -1,4 +1,5 @@
 <?php
+namespace App\gestion;
 
     class principalMantenimiento{
         public function formPrincipalMantenimiento($lista){?>

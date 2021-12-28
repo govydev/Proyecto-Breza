@@ -1,7 +1,8 @@
 <?php
+namespace App\modelo;
 include_once("conexion.php");
 
-class proveedor{
+class Proveedor{
 
     public function listar(){
         $lista = Conexion::select("SELECT * FROM proveedor");

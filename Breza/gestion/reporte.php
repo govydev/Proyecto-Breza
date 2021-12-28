@@ -1,7 +1,14 @@
 <?php
-    require('../style/fpdf/fpdf.php');
-    require('../modelo/mantenimiento.php');
-    require('../modelo/calibracion.php');
+
+namespace App\gestion;
+
+use App\modelo\Calibracion;
+use App\modelo\Mantenimiento;
+use App\style\fpdf\FPDF;
+
+require('../style/fpdf/fpdf.php');
+require('../modelo/mantenimiento.php');
+require('../modelo/calibracion.php');
 
     class PDF extends FPDF{
         private $tipo;
@@ -125,7 +132,7 @@
         }
         $pdf->Output();
     }else{
-        header("Location: ../index.php");   
+        header("Location: ../index.php");
     }
 
 ?>

@@ -1,4 +1,5 @@
-<?php 
+<?php
+namespace App\gestion;
 class formNP{
     public function formNPShow($tipo = null, $proveedor = null){ ?>
     <!DOCTYPE html>
