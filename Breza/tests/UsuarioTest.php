@@ -17,8 +17,10 @@ class UsuarioTest extends TestCase{
         $estado = $usuario->agregar($data);
         $lista = Conexion::select("SELECT * FROM usuarios ORDER BY idusuario DESC LIMIT 1");
         //aseerts
-        $this->assertIsArray($lista); //verificacion si es un array
+
+        $this->assertIsArray($data); //verificacion si los datos enviados estan en un array
         $this->assertEquals('1', $estado); //verificacion de estado al guardar usuario
+        $this->assertIsArray($lista); //verificacion si los datos recibidos estan en un array
 
         $this->assertEquals($data[0], $lista[0][1]); //verificacion de nombre enviado
         $this->assertEquals($data[1], $lista[0][2]); //verificacion de apellido paterno enviado

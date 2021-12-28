@@ -35,5 +35,7 @@ class MaquinasTest extends TestCase {
         $this->assertEquals($ubicacion, $lista[0][4]); //verificacion de ubicacion enviado
         $this->assertEquals($cantidad, $lista[0][5]); //verificacion de cantidad enviado
         $this->assertEquals($estado, $lista[0][6]); //verificacion de estado enviado
+        
+        $maquinas->eliminar($lista[0][0]);
     }
 }
