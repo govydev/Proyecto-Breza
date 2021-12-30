@@ -1,4 +1,5 @@
 <?php
+namespace App\modelo;
 include_once("conexion.php");
 
 class Usuario{
@@ -40,7 +41,7 @@ class Usuario{
 
     public function agregar($datos){
         $user = Conexion::query("INSERT INTO usuarios(nombre, apPaterno, apMaterno, usuario, `password`, estado) 
-                                VALUES ('$datos[0]', '$datos[1]', '$datos[2]', '$datos[3]', '$datos[4]', 1)", 1);
+                                VALUES ('$datos[0]', '$datos[1]', '$datos[2]', '$datos[3]', '$datos[4]', 1)");
         return $user;
     }
 

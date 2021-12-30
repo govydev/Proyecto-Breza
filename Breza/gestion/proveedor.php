@@ -1,4 +1,5 @@
-<?php 
+<?php
+namespace App\gestion;
 class formProveedor{
     public function formProveedorShow($privilegios, $lista){ ?>
         <!DOCTYPE html>

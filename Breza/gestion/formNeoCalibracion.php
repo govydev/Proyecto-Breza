@@ -1,4 +1,5 @@
 <?php
+namespace App\gestion;
 
 class neoCalibracion{
     public function formNeoCalibracion($titulo = null, $proveedor = null, $maquina = null, $calibracion = null){?>

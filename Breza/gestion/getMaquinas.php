@@ -1,4 +1,11 @@
 <?php
+namespace App\gestion;
+
+use App\modelo\Maquinas;
+use App\modelo\Marca;
+use App\gestion\gestionMaquinas;
+use App\gestion\neoMaquinas;
+
 include_once("../modelo/maquinas.php");
 include_once("../modelo/marca.php");
 include_once("neoMaquinas.php");
@@ -8,7 +15,7 @@ session_cache_limiter('private_no_expire');
 
 session_start();
 if ($_SESSION["acceso"]) {
-    switch ($_POST['accion']){   
+    switch ($_POST['accion']){
         case 'Nuevo':
             $maquinas = new Maquinas();
             $neoMaquinas = new neoMaquinas();
@@ -23,8 +30,6 @@ if ($_SESSION["acceso"]) {
             $neoMaquinas->formNeoMaquinas("MODIFICAR", $marcas->listMarca(), $maquinas->maquinaId($id));
             break;
         case 'Guardar':
-            // $datos = [trim($_POST["txtid"]), trim($_POST["txtcodigo"]), trim($_POST["txtnombre"]), trim($_POST["optmarca"]), trim($_POST["txtubicacion"]), trim($_POST["txtcantidad"]), trim($_POST["optestado"])];
-            // print_r($datos);
             $codigo = trim($_POST["txtcodigo"]);
             $nombre = trim($_POST["txtnombre"]);
             $marca = trim($_POST["optmarca"]);

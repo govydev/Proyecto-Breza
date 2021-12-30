@@ -1,5 +1,5 @@
 <?php
-
+namespace App\gestion;
 class gestionCalibracion{
 
     public function formGestionCalibracion($calibracion){?>
@@ -154,6 +154,9 @@ class gestionCalibracion{
                                                 <button style="left: 50px;" class="btn btn-second">Nuevo</button>									
                                             </div>
                                         </form>
+                                        <div class="izq">
+                                            <a href="reporte.php?tipo=0" class="btn btn-info">Reporte</a>    
+                                        </div>
                                     </div>	
                                 </div>
                                 <span></span>
@@ -191,7 +194,7 @@ class gestionCalibracion{
                                                 <form action="getCalibracion.php" method="post">
                                                     <input type="hidden" value="Modificar" name="accion">
                                                     <input type="hidden" value="<?php echo $value[0] ?>" name="txtid">
-                                                    <button class="btn btn-info">Modificar</button>
+                                                    <button class="btn btn2-second ">Modificar</button>
                                                 </form>
                                             </td> <!--cambiar referencia -->
                                             <!--

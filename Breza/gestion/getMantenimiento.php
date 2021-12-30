@@ -1,4 +1,10 @@
-<?php 
+<?php
+namespace App\gestion;
+
+use App\modelo\Mantenimiento;
+use App\modelo\Maquinas;
+use App\modelo\Proveedor;
+
 include_once("formPrincipalMantenimiento.php");
 include_once("formMantenimiento.php");
 include_once("../modelo/mantenimiento.php");
@@ -52,7 +58,7 @@ if ($_SESSION["acceso"]) {
     }
 
 }else{
-    header("Location: ../index.php");   
+    header("Location: ../index.php");
 }
 
 

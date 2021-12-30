@@ -1,4 +1,5 @@
 <?php
+namespace App\seguridad;
 class Principal{
     public function formPrincipal($path){?>
        

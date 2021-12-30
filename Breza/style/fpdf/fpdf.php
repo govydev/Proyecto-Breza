@@ -1,4 +1,8 @@
 <?php
+namespace App\style\fpdf;
+
+use Exception;
+
 /*******************************************************************************
 * FPDF                                                                         *
 *                                                                              *
@@ -71,7 +75,7 @@ protected $PDFVersion;         // PDF version number
 *                               Public methods                                 *
 *******************************************************************************/
 
-function __construct($orientation='P', $unit='mm', $size='A4')
+function __construct($orientation='l', $unit='mm', $size='A4')
 {
 	// Some checks
 	$this->_dochecks();

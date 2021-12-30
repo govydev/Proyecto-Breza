@@ -1,4 +1,5 @@
 <?php
+namespace App\modelo;
 include_once("conexion.php");
 
 class Calibracion{

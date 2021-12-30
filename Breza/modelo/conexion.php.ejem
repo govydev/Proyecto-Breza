@@ -1,4 +1,7 @@
 <?php
+namespace App\modelo;
+use mysqli;
+
 define("HOST","localhost");
 define("USER","root");
 define("PASSWORD","12345678");

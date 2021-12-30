@@ -1,4 +1,5 @@
 <?php
+namespace App\gestion;
 
 class gestionMaquinas{
 
