@@ -2,7 +2,7 @@
 use App\modelo\Conexion;
 use App\modelo\Usuario;
 use PHPUnit\Framework\TestCase;
-
+//implementar Mock Object Patter en clase usuario y maquina
 
 include_once("../Breza/modelo/usuario.php");
 include_once("../Breza/modelo/conexion.php");

@@ -3,7 +3,7 @@ namespace App\modelo;
 include_once("conexion.php");
 
 class Maquinas{
-
+    // Active Record Pattern
     public function listaMaquina(){
         $lista = Conexion::select("SELECT m.idmaquina, m.codigo, m.nombre 'Nombre de Maquina', mr.nombre Marca, m.ubicacion, m.cantidad, m.estado
                                 FROM maquinas m, marca mr WHERE m.idmarca = mr.idmarca ORDER BY m.estado DESC");
@@ -13,7 +13,7 @@ class Maquinas{
     public function maquinaId($id){
         $maquina = Conexion::select("SELECT m.idmaquina, m.codigo, m.nombre 'Nombre de Maquina', mr.nombre Marca, m.ubicacion, m.cantidad, m.estado
                                 FROM maquinas m, marca mr WHERE m.idmarca = mr.idmarca AND m.idmaquina = $id");
-        return $maquina[0]; 
+        return $maquina[0];
     }
 
     public function modificar($id, $codigo, $nombre, $ubicacion, $cantidad, $estado, $idmarca){
