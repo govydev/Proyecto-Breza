@@ -11,7 +11,7 @@ class UsuarioTest extends TestCase{
     public function testAgregarUsuario()
     {
         // datos simulados
-        $data = ['user', 'userAp', 'userAM', 'user4', '123', 1];
+        $data = ['user', 'userAp', 'userAM', 'user', '123', 1];
         //llamado de funciones
         $usuario = new Usuario();
         $estado = $usuario->agregar($data);
